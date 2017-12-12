@@ -1,0 +1,39 @@
+default_view:
+  view: yes
+  entities:
+    - sensor.dark_sky_temperature
+    - sensor.dark_sky_summary
+    - updater.updater
+    - light.tv
+    - light.bedroom
+    - light.dining
+    - light.workroom
+    - group.lighting
+    - camera.generic_camera
+    - device_tracker.euge_iphone
+    - device_tracker.eugeiphone
+    - group.eugeneiPhone7plus
+    - sensor.exchange_rate_1_btc
+    - group.stuff
+
+stuff:
+  name: Stuff
+  entities:
+    - script.test_notification
+    - script.restart_ha
+
+
+
+lighting:
+  name: 'Lighting Control'
+  entities:
+    - light.tv
+    - light.bedroom
+    - light.dining
+    - light.workroom
+
+eugeneiPhone7plus:
+  name: Eugene iPhone 7Plus
+  entities:
+    - device_tracker.euge_iphonebt
+    - device_tracker.eugeiphone

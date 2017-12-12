@@ -1,0 +1,81 @@
+
+euge_iphone:
+  hide_if_away: false
+  icon:
+  mac:
+  name: Euge iPhone iOS App
+  picture:
+  track: true
+  vendor:
+
+eugene_lais_macbook:
+  hide_if_away: false
+  icon:
+  mac: BT_00:23:6C:B9:06:4B
+  name: Eugene Lai’s MacBook
+  picture:
+  track: false
+  vendor: Apple, Inc.
+
+eugenesmacbookpro:
+  hide_if_away: false
+  icon:
+  mac:
+  name: Eugene’s MacBook Pro
+  picture:
+  track: false
+  vendor:
+
+eugenelaismacbook:
+  hide_if_away: false
+  icon:
+  mac:
+  name: Eugene Lai’s MacBook
+  picture:
+  track: false
+  vendor:
+
+eugenesmacbookredant:
+  hide_if_away: false
+  icon:
+  mac:
+  name: Eugene’s Macbook Red Ant
+  picture:
+  track: false
+  vendor:
+
+eugenesapple_watch:
+  hide_if_away: false
+  icon:
+  mac:
+  name: Eugene’s Apple Watch
+  picture:
+  track: false
+  vendor:
+
+eugeiphone:
+  hide_if_away: false
+  icon:
+  mac:
+  name: Euge iPhone iCloud
+  picture:
+  track: true
+  vendor:
+
+euge_iphonebt:
+  hide_if_away: false
+  icon:
+  mac:
+  name: euge iphone BT
+  picture:
+  track: true
+  vendor:
+
+takas_ipad_air2_:
+  hide_if_away: false
+  icon:
+  mac: BT_4C:32:75:5F:22:E7
+  name: 'Taka''s iPad Air2 '
+  picture:
+  track: false
+  vendor: Apple, Inc.

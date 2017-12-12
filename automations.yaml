@@ -1,0 +1,95 @@
+- alias: 'Test'
+  trigger:
+    - platform: state
+      entity_id: light.dining
+      to: 'on'
+    - platform: state
+      entity_id: light.dining
+      to: 'off'
+  action:
+    - service: notify.ios_euge_iphone
+      data:
+        message: Dining Light is {{ states('light.dining') }}.
+    - service: tts.amazon_polly_say
+#    - service: tts.google_say
+      entity_id: media_player.mpd
+      data_template:
+        message: <speak>Lights are on</speak>
+
+- alias: Startup Notification
+  trigger:
+    platform: homeassistant
+    event: start
+  action:
+    - service: notify.ios_euge_iphone
+      data:
+        message: 'Home Asssitant has started'
+#    - service: tts.google_say
+#      entity_id: media_player.mpd
+#      data:
+#        message: 'Hello Eugene. Home Assistant is up and running and all systems are good to go!'
+    - service: tts.amazon_polly_say
+#    - service: tts.google_say
+      entity_id: media_player.mpd
+      data_template:
+        message: <speak>Hello Eugene. I am Apollo. Home Assistant is up and running and all systems are good to go!</speak>
+
+
+- alias: 'Leaving Home'
+  trigger:
+    platform: state
+    entity_id: device_tracker.eugeiphone
+    from: 'home'
+    to: 'not_home'
+  action:
+    - service: light.turn_off
+      entity_id: group.all_lights
+    - service: notify.ios_euge_iphone
+      data:
+        message: 'See you'
+
+- alias: 'Arriving Home'
+  trigger:
+    platform: state
+    entity_id: device_tracker.eugeiphone
+    from: 'not_home'
+    to: 'home'
+  action:
+    - service: light.turn_on
+      entity_id: light.living_room_lamp
+    - service: notify.ios_euge_iphone
+      data:
+        message: 'Welcome home Eugene'
+
+- alias: 'Leaving work'
+  trigger:
+    platform: state
+    entity_id: device_tracker.eugeiphone
+    from: 'work'
+    to: 'not_home'
+  action:
+  - service: notify.ios_euge_iphone
+    data:
+      message: 'You have left work'
+
+- alias: 'Coming to work'
+  trigger:
+    platform: state
+    entity_id: device_tracker.eugeiphone
+    from: 'not_home'
+    to: 'work'
+  action:
+  - service: notify.ios_euge_iphone
+    data:
+      message: 'Get shit done today Eugene'
+
+- alias: 'Bluetooh Home Test'
+  trigger:
+    platform: state
+    entity_id: device_tracker.euge_iphonebt
+    from: 'not_home'
+    to: 'home'
+  action:
+  - service: notify.ios_euge_iphone
+    data:
+      message: 'Bluetooth tracker has detected your phone'

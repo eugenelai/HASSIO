@@ -1,0 +1,25 @@
+restart_ha:
+  alias: Restart Home Assistant
+  sequence:
+#    - service: tts.amazon_polly_say
+    - service: tts.google_say
+      entity_id: media_player.mpd
+      data_template:
+        message: <speak>Restarting in. 3. 2. 1. System will be back online shortly</speak>
+    - service: notify.ios_euge_iphone
+      data:
+        message: 'Home Asssitant is restarting and will be back online shortly.'
+    - service: homeassistant.restart
+
+
+test_notification:
+  alias: Test Notification
+  sequence:
+    - service: tts.amazon_polly_say
+#    - service: tts.google_say
+      entity_id: media_player.mpd
+      data_template:
+        message: <speak> This displays on iPhone </speak>
+    - service: notify.ios_euge_iphone
+      data:
+        message: Apollo at your service. Can you hear me?

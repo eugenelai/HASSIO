@@ -1,0 +1,12 @@
+secrets.yaml
+home-assistant_v2.db
+home-assistant.log
+google_assistant.json
+emulated_hue_ids.json
+.spotify-token-cache
+.ios.conf
+.ftpconfig
+tts/
+icloud/
+homebridge/
+deps/

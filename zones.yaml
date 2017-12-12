@@ -1,0 +1,10 @@
+- name: Home
+  latitude: 22.3071146
+  longitude: 114.2668613
+  radius: 50
+  icon: mdi:account-multiple
+
+- name: Work
+  latitude: 22.2840670
+  longitude: 114.1506000
+  radius: 50
