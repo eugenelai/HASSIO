@@ -1,8 +1,7 @@
 restart_ha:
   alias: Restart Home Assistant
   sequence:
-#    - service: tts.amazon_polly_say
-    - service: tts.google_say
+    - service: tts.amazon_polly_say
       entity_id: media_player.mpd
       data_template:
         message: <speak>Restarting in. 3. 2. 1. System will be back online shortly</speak>
@@ -16,10 +15,17 @@ test_notification:
   alias: Test Notification
   sequence:
     - service: tts.amazon_polly_say
-#    - service: tts.google_say
       entity_id: media_player.mpd
       data_template:
-        message: <speak> This displays on iPhone </speak>
+        message: <speak> Eugene is currently {{ states("device_tracker.euge_iphone") }} </speak>
     - service: notify.ios_euge_iphone
       data:
         message: Apollo at your service. Can you hear me?
+
+
+test_message:
+  alias: Test Message
+  sequence:
+    - service: notify.ios_euge_iphone
+      data:
+        message: This is a test message

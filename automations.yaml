@@ -1,4 +1,4 @@
-- alias: 'Test'
+- alias: 'Dining Lights Notification'
   trigger:
     - platform: state
       entity_id: light.dining
@@ -7,14 +7,41 @@
       entity_id: light.dining
       to: 'off'
   action:
-    - service: notify.ios_euge_iphone
-      data:
-        message: Dining Light is {{ states('light.dining') }}.
     - service: tts.amazon_polly_say
 #    - service: tts.google_say
       entity_id: media_player.mpd
       data_template:
-        message: <speak>Lights are on</speak>
+        message: <speak>Turning the dining lights {{ states('light.dining') }}</speak>
+
+- alias: 'TV Lights Notification'
+  trigger:
+    - platform: state
+      entity_id: light.tv
+      to: 'on'
+    - platform: state
+      entity_id: light.tv
+      to: 'off'
+  action:
+    - service: tts.amazon_polly_say
+#    - service: tts.google_say
+      entity_id: media_player.mpd
+      data_template:
+        message: <speak>Turning the TV lights {{ states('light.tv') }}</speak>
+
+- alias: 'Bedroom Lights Notification'
+  trigger:
+    - platform: state
+      entity_id: light.bedroom
+      to: 'on'
+    - platform: state
+      entity_id: light.bedroom
+      to: 'off'
+  action:
+    - service: tts.amazon_polly_say
+#    - service: tts.google_say
+      entity_id: media_player.mpd
+      data_template:
+        message: <speak>Turning the bedroom lights {{ states('light.bedroom') }}</speak>
 
 - alias: Startup Notification
   trigger:
@@ -24,16 +51,10 @@
     - service: notify.ios_euge_iphone
       data:
         message: 'Home Asssitant has started'
-#    - service: tts.google_say
-#      entity_id: media_player.mpd
-#      data:
-#        message: 'Hello Eugene. Home Assistant is up and running and all systems are good to go!'
     - service: tts.amazon_polly_say
-#    - service: tts.google_say
       entity_id: media_player.mpd
       data_template:
-        message: <speak>Hello Eugene. I am Apollo. Home Assistant is up and running and all systems are good to go!</speak>
-
+        message: <speak>Hello Eugene. I am Ava. Home Assistant is up and running and all systems are good to go!</speak>
 
 - alias: 'Leaving Home'
   trigger:
@@ -42,8 +63,6 @@
     from: 'home'
     to: 'not_home'
   action:
-    - service: light.turn_off
-      entity_id: group.all_lights
     - service: notify.ios_euge_iphone
       data:
         message: 'See you'
@@ -52,11 +71,9 @@
   trigger:
     platform: state
     entity_id: device_tracker.eugeiphone
-    from: 'not_home'
+    from: 'Away'
     to: 'home'
   action:
-    - service: light.turn_on
-      entity_id: light.living_room_lamp
     - service: notify.ios_euge_iphone
       data:
         message: 'Welcome home Eugene'
@@ -65,8 +82,8 @@
   trigger:
     platform: state
     entity_id: device_tracker.eugeiphone
-    from: 'work'
-    to: 'not_home'
+    from: 'Work'
+    to: 'Away'
   action:
   - service: notify.ios_euge_iphone
     data:
@@ -76,20 +93,9 @@
   trigger:
     platform: state
     entity_id: device_tracker.eugeiphone
-    from: 'not_home'
-    to: 'work'
+    from: 'Away'
+    to: 'Work'
   action:
   - service: notify.ios_euge_iphone
     data:
       message: 'Get shit done today Eugene'
-
-- alias: 'Bluetooh Home Test'
-  trigger:
-    platform: state
-    entity_id: device_tracker.euge_iphonebt
-    from: 'not_home'
-    to: 'home'
-  action:
-  - service: notify.ios_euge_iphone
-    data:
-      message: 'Bluetooth tracker has detected your phone'

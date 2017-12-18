@@ -21,8 +21,7 @@ stuff:
   entities:
     - script.test_notification
     - script.restart_ha
-
-
+    - script.test_message
 
 lighting:
   name: 'Lighting Control'
@@ -35,5 +34,5 @@ lighting:
 eugeneiPhone7plus:
   name: Eugene iPhone 7Plus
   entities:
-    - device_tracker.euge_iphonebt
     - device_tracker.eugeiphone
+    - device_tracker.eugeiphonenmap

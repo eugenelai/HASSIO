@@ -62,20 +62,173 @@ eugeiphone:
   track: true
   vendor:
 
-euge_iphonebt:
+6854fd907b82:
   hide_if_away: false
   icon:
-  mac:
-  name: euge iphone BT
-  picture:
-  track: true
-  vendor:
-
-takas_ipad_air2_:
-  hide_if_away: false
-  icon:
-  mac: BT_4C:32:75:5F:22:E7
-  name: 'Taka''s iPad Air2 '
+  mac: 68:54:FD:90:7B:82
+  name: 6854fd907b82
   picture:
   track: false
+  vendor: Amazon Technologies Inc.
+
+64a5c360c78b:
+  hide_if_away: false
+  icon:
+  mac: 64:A5:C3:60:C7:8B
+  name: 64a5c360c78b
+  picture:
+  track: false
+  vendor: Apple, Inc.
+
+00236c98d337:
+  hide_if_away: false
+  icon:
+  mac: 00:23:6C:98:D3:37
+  name: 00236c98d337
+  picture:
+  track: false
+  vendor: Apple, Inc.
+
+94103ecefd09:
+  hide_if_away: false
+  icon:
+  mac: 94:10:3E:CE:FD:09
+  name: 94103ecefd09
+  picture:
+  track: false
+  vendor: Belkin International Inc.
+
+b88d126444e5:
+  hide_if_away: false
+  icon:
+  mac: B8:8D:12:64:44:E5
+  name: b88d126444e5
+  picture:
+  track: false
+  vendor: Apple, Inc.
+
+18742eceafd9:
+  hide_if_away: false
+  icon:
+  mac: 18:74:2E:CE:AF:D9
+  name: 18742eceafd9
+  picture:
+  track: false
+  vendor: Amazon Technologies Inc.
+
+34d270907ed3:
+  hide_if_away: false
+  icon:
+  mac: 34:D2:70:90:7E:D3
+  name: 34d270907ed3
+  picture:
+  track: false
+  vendor: Amazon Technologies Inc.
+
+0090a9d9d986:
+  hide_if_away: false
+  icon:
+  mac: 00:90:A9:D9:D9:86
+  name: 0090a9d9d986
+  picture:
+  track: true
+  vendor: WESTERN DIGITAL
+
+eugeiphonenmap:
+  hide_if_away: false
+  icon:
+  mac: 4C:74:BF:04:5E:10
+  name: Euge iPhone NMAP
+  picture:
+  track: true
+  vendor: Apple, Inc.
+
+4c0bbea80ebc:
+  hide_if_away: false
+  icon:
+  mac: 4C:0B:BE:A8:0E:BC
+  name: 4c0bbea80ebc
+  picture:
+  track: false
+  vendor: Microsoft
+
+ec1a59a1ac41:
+  hide_if_away: false
+  icon:
+  mac: EC:1A:59:A1:AC:41
+  name: ec1a59a1ac41
+  picture:
+  track: false
+  vendor: Belkin International Inc.
+
+20f41bbcf114:
+  hide_if_away: false
+  icon:
+  mac: 20:F4:1B:BC:F1:14
+  name: 20f41bbcf114
+  picture:
+  track: false
+  vendor: Shenzhen Bilian electronic CO.,LTD
+
+6c4008ab446c:
+  hide_if_away: false
+  icon:
+  mac: 6C:40:08:AB:44:6C
+  name: 6c4008ab446c
+  picture:
+  track: false
+  vendor: Apple, Inc.
+
+accf23a6cce8:
+  hide_if_away: false
+  icon:
+  mac: AC:CF:23:A6:CC:E8
+  name: accf23a6cce8
+  picture:
+  track: false
+  vendor: Hi-flying electronics technology Co.,Ltd
+
+044bed9a5eac:
+  hide_if_away: false
+  icon:
+  mac: 04:4B:ED:9A:5E:AC
+  name: 044bed9a5eac
+  picture:
+  track: false
+  vendor: Apple, Inc.
+
+b09fba0b5de4:
+  hide_if_away: false
+  icon:
+  mac: B0:9F:BA:0B:5D:E4
+  name: b09fba0b5de4
+  picture:
+  track: true
+  vendor: Apple, Inc.
+
+703eacc3febf:
+  hide_if_away: false
+  icon:
+  mac: 70:3E:AC:C3:FE:BF
+  name: 703eacc3febf
+  picture:
+  track: true
+  vendor: Apple, Inc.
+
+acbc32788637:
+  hide_if_away: false
+  icon:
+  mac: AC:BC:32:78:86:37
+  name: acbc32788637
+  picture:
+  track: true
+  vendor: Apple, Inc.
+
+f0cba1bdff9e:
+  hide_if_away: false
+  icon:
+  mac: F0:CB:A1:BD:FF:9E
+  name: f0cba1bdff9e
+  picture:
+  track: true
   vendor: Apple, Inc.

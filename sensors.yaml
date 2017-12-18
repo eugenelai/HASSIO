@@ -1,0 +1,21 @@
+- platform: yr
+- platform: darksky
+  api_key: !secret darksky_apikey
+  monitored_conditions:
+    - summary
+    - temperature
+- platform: bitcoin
+  currency: HKD
+  display_options:
+    - exchangerate
+- platform: time_date
+  display_options:
+    - 'time'
+    - 'date'
+    - 'date_time'
+    - 'time_date'
+    - 'time_utc'
+    - 'beat'
+- platform: cert_expiry
+  host: eugenelai.duckdns.org
+- platform: version

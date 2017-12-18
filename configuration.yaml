@@ -27,7 +27,9 @@ history:
 logbook:
 map:
 sun:
+alexa:
 frontend:
+  themes: !include themes.yaml
 
 tts:
   - platform: amazon_polly
@@ -35,12 +37,7 @@ tts:
     aws_secret_access_key: !secret aws_secret_access_key
     region_name: 'us-east-1'
     text_type: ssml
-    voice: Joey
-
-  - platform: google
-    cache: true
-    cache_dir: /tmp/tts
-    time_memory: 300
+    voice: Joanna
 
 emulated_hue:
   host_ip: 10.0.1.23
@@ -51,7 +48,7 @@ media_player:
 
 camera:
   - platform: generic
-    still_image_url: http://10.0.1.107/ccm/ccm_pic_get.jpg?hfrom_handle=887330&dsess=1&dsess_nid=MBkLQ4J7oa.NKjadJjULRKNCIyRhLw&dsess_sn=1jfiegbp4eanq&dtoken=p0_xxxxxxxxxx
+    still_image_url: http://10.0.1.107/ccm/ccm_pic_get.jpg?hfrom_handle=887330&dsess=1&dsess_nid=MEMprsWmPuwzPcgHy18aRbtCJp1hDQ&dtoken=p0_xxxxxxxxxx
 
 # Light setup
 light:
@@ -70,44 +67,23 @@ light:
       - number: 4
         type: rgbw
         name: Dining
-
 # Device Tracker
-device_tracker:
-  - platform: icloud
-    username: !secret apple_username
-    password: !secret apple_password
-    account_name: Euge iCloud
-
-#  - platform: nmap_tracker
-    #hosts: 10.0.1.1/24
-#    scan_options: " --privileged -sn"
-#    home_interval: 10
-#    track_new_devices: yes
-
-  - platform: bluetooth_tracker
-
 panel_iframe:
   ide:
     title: IDE
     icon: mdi:code-braces
     url: https://eugenelai.duckdns.org:8321
 
-# Weather Prediction
-sensor:
-  - platform: yr
-  - platform: darksky
-    api_key: !secret darksky_apikey
-    monitored_conditions:
-      - summary
-      - temperature
-
-  - platform: bitcoin
-    currency: HKD
-    display_options:
-      - exchangerate
+mqtt:
+  broker: core-mosquitto
+  username: !secret mqtt_username
+  password: !secret mqtt_password
 
 
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
 zone: !include zones.yaml
+sensor: !include sensors.yaml
+device_tracker: !include devicetracker.yaml
+intent_script: !include alexaintent.yaml
