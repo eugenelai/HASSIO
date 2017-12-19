@@ -23,3 +23,4 @@ Sensor Template for Bitcoin
       entity_id: sensor.exchange_rate_1_btc
       unit of measurement: 'HKD'
       value template: "{{ (states('sensor.exchange_rate_1_btc') | float * 0.113) | round(0) }}"
+hello
