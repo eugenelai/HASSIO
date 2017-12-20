@@ -19,3 +19,11 @@
 - platform: cert_expiry
   host: eugenelai.duckdns.org
 - platform: version
+- platform: google_travel_time
+  api_key: !secret googleAPIKey
+  origin: zone.work
+  destination: zone.home
+  options:
+    mode: transit
+
+  

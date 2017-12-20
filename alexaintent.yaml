@@ -5,22 +5,30 @@ LocateIntent:
     data_template:
       message: >
         {%- if User.lower() == "eugene" -%}
-          <speak>{{User}} is {{ states('device_tracker.eugeiphone') }}. </speak>
+          <speak>{{User}} location is current set to: {{ states('device_tracker.eugeiphone') }}. </speak>
         {%- else -%}
           <speak>Sorry. {{User}} isn't being tracked by me. </speak>
         {% endif %}
+
 AvaSkillset:
   action:
     service: tts.amazon_polly_say
     entity_id: media_player.mpd
     data_template:
       message: >
-        {%- if User.lower() == "" -%}
-          <speak>Hi {{User}}. My name is Ava. I'm a combination of logic from Amazon Skill Kit and Home Assistant services. I'm here to help you.</speak>
-        {%- else -%}
-          <speak>Hi random stranger. My name is Ava.  I'm here to help you. </speak>
-        {% endif %}
-          <speak>To get me to do something, just say, computer, followed by a command.  You can ask me to turn on lights, the weather, and set timers.  Go ahead ask me something.</speak>
+        <speak>
+          {% if now().strftime("%H")|int < 12 %}
+            Good morning.
+          {% elif now().strftime("%H")|int < 18 %}
+            Good afternoon.
+            {% else %}
+            Good evening.
+          {% endif %}
+          My name is Ava. I'm a home assistant developed by Eugene utilising Home Assistant open source platform and Alexa skill set.
+          To get me to do something, just say, computer, followed by a command.
+          You can ask me to turn on lights, the weather, and set timers.  Go ahead ask me something.
+        </speak>
+
 UpdateMe:
   action:
     service: tts.amazon_polly_say
@@ -28,9 +36,16 @@ UpdateMe:
     data_template:
       message: >
           <speak>
-            Hi. My name is Ava. I'm currently running version {{states('sensor.current_version')}}.
-            It is currently {{states('sensor.time')}} and I see that you're currently at {{ states('device_tracker.eugeiphone') }}, Eugene.
-            The current temperature  in Hong Kong is {{ states('sensor.dark_sky_temperature') }} °C. And is expected to be {{ states('sensor.dark_sky_summary') }}.
+            {% if now().strftime("%H")|int < 12 %}
+              Good morning.
+            {% elif now().strftime("%H")|int < 18 %}
+              Good afternoon.
+              {% else %}
+              Good evening.
+            {% endif %}
+            My name is Ava. I'm currently running version {{states('sensor.current_version')}}.
+            It is currently {{states('sensor.time')}} and I see that your status is currently set to {{ states('device_tracker.eugeiphone') }}, Eugene.
+            The current temperature in Hong Kong is {{ states('sensor.dark_sky_temperature') }} °C. And is expected to be {{ states('sensor.dark_sky_summary') }}.
             SSL certificate expiring in {{states("sensor.ssl_certificate_expiry")}} days.
             Your bitcoin is currently valued at {{ (states('sensor.exchange_rate_1_btc') | float * 0.113) | round(0) }}.
           </speak>
