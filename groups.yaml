@@ -1,38 +1,63 @@
 default_view:
   view: yes
   entities:
+    - sensor.euge_iphone
+    - device_tracker.heleniphone
     - sensor.dark_sky_temperature
     - sensor.dark_sky_summary
+    - sensor.ram_used
     - updater.updater
-    - light.tv
-    - light.bedroom
-    - light.dining
-    - light.workroom
-    - group.lighting
-    - camera.generic_camera
-    - device_tracker.euge_iphone
-    - device_tracker.eugeiphone
-    - group.eugeneiPhone7plus
-    - sensor.exchange_rate_1_btc
-    - group.stuff
+    - group.workroom
+    - group.livingroom
+    - group.bedroom
+    - group.bitcoin
 
-stuff:
-  name: Stuff
+livingroom:
+  name: Living Room
+  control: hidden
   entities:
+    - light.tv_light
+    - light.dining_light
+    - sensor.living_room_temperature
+    - sensor.living_room_humidity
+    - sensor.living_room_motion
+    - camera.generic_camera
+
+bedroom:
+  name: Bedroom
+  control: hidden
+  entities:
+    - light.bedroom_light
+    - sensor.bedroom_temperature
+    - sensor.bedroom_humidity
+    - sensor.bedroom_motion
+
+workroom:
+  name: 'Workroom'
+  control: hidden
+  entities:
+    - light.workroom
+
+trackeddevices:
+  name: Users
+  entities:
+    - device_tracker.iphone
+    - device_tracker.eugeiphonenmap
+    - device_tracker.euge_iphone
+    - device_tracker.heleniphone
+
+bitcoin:
+  name: Bitcoin
+  entities:
+    - sensor.bcrateusd
+    - sensor.bcratehkd
+    - sensor.bcvalue
+
+system:
+  view: yes
+  name: System
+  entities:
+    - group.trackeddevices
     - script.test_notification
     - script.restart_ha
     - script.test_message
-
-lighting:
-  name: 'Lighting Control'
-  entities:
-    - light.tv
-    - light.bedroom
-    - light.dining
-    - light.workroom
-
-eugeneiPhone7plus:
-  name: Eugene iPhone 7Plus
-  entities:
-    - device_tracker.eugeiphone
-    - device_tracker.eugeiphonenmap

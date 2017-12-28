@@ -10,19 +10,19 @@
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
 
-#define wifi_ssid "24L_Centre_Hollywood_2.4G"
-#define wifi_password "37113000"
+#define wifi_ssid "Bung Leg Buddy"
+#define wifi_password "one2345678"
 
-#define mqtt_server "m13.cloudmqtt.com"
-#define mqtt_user "zsgfuwpg"
-#define mqtt_password "wpUR9WgHR1Xm"
+#define mqtt_server "10.0.1.23"
+#define mqtt_user "hassio"
+#define mqtt_password "b651fx56TT"
 
 WiFiClient espClient;
 PubSubClient client(espClient);
 
-#define humidity_topic "sensor/humidity"
-#define temperature_topic "sensor/temperature"
-#define motion_topic "sensor/motion"
+#define humidity_topic "sensor/livingroom/humidity"
+#define temperature_topic "sensor/livingroom/temperature"
+#define motion_topic "sensor/livingroom/motion"
 
 #define DHTPIN 13     // what digital pin the DHT22 is conected to
 #define DHTTYPE DHT22   // there are multiple kinds of DHT sensors
@@ -37,7 +37,7 @@ void setup() {
   dht.begin();
   
   setup_wifi();
-  client.setServer(mqtt_server, 18745);
+  client.setServer(mqtt_server, 1883);
 
   // Wait for serial to initialize.
   while(!Serial) { }

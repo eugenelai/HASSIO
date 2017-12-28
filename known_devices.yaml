@@ -8,14 +8,177 @@ euge_iphone:
   track: true
   vendor:
 
-eugene_lais_macbook:
+eugeiphonenmap:
   hide_if_away: false
   icon:
-  mac: BT_00:23:6C:B9:06:4B
-  name: Eugene Lai’s MacBook
+  mac: 4C:74:BF:04:5E:10
+  name: Euge iPhone NMAP
+  picture:
+  track: true
+  vendor: Apple, Inc.
+
+
+6c4008ab446c:
+  hide_if_away: false
+  icon:
+  mac: 6C:40:08:AB:44:6C
+  name: 6c4008ab446c
   picture:
   track: false
   vendor: Apple, Inc.
+
+heleniphone:
+  hide_if_away: false
+  icon:
+  mac: 70:3E:AC:C3:FE:BF
+  name: Helen iPhone
+  picture:
+  track: true
+  vendor: Apple, Inc.
+
+18742eceafd9:
+  hide_if_away: false
+  icon:
+  mac: 18:74:2E:CE:AF:D9
+  name: 18742eceafd9
+  picture:
+  track: false
+  vendor: Amazon Technologies Inc.
+
+20f41bbcf114:
+  hide_if_away: false
+  icon:
+  mac: 20:F4:1B:BC:F1:14
+  name: 20f41bbcf114
+  picture:
+  track: false
+  vendor: Shenzhen Bilian electronic CO.,LTD
+
+ec1a59a1ac41:
+  hide_if_away: false
+  icon:
+  mac: EC:1A:59:A1:AC:41
+  name: ec1a59a1ac41
+  picture:
+  track: false
+  vendor: Belkin International Inc.
+
+64a5c360c78b:
+  hide_if_away: false
+  icon:
+  mac: 64:A5:C3:60:C7:8B
+  name: 64a5c360c78b
+  picture:
+  track: false
+  vendor: Apple, Inc.
+
+6854fd907b82:
+  hide_if_away: false
+  icon:
+  mac: 68:54:FD:90:7B:82
+  name: 6854fd907b82
+  picture:
+  track: false
+  vendor: Amazon Technologies Inc.
+
+5ccf7fd1a713:
+  hide_if_away: false
+  icon:
+  mac: 5C:CF:7F:D1:A7:13
+  name: 5ccf7fd1a713
+  picture:
+  track: false
+  vendor: Espressif Inc.
+
+b827eba37364:
+  hide_if_away: false
+  icon:
+  mac: B8:27:EB:A3:73:64
+  name: b827eba37364
+  picture:
+  track: true
+  vendor: Raspberry Pi Foundation
+
+00236c98d337:
+  hide_if_away: false
+  icon:
+  mac: 00:23:6C:98:D3:37
+  name: 00236c98d337
+  picture:
+  track: false
+  vendor: unknown
+
+94103ecefd09:
+  hide_if_away: false
+  icon:
+  mac: 94:10:3E:CE:FD:09
+  name: 94103ecefd09
+  picture:
+  track: false
+  vendor: unknown
+
+34d270907ed3:
+  hide_if_away: false
+  icon:
+  mac: 34:D2:70:90:7E:D3
+  name: 34d270907ed3
+  picture:
+  track: false
+  vendor: unknown
+
+b09fba0b5de4:
+  hide_if_away: false
+  icon:
+  mac: B0:9F:BA:0B:5D:E4
+  name: b09fba0b5de4
+  picture:
+  track: false
+  vendor: unknown
+
+0090a9d9d986:
+  hide_if_away: false
+  icon:
+  mac: 00:90:A9:D9:D9:86
+  name: 0090a9d9d986
+  picture:
+  track: false
+  vendor: unknown
+
+accf23a6cce8:
+  hide_if_away: false
+  icon:
+  mac: AC:CF:23:A6:CC:E8
+  name: accf23a6cce8
+  picture:
+  track: false
+  vendor: unknown
+
+b88d126444e5:
+  hide_if_away: false
+  icon:
+  mac: B8:8D:12:64:44:E5
+  name: b88d126444e5
+  picture:
+  track: false
+  vendor: unknown
+
+4c0bbea80ebc:
+  hide_if_away: false
+  icon:
+  mac: 4C:0B:BE:A8:0E:BC
+  name: 4c0bbea80ebc
+  picture:
+  track: false
+  vendor: unknown
+
+044bed9a5eac:
+  hide_if_away: false
+  icon:
+  mac: 04:4B:ED:9A:5E:AC
+  name: 044bed9a5eac
+  picture:
+  track: false
+  vendor: unknown
 
 eugenesmacbookpro:
   hide_if_away: false
@@ -33,6 +196,15 @@ eugenelaismacbook:
   name: Eugene Lai’s MacBook
   picture:
   track: false
+  vendor:
+
+iphone:
+  hide_if_away: false
+  icon:
+  mac:
+  name: Euge iPhone iCloud
+  picture:
+  track: true
   vendor:
 
 eugenesmacbookredant:
@@ -53,182 +225,29 @@ eugenesapple_watch:
   track: false
   vendor:
 
-eugeiphone:
+404d7f4ea69e:
   hide_if_away: false
   icon:
-  mac:
-  name: Euge iPhone iCloud
-  picture:
-  track: true
-  vendor:
-
-6854fd907b82:
-  hide_if_away: false
-  icon:
-  mac: 68:54:FD:90:7B:82
-  name: 6854fd907b82
-  picture:
-  track: false
-  vendor: Amazon Technologies Inc.
-
-64a5c360c78b:
-  hide_if_away: false
-  icon:
-  mac: 64:A5:C3:60:C7:8B
-  name: 64a5c360c78b
-  picture:
-  track: false
-  vendor: Apple, Inc.
-
-00236c98d337:
-  hide_if_away: false
-  icon:
-  mac: 00:23:6C:98:D3:37
-  name: 00236c98d337
-  picture:
-  track: false
-  vendor: Apple, Inc.
-
-94103ecefd09:
-  hide_if_away: false
-  icon:
-  mac: 94:10:3E:CE:FD:09
-  name: 94103ecefd09
-  picture:
-  track: false
-  vendor: Belkin International Inc.
-
-b88d126444e5:
-  hide_if_away: false
-  icon:
-  mac: B8:8D:12:64:44:E5
-  name: b88d126444e5
-  picture:
-  track: false
-  vendor: Apple, Inc.
-
-18742eceafd9:
-  hide_if_away: false
-  icon:
-  mac: 18:74:2E:CE:AF:D9
-  name: 18742eceafd9
-  picture:
-  track: false
-  vendor: Amazon Technologies Inc.
-
-34d270907ed3:
-  hide_if_away: false
-  icon:
-  mac: 34:D2:70:90:7E:D3
-  name: 34d270907ed3
-  picture:
-  track: false
-  vendor: Amazon Technologies Inc.
-
-0090a9d9d986:
-  hide_if_away: false
-  icon:
-  mac: 00:90:A9:D9:D9:86
-  name: 0090a9d9d986
-  picture:
-  track: true
-  vendor: WESTERN DIGITAL
-
-eugeiphonenmap:
-  hide_if_away: false
-  icon:
-  mac: 4C:74:BF:04:5E:10
-  name: Euge iPhone NMAP
+  mac: 40:4D:7F:4E:A6:9E
+  name: 404d7f4ea69e
   picture:
   track: true
   vendor: Apple, Inc.
 
-4c0bbea80ebc:
+5ccf7fdc44d8:
   hide_if_away: false
   icon:
-  mac: 4C:0B:BE:A8:0E:BC
-  name: 4c0bbea80ebc
-  picture:
-  track: false
-  vendor: Microsoft
-
-ec1a59a1ac41:
-  hide_if_away: false
-  icon:
-  mac: EC:1A:59:A1:AC:41
-  name: ec1a59a1ac41
-  picture:
-  track: false
-  vendor: Belkin International Inc.
-
-20f41bbcf114:
-  hide_if_away: false
-  icon:
-  mac: 20:F4:1B:BC:F1:14
-  name: 20f41bbcf114
-  picture:
-  track: false
-  vendor: Shenzhen Bilian electronic CO.,LTD
-
-6c4008ab446c:
-  hide_if_away: false
-  icon:
-  mac: 6C:40:08:AB:44:6C
-  name: 6c4008ab446c
-  picture:
-  track: false
-  vendor: Apple, Inc.
-
-accf23a6cce8:
-  hide_if_away: false
-  icon:
-  mac: AC:CF:23:A6:CC:E8
-  name: accf23a6cce8
-  picture:
-  track: false
-  vendor: Hi-flying electronics technology Co.,Ltd
-
-044bed9a5eac:
-  hide_if_away: false
-  icon:
-  mac: 04:4B:ED:9A:5E:AC
-  name: 044bed9a5eac
-  picture:
-  track: false
-  vendor: Apple, Inc.
-
-b09fba0b5de4:
-  hide_if_away: false
-  icon:
-  mac: B0:9F:BA:0B:5D:E4
-  name: b09fba0b5de4
+  mac: 5C:CF:7F:DC:44:D8
+  name: 5ccf7fdc44d8
   picture:
   track: true
-  vendor: Apple, Inc.
+  vendor: unknown
 
-703eacc3febf:
+f4f5e81e44c8:
   hide_if_away: false
   icon:
-  mac: 70:3E:AC:C3:FE:BF
-  name: 703eacc3febf
+  mac: F4:F5:E8:1E:44:C8
+  name: f4f5e81e44c8
   picture:
   track: true
-  vendor: Apple, Inc.
-
-acbc32788637:
-  hide_if_away: false
-  icon:
-  mac: AC:BC:32:78:86:37
-  name: acbc32788637
-  picture:
-  track: true
-  vendor: Apple, Inc.
-
-f0cba1bdff9e:
-  hide_if_away: false
-  icon:
-  mac: F0:CB:A1:BD:FF:9E
-  name: f0cba1bdff9e
-  picture:
-  track: true
-  vendor: Apple, Inc.
+  vendor: unknown

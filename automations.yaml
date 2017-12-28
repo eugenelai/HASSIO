@@ -1,47 +1,47 @@
 - alias: 'Dining Lights Notification'
   trigger:
     - platform: state
-      entity_id: light.dining
+      entity_id: light.dining_light
       to: 'on'
     - platform: state
-      entity_id: light.dining
+      entity_id: light.dining_light
       to: 'off'
   action:
     - service: tts.amazon_polly_say
 #    - service: tts.google_say
       entity_id: media_player.mpd
       data_template:
-        message: <speak>Turning the dining lights {{ states('light.dining') }}</speak>
+        message: <speak> <break time="1s"/>The dining light is {{ states('light.dining_light') }}</speak>
 
 - alias: 'TV Lights Notification'
   trigger:
     - platform: state
-      entity_id: light.tv
+      entity_id: light.tv_light
       to: 'on'
     - platform: state
-      entity_id: light.tv
+      entity_id: light.tv_light
       to: 'off'
   action:
     - service: tts.amazon_polly_say
 #    - service: tts.google_say
       entity_id: media_player.mpd
       data_template:
-        message: <speak>Turning the TV lights {{ states('light.tv') }}</speak>
+        message: <speak> <break time="1s"/>The TV light is {{ states('light.tv_light') }}</speak>
 
 - alias: 'Bedroom Lights Notification'
   trigger:
     - platform: state
-      entity_id: light.bedroom
+      entity_id: light.bedroom_light
       to: 'on'
     - platform: state
-      entity_id: light.bedroom
+      entity_id: light.bedroom_light
       to: 'off'
   action:
     - service: tts.amazon_polly_say
 #    - service: tts.google_say
       entity_id: media_player.mpd
       data_template:
-        message: <speak>Turning the bedroom lights {{ states('light.bedroom') }}</speak>
+        message: <speak><break time="1s"/> The bedroom light is {{ states('light.bedroom_light') }}</speak>
 
 - alias: Startup Notification
   trigger:
@@ -54,48 +54,34 @@
     - service: tts.amazon_polly_say
       entity_id: media_player.mpd
       data_template:
-        message: <speak>Hello Eugene. I am Ava. Home Assistant is up and running and all systems are good to go!</speak>
+        message: <speak>Hello Eugene. It's Alice. I am up and running and all systems are good to go!</speak>
 
-- alias: 'Leaving Home'
+- alias: Welcome home
   trigger:
     platform: state
-    entity_id: device_tracker.eugeiphone
-    from: 'home'
-    to: 'not_home'
-  action:
-    - service: notify.ios_euge_iphone
-      data:
-        message: 'See you'
-
-- alias: 'Arriving Home'
-  trigger:
-    platform: state
-    entity_id: device_tracker.eugeiphone
-    from: 'Away'
+    entity_id: device_tracker.eugeiphonenmap
+    from: 'not_home'
     to: 'home'
   action:
-    - service: notify.ios_euge_iphone
-      data:
-        message: 'Welcome home Eugene'
+  - service: notify.ios_euge_iphone
+    data:
+      message: Good morning. Welcome back home.
+  - service: tts.amazon_polly_say
+    entity_id: media_player.mpd
+    data:
+      message: <speak> Welcome back home Eugene! </speak>
 
-- alias: 'Leaving work'
+- alias: Welcome home Helen
   trigger:
     platform: state
-    entity_id: device_tracker.eugeiphone
-    from: 'Work'
-    to: 'Away'
+    entity_id: device_tracker.heleniphone
+    from: 'not_home'
+    to: 'home'
   action:
   - service: notify.ios_euge_iphone
     data:
-      message: 'You have left work'
-
-- alias: 'Coming to work'
-  trigger:
-    platform: state
-    entity_id: device_tracker.eugeiphone
-    from: 'Away'
-    to: 'Work'
-  action:
-  - service: notify.ios_euge_iphone
+      message: Helen has come home
+  - service: tts.amazon_polly_say
+    entity_id: media_player.mpd
     data:
-      message: 'Get shit done today Eugene'
+      message: <speak> Hello Helen! Welcome to my home!</speak>

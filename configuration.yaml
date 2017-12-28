@@ -19,6 +19,7 @@ discovery:
   ignore:
     - plex_mediaserver
     - apple_tv
+#cloud:
 config:
 hassio:
 wemo:
@@ -45,11 +46,9 @@ emulated_hue:
 media_player:
   - platform: mpd
     host: 10.0.1.23
-
 camera:
   - platform: generic
-    still_image_url: http://10.0.1.107/ccm/ccm_pic_get.jpg?hfrom_handle=887330&dsess=1&dsess_nid=MEMprsWmPuwzPcgHy18aRbtCJp1hDQ&dtoken=p0_xxxxxxxxxx
-
+    still_image_url: http://10.0.1.107/ccm/ccm_pic_get.jpg?hfrom_handle=887330&dsess=1&dsess_nid=MDod45G2ZUUE7Yc8.3uP8WFCBCVhAw&dsess_sn=1jfiegbp4eanq&dtoken=p0_xxxxxxxxxx
 # Light setup
 light:
   platform: limitlessled
@@ -60,24 +59,18 @@ light:
       groups:
       - number: 1
         type: rgbw
-        name: TV
+        name: TV Light
       - number: 3
         type: rgbw
-        name: Bedroom
+        name: Bedroom Light
       - number: 4
         type: rgbw
-        name: Dining
-# Device Tracker
-panel_iframe:
-  ide:
-    title: IDE
-    icon: mdi:code-braces
-    url: https://eugenelai.duckdns.org:8321
-
+        name: Dining Light
 mqtt:
   broker: core-mosquitto
   username: !secret mqtt_username
   password: !secret mqtt_password
+  client_id: home assistant
 
 
 group: !include groups.yaml

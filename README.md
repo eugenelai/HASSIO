@@ -27,3 +27,16 @@ Sensor Template for Bitcoin
 
 
 https://philhawthorne.com/j-a-r-v-i-s-inspired-announcementgreeting-for-home-assistant/
+
+
+LocateIntent:
+  action:
+    service: tts.amazon_polly_say
+    entity_id: media_player.mpd
+    data_template:
+      message: >
+        {%- if User.lower() == "eugene" -%}
+          <speak>{{User}} location is current set to {{ states('device_tracker.iphone') }}. </speak>
+        {%- else -%}
+          <speak>Sorry. {{User}} isn't being tracked by me. </speak>
+        {% endif %}

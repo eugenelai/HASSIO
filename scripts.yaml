@@ -4,7 +4,7 @@ restart_ha:
     - service: tts.amazon_polly_say
       entity_id: media_player.mpd
       data_template:
-        message: <speak>Restarting in. 3. 2. 1. System will be back online shortly</speak>
+        message: <speak>I am restarting in. 3. 2. 1. System will be back online shortly</speak>
     - service: notify.ios_euge_iphone
       data:
         message: 'Home Asssitant is restarting and will be back online shortly.'
@@ -17,15 +17,8 @@ test_notification:
     - service: tts.amazon_polly_say
       entity_id: media_player.mpd
       data_template:
-        message: <speak> Eugene is currently {{ states("device_tracker.euge_iphone") }} </speak>
-    - service: notify.ios_euge_iphone
-      data:
-        message: Apollo at your service. Can you hear me?
-
-
-test_message:
-  alias: Test Message
-  sequence:
-    - service: notify.ios_euge_iphone
-      data:
-        message: This is a test message
+        message: <speak>  Hello Eugene, this is Ava. speaking though the Raspberry Pi. <break time="1s"/> Testing 1, 2, 3! </speak>
+#    - service: tts.amazon_polly_say
+#      entity_id: media_player.family_room_tv
+#      data_template:
+#        message: <speak><break time="2s"/> Hello Eugene, this is Ava. Speaking through the Google Chrome Cast. Testing 1, 2, 3! <break time="1s"/></speak>

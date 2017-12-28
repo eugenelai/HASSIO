@@ -1,0 +1,39 @@
+device_tracker.iphone:
+  friendly_name: Euge iPhone iCloud
+
+camera.generic_camera:
+  friendly_name: Living Room Camera
+
+group.livingroom:
+  order: 1
+group.bedroom:
+  order: 2
+group.workroom:
+  order: 3
+
+sensor.bcratehkd:
+  friendly_name: BTC HKD
+  icon: mdi:currency-btc
+
+sensor.bcrateusd:
+  friendly_name: BTC USD
+  icon: mdi:currency-btc
+
+sensor.bcvalue:
+  friendly_name: BTC Wallet
+  icon: mdi:cash-usd
+
+sensor.bedroom_humidity:
+  icon: mdi:water-percent
+
+sensor.living_room_humidity:
+  icon: mdi:water-percent
+
+sensor.bedroom_motion:
+  icon: mdi:blur-radial
+
+sensor.living_room_motion:
+  icon: mdi:blur-radial
+
+script.restart_ha:
+  icon: mdi:restart
