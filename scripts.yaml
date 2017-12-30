@@ -17,8 +17,39 @@ test_notification:
     - service: tts.amazon_polly_say
       entity_id: media_player.mpd
       data_template:
-        message: <speak>  Hello Eugene, this is Ava. speaking though the Raspberry Pi. <break time="1s"/> Testing 1, 2, 3! </speak>
-#    - service: tts.amazon_polly_say
-#      entity_id: media_player.family_room_tv
-#      data_template:
-#        message: <speak><break time="2s"/> Hello Eugene, this is Ava. Speaking through the Google Chrome Cast. Testing 1, 2, 3! <break time="1s"/></speak>
+        message: <speak>  Hello Eugene, this is Alice. speaking though the Raspberry Pi. <break time="1s"/> Testing 1, 2, 3! </speak>
+
+systemupdate:
+  alias: System Update
+  sequence:
+    - service: tts.amazon_polly_say
+      entity_id: media_player.mpd
+      data_template:
+        message: >
+          <speak>
+          {% if now().strftime("%H")|int < 12 %}
+          Good morning.
+          {% elif now().strftime("%H")|int < 18 %}
+          Good afternoon.
+          {% else %}
+          Good evening.
+          {% endif %}
+          My name is Alice. I'm currently running version {{states("sensor.current_version")}}. The time now is {{states("sensor.time")}} and I see that your status is currently set to {{ states("device_tracker.iphone") }}. The current temperature in Hong Kong is {{ states("sensor.dark_sky_temperature") }} °C. And is expected to be {{ states("sensor.dark_sky_summary") }}. SSL certificate expiring in {{states("sensor.ssl_certificate_expiry")}} days. Your bitcoin is currently valued at {{ (states("sensor.exchange_rate_1_btc") | float * 0.113) | round(0) }}. </speak>
+
+
+aliceskills:
+  alias: Alice Skill Set
+  sequence:
+    - service: tts.amazon_polly_say
+      entity_id: media_player.mpd
+      data_template:
+        message: >
+          <speak>
+          {% if now().strftime("%H")|int < 12 %}
+          Good morning.
+          {% elif now().strftime("%H")|int < 18 %}
+          Good afternoon.
+          {% else %}
+          Good evening.
+          {% endif %}
+          My name is Alice. I'm a home assistant developed by Eugene utilising Home Assistant open source platform and Alexa skill set. To get me to do something, just say, computer, followed by a command. You can ask me to turn on lights, the weather, and set timers.  Go ahead ask me something.</speak>

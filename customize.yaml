@@ -4,13 +4,6 @@ device_tracker.iphone:
 camera.generic_camera:
   friendly_name: Living Room Camera
 
-group.livingroom:
-  order: 1
-group.bedroom:
-  order: 2
-group.workroom:
-  order: 3
-
 sensor.bcratehkd:
   friendly_name: BTC HKD
   icon: mdi:currency-btc
@@ -37,3 +30,5 @@ sensor.living_room_motion:
 
 script.restart_ha:
   icon: mdi:restart
+script.systemupdate:
+  icon: mdi:message-bulleted

@@ -29,14 +29,19 @@ Sensor Template for Bitcoin
 https://philhawthorne.com/j-a-r-v-i-s-inspired-announcementgreeting-for-home-assistant/
 
 
-LocateIntent:
+UpdateMe:
   action:
     service: tts.amazon_polly_say
     entity_id: media_player.mpd
     data_template:
       message: >
-        {%- if User.lower() == "eugene" -%}
-          <speak>{{User}} location is current set to {{ states('device_tracker.iphone') }}. </speak>
-        {%- else -%}
-          <speak>Sorry. {{User}} isn't being tracked by me. </speak>
-        {% endif %}
+          <speak>
+            {% if now().strftime("%H")|int < 12 %}
+            Good morning.
+            {% elif now().strftime("%H")|int < 18 %}
+            Good afternoon.
+            {% else %}
+            Good evening.
+            {% endif %}
+            My name is Alice. I'm currently running version {{states('sensor.current_version')}}. The time now is {{states('sensor.time')}} and I see that your status is currently set to {{ states('device_tracker.iphone') }}. The current temperature in Hong Kong is {{ states('sensor.dark_sky_temperature') }} °C. And is expected to be {{ states('sensor.dark_sky_summary') }}. SSL certificate expiring in {{states('sensor.ssl_certificate_expiry')}} days. Your bitcoin is currently valued at {{ (states('sensor.exchange_rate_1_btc') | float * 0.113) | round(0) }}.
+          </speak>

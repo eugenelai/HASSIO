@@ -48,7 +48,7 @@ media_player:
     host: 10.0.1.23
 camera:
   - platform: generic
-    still_image_url: http://10.0.1.107/ccm/ccm_pic_get.jpg?hfrom_handle=887330&dsess=1&dsess_nid=MDod45G2ZUUE7Yc8.3uP8WFCBCVhAw&dsess_sn=1jfiegbp4eanq&dtoken=p0_xxxxxxxxxx
+    still_image_url: http://10.0.1.107/ccm/ccm_pic_get.jpg?hfrom_handle=887330&dsess=1&dsess_nid=MODpQA6C6sza7vMO.WY_KuxCCfJhAw&dsess_sn=1jfiegbp4eanq&dtoken=p0_xxxxxxxxxx
 # Light setup
 light:
   platform: limitlessled

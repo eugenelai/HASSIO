@@ -7,9 +7,9 @@ default_view:
     - sensor.dark_sky_summary
     - sensor.ram_used
     - updater.updater
-    - group.workroom
     - group.livingroom
     - group.bedroom
+    - group.workroom
     - group.bitcoin
 
 livingroom:
@@ -58,6 +58,6 @@ system:
   name: System
   entities:
     - group.trackeddevices
-    - script.test_notification
     - script.restart_ha
-    - script.test_message
+    - script.systemupdate
+    - script.test_notification
