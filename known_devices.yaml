@@ -251,3 +251,21 @@ f4f5e81e44c8:
   picture:
   track: true
   vendor: unknown
+
+b0f1ec3ce48c:
+  hide_if_away: false
+  icon:
+  mac: B0:F1:EC:3C:E4:8C
+  name: b0f1ec3ce48c
+  picture:
+  track: true
+  vendor: AMPAK Technology, Inc.
+
+5ccf7fd2c215:
+  hide_if_away: false
+  icon:
+  mac: 5C:CF:7F:D2:C2:15
+  name: 5ccf7fd2c215
+  picture:
+  track: true
+  vendor: Espressif Inc.

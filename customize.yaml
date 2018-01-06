@@ -1,5 +1,5 @@
 device_tracker.iphone:
-  friendly_name: Euge iPhone iCloud
+  friendly_name: Euge iPhone
 
 camera.generic_camera:
   friendly_name: Living Room Camera

@@ -1,3 +1,5 @@
+#running_reminder_set:
+#    alias: Toggle Running
 restart_ha:
   alias: Restart Home Assistant
   sequence:
@@ -34,8 +36,7 @@ systemupdate:
           {% else %}
           Good evening.
           {% endif %}
-          My name is Alice. I'm currently running version {{states("sensor.current_version")}}. The time now is {{states("sensor.time")}} and I see that your status is currently set to {{ states("device_tracker.iphone") }}. The current temperature in Hong Kong is {{ states("sensor.dark_sky_temperature") }} °C. And is expected to be {{ states("sensor.dark_sky_summary") }}. SSL certificate expiring in {{states("sensor.ssl_certificate_expiry")}} days. Your bitcoin is currently valued at {{ (states("sensor.exchange_rate_1_btc") | float * 0.113) | round(0) }}. </speak>
-
+          My name is Alice. I'm currently running version {{states("sensor.current_version")}}. The time now is {{states("sensor.time")}} and I see that your status is currently set to {{ states("device_tracker.iphone") }}. The current temperature in Hong Kong is {{ states("sensor.dark_sky_temperature") }} °C. And is expected to be {{ states("sensor.dark_sky_summary") }}. SSL certificate expiring in {{states("sensor.ssl_certificate_expiry")}} days.</speak>
 
 aliceskills:
   alias: Alice Skill Set

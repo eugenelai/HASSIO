@@ -13,6 +13,7 @@
     - 'time'
     - 'date'
 - platform: cert_expiry
+  name: "Certficate Expiry"
   host: eugenelai.duckdns.org
 - platform: version
 
@@ -40,46 +41,60 @@
   state_topic: sensor/bedroom/motion
   name: "Bedroom Motion"
 
-- platform: template
-  sensors:
-    euge_iphone:
-      friendly_name: "Euge iPhone"
-      value_template: >-
-        {% if is_state('device_tracker.iphone', 'home') or is_state('device_tracker.eugeiphonenmap', 'home') or is_state('device_tracker.euge_iphone', 'home') %}
-          Home
-        {% else %}
-          Away
-        {% endif %}
+- platform: systemmonitor
+  resources:
+    - type: memory_use_percent
+
+- platform: command_line
+  name: Core Temperature
+  command: 'cat /sys/class/thermal/thermal_zone0/temp'
+  unit_of_measurement: '°C'
+  value_template: '{{ value | multiply(0.001) | round(0) }}'
+
+- platform: command_line
+  name: Smart mirror
+  command: 'curl -Is http://eugenelai.duckdns.org:8080 | head -n 1'
+  value_template: >-
+    {% if value == 'HTTP/1.1 200 OK' %}
+      Online
+    {% else %}
+      Offline
+    {% endif %}
+
+- platform: uptime
+  name: Uptime
+
+### Bitcoin Sensors
 
 #Bitcoin
-- platform: bitcoin
-  friendly_name: bitcoinhkd
-  currency: HKD
-  display_options:
-    - exchangerate
+#- platform: bitcoin
+#  friendly_name: bitcoinhkd
+#  currency: HKD
+#  display_options:
+#    - exchangerate
 #- platform: bitcoin
 #  friendly_name: bitcoinusd
 #  currency: USD
 #  display_options:
 #    - exchangerate
 
-- platform: template
-  sensors:
-    bcvalue:
-      friendly_name: "Bitcoin Wallet"
-      value_template: " HKD{{ '{0:,.0f}'.format(states('sensor.exchange_rate_1_btc') | float * 0.113) | round(0) }}"
+#- platform: template
+#  sensors:
+#    bcvalue:
+#      friendly_name: "Bitcoin Wallet"
+#      value_template: " HKD{{ '{0:,.0f}'.format(states('sensor.exchange_rate_1_btc') | float * 0.113) | round(0) }}"
 
-- platform: template
-  sensors:
-    bcratehkd:
-      friendly_name: "Bitcoin HKD"
-      value_template: "HKD{{ '{0:,.0f}'.format(states('sensor.exchange_rate_1_btc') | float ) | round(0) }}"
+#- platform: template
+#  sensors:
+#    bcratehkd:
+#      friendly_name: "Bitcoin HKD"
+#      value_template: "HKD{{ '{0:,.0f}'.format(states('sensor.exchange_rate_1_btc') | float ) | round(0) }}"
 
-- platform: template
-  sensors:
-    bcrateusd:
-      friendly_name: "Bitcoin USD"
-      value_template: "USD{{ '{0:,.0f}'.format(states('sensor.exchange_rate_1_btc') | float / 7.8 ) | round(0) }}"
+#- platform: template
+#  sensors:
+#    bcrateusd:
+#      friendly_name: "Bitcoin USD"
+#      value_template: "USD{{ '{0:,.0f}'.format(states('sensor.exchange_rate_1_btc') | float / 7.8 ) | round(0) }}"
 
 #- platform: template
 #  sensors:
@@ -87,15 +102,14 @@
 #      friendly_name: "Bitcoin USD"
 #      value_template: "USD {{ '{0:,.0f}'.format((states.sensor.exchange_rate_1_btc.state) | float ) | round(0) }}"
 
-
-- platform: systemmonitor
-  resources:
-    - type: memory_use_percent
-
-# Google Transit code
-#- platform: google_travel_time
-#  api_key: !secret googleAPIKey
-#  origin: zone.work
-#  destination: zone.home
-#  options:
-#    mode: transit
+#Customer iPhone Sensor
+#- platform: template
+#  sensors:
+#    euge_iphone:
+#      friendly_name: "Euge iPhone"
+#      value_template: >-
+#        {% if is_state('device_tracker.iphone', 'home') or is_state('device_tracker.eugeiphonenmap', 'home') or is_state('device_tracker.euge_iphone', 'home') %}
+#          Home
+#        {% else %}
+#          Away
+#        {% endif %}

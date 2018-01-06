@@ -1,11 +1,10 @@
 default_view:
   view: yes
   entities:
-    - sensor.euge_iphone
+    - device_tracker.iphone
     - device_tracker.heleniphone
     - sensor.dark_sky_temperature
     - sensor.dark_sky_summary
-    - sensor.ram_used
     - updater.updater
     - group.livingroom
     - group.bedroom
@@ -18,6 +17,7 @@ livingroom:
   entities:
     - light.tv_light
     - light.dining_light
+    - light.living_room_lamp
     - sensor.living_room_temperature
     - sensor.living_room_humidity
     - sensor.living_room_motion
@@ -36,7 +36,7 @@ workroom:
   name: 'Workroom'
   control: hidden
   entities:
-    - light.workroom
+    - light.workroom_light
 
 trackeddevices:
   name: Users
@@ -46,18 +46,22 @@ trackeddevices:
     - device_tracker.euge_iphone
     - device_tracker.heleniphone
 
-bitcoin:
-  name: Bitcoin
-  entities:
-    - sensor.bcrateusd
-    - sensor.bcratehkd
-    - sensor.bcvalue
-
 system:
   view: yes
   name: System
   entities:
+    - group.status
     - group.trackeddevices
     - script.restart_ha
     - script.systemupdate
     - script.test_notification
+    - automation.daily_reminder
+
+status:
+  name: System status
+  entities:
+    - sensor.cpu_temperature
+    - sensor.smart_mirror
+    - sensor.uptime
+    - sensor.ram_used
+    - input_boolean.running_reminder

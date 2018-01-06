@@ -66,7 +66,7 @@
   - service: tts.amazon_polly_say
     entity_id: media_player.mpd
     data:
-      message: <speak>Welcome home Eugene.</speak>
+      message: "Welcome home Eugene."
 
 - alias: Welcome home Helen
   trigger:
@@ -81,7 +81,7 @@
   - service: tts.amazon_polly_say
     entity_id: media_player.mpd
     data:
-      message: <speak>Welcome home Helen.</speak>
+      message: "Welcome home Helen."
 
 - alias: Leaving work
   trigger:
