@@ -32,3 +32,6 @@ script.restart_ha:
   icon: mdi:restart
 script.systemupdate:
   icon: mdi:message-bulleted
+
+sensor.alarm_time:
+  icon: mdi:alarm

@@ -36,7 +36,7 @@ systemupdate:
           {% else %}
           Good evening.
           {% endif %}
-          My name is Alice. I'm currently running version {{states("sensor.current_version")}}. The time now is {{states("sensor.time")}} and I see that your status is currently set to {{ states("device_tracker.iphone") }}. The current temperature in Hong Kong is {{ states("sensor.dark_sky_temperature") }} °C. And is expected to be {{ states("sensor.dark_sky_summary") }}. SSL certificate expiring in {{states("sensor.ssl_certificate_expiry")}} days.</speak>
+          My name is Alice. I'm currently running version {{states("sensor.current_version")}}. The time now is {{states("sensor.time")}} and I see that your status is currently set to {{ states("device_tracker.iphone") }}. The current temperature in Hong Kong is {{ states("sensor.dark_sky_temperature") }} °C. And is expected to be {{ states("sensor.dark_sky_summary") }}. SSL certificate expiring in {{states("sensor.certficate_expiry")}} days.</speak>
 
 aliceskills:
   alias: Alice Skill Set
@@ -54,3 +54,13 @@ aliceskills:
           Good evening.
           {% endif %}
           My name is Alice. I'm a home assistant developed by Eugene utilising Home Assistant open source platform and Alexa skill set. To get me to do something, just say, computer, followed by a command. You can ask me to turn on lights, the weather, and set timers.  Go ahead ask me something.</speak>
+
+#    alias: Alarm
+lightalarmclock:
+  alias: Natural Alarm
+  sequence:
+    - service: light.turn_on
+      data:
+        entity_id: light.light.bedroom_light
+        brightness: 255
+        transition: 1800

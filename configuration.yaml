@@ -15,11 +15,11 @@ http:
 
 updater:
 ####################### Components
-discovery:
-  ignore:
-    - plex_mediaserver
-    - apple_tv
-#cloud:
+#discovery:
+#  ignore:
+#    - plex_mediaserver
+#    - apple_tv
+cloud:
 config:
 hassio:
 wemo:
@@ -83,7 +83,32 @@ zone: !include zones.yaml
 sensor: !include sensors.yaml
 device_tracker: !include devicetracker.yaml
 intent_script: !include alexaintent.yaml
-input_boolean: 
+input_boolean:
   running_reminder:
     name: Running Reminder
     icon: mdi:run
+#alarm
+  alarmweekday:
+    name: Weekdays Only
+    initial: on
+    icon: mdi:calendar
+  alarmweekon:
+    name: Alarm active
+    initial: on
+
+#alarm
+input_number:
+  alarmhour:
+    name: Hour
+    icon: mdi:timer
+    initial: 6
+    min: 0
+    max: 23
+    step: 1
+  alarmminutes:
+    name: Minutes
+    icon: mdi:timer
+    initial: 30
+    min: 0
+    max: 59
+    step: 5

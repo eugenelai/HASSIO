@@ -11,6 +11,24 @@ default_view:
     - group.workroom
     - group.bitcoin
 
+alarms:
+  view: yes
+  name: Alarms
+  entities:
+    - group.alarmclock
+    - group.reminders
+
+system:
+  view: yes
+  name: System
+  entities:
+    - group.status
+    - group.trackeddevices
+    - script.restart_ha
+    - script.systemupdate
+    - script.test_notification
+
+
 livingroom:
   name: Living Room
   control: hidden
@@ -46,17 +64,6 @@ trackeddevices:
     - device_tracker.euge_iphone
     - device_tracker.heleniphone
 
-system:
-  view: yes
-  name: System
-  entities:
-    - group.status
-    - group.trackeddevices
-    - script.restart_ha
-    - script.systemupdate
-    - script.test_notification
-    - automation.daily_reminder
-
 status:
   name: System status
   entities:
@@ -64,4 +71,20 @@ status:
     - sensor.smart_mirror
     - sensor.uptime
     - sensor.ram_used
+
+alarmclock:
+  name: Natural Light Alarm
+  control: hidden
+  entities:
+    - sensor.alarm_time
+    - input_number.alarmhour
+    - input_number.alarmminutes
+    - input_boolean.alarmweekday
+    - input_boolean.alarmweekon
+
+reminders:
+  name: Reminders
+  control: hidden
+  entities:
     - input_boolean.running_reminder
+    - automation.daily_reminder  

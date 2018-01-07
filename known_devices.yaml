@@ -90,7 +90,7 @@ ec1a59a1ac41:
   track: false
   vendor: Espressif Inc.
 
-b827eba37364:
+magicmirror:
   hide_if_away: false
   icon:
   mac: B8:27:EB:A3:73:64
@@ -269,3 +269,30 @@ b0f1ec3ce48c:
   picture:
   track: true
   vendor: Espressif Inc.
+
+f0cba1bdff9e:
+  hide_if_away: false
+  icon:
+  mac: F0:CB:A1:BD:FF:9E
+  name: f0cba1bdff9e
+  picture:
+  track: true
+  vendor: unknown
+
+accf23a6b2ce:
+  hide_if_away: false
+  icon:
+  mac: AC:CF:23:A6:B2:CE
+  name: accf23a6b2ce
+  picture:
+  track: true
+  vendor: Hi-flying electronics technology Co.,Ltd
+
+plexmacserver:
+  hide_if_away: false
+  icon:
+  mac:
+  name: Plex Mac Server
+  picture:
+  track: true
+  vendor:
