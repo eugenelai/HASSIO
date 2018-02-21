@@ -90,11 +90,10 @@ input_boolean:
 #alarm
   alarmweekday:
     name: Weekdays Only
-    initial: on
     icon: mdi:calendar
   alarmweekon:
     name: Alarm active
-    initial: on
+
 
 #alarm
 input_number:

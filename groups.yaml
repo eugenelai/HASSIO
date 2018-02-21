@@ -1,7 +1,8 @@
 default_view:
+  name: Home
   view: yes
   entities:
-    - device_tracker.iphone
+    - device_tracker.eugenesiphonenmap
     - device_tracker.heleniphone
     - sensor.dark_sky_temperature
     - sensor.dark_sky_summary
@@ -87,4 +88,4 @@ reminders:
   control: hidden
   entities:
     - input_boolean.running_reminder
-    - automation.daily_reminder  
+    - automation.daily_reminder

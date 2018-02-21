@@ -45,7 +45,7 @@
     platform: homeassistant
     event: start
   action:
-    - service: notify.ios_euge_iphone
+    - service: notify.ios_eugene_iphone
       data:
         message: 'Home Asssitant has started'
     - service: tts.amazon_polly_say
@@ -56,11 +56,11 @@
 - alias: Welcome home
   trigger:
     platform: state
-    entity_id: device_tracker.eugeiphonenmap
+    entity_id: device_tracker.eugenesiphonenmap
     from: 'not_home'
     to: 'home'
   action:
-  - service: notify.ios_euge_iphone
+  - service: notify.ios_eugene_iphone
     data:
       message: "Welcome home Eugene."
   - service: tts.amazon_polly_say
@@ -75,7 +75,7 @@
     from: 'not_home'
     to: 'home'
   action:
-  - service: notify.ios_euge_iphone
+  - service: notify.ios_eugene_iphone
     data:
       message: Helen has come home
   - service: tts.amazon_polly_say
@@ -86,11 +86,11 @@
 - alias: Leaving work
   trigger:
     platform: state
-    entity_id: device_tracker.iphone
+    entity_id: device_tracker.eugenesiphone
     from: 'work'
     to: 'away'
   action:
-  - service: notify.ios_euge_iphone
+  - service: notify.ios_eugene_iphone
     data:
       message: "Hope you smashed work today."
 
@@ -101,7 +101,7 @@
     - platform: time
       at: '20:00:00'
   action:
-  - service: notify.ios_euge_iphone
+  - service: notify.ios_eugene_iphone
     data_template:
       title: Daily reminder
       message: |

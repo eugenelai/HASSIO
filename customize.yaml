@@ -1,16 +1,8 @@
-device_tracker.iphone:
+device_tracker.eugenesiphone:
   friendly_name: Euge iPhone
 
 camera.generic_camera:
   friendly_name: Living Room Camera
-
-sensor.bcratehkd:
-  friendly_name: BTC HKD
-  icon: mdi:currency-btc
-
-sensor.bcrateusd:
-  friendly_name: BTC USD
-  icon: mdi:currency-btc
 
 sensor.bcvalue:
   friendly_name: BTC Wallet
