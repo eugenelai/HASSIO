@@ -7,7 +7,7 @@ restart_ha:
       entity_id: media_player.mpd
       data_template:
         message: <speak>I am restarting in. 3. 2. 1. System will be back online shortly</speak>
-    - service: notify.ios_euge_iphone
+    - service: notify.ios_eugene_iphone
       data:
         message: 'Home Asssitant is restarting and will be back online shortly.'
     - service: homeassistant.restart
@@ -36,7 +36,7 @@ systemupdate:
           {% else %}
           Good evening.
           {% endif %}
-          My name is Alice. I'm currently running version {{states("sensor.current_version")}}. The time now is {{states("sensor.time")}} and I see that your status is currently set to {{ states("device_tracker.iphone") }}. The current temperature in Hong Kong is {{ states("sensor.dark_sky_temperature") }} °C. And is expected to be {{ states("sensor.dark_sky_summary") }}. SSL certificate expiring in {{states("sensor.certficate_expiry")}} days.</speak>
+          My name is Alice. I'm currently running version {{states("sensor.current_version")}}. The time now is {{states("sensor.time")}} and I see that your status is currently set to {{ states("sensor.eugene_location") }}. The current temperature in Hong Kong is {{ states("sensor.dark_sky_temperature") }} °C. And is expected to be {{ states("sensor.dark_sky_summary") }}. SSL certificate expiring in {{states("sensor.certficate_expiry")}} days.</speak>
 
 aliceskills:
   alias: Alice Skill Set

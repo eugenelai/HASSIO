@@ -1,44 +1,11 @@
-- alias: 'Dining Lights Notification'
+- alias: 'Update Available Notifications'
   trigger:
-    - platform: state
-      entity_id: light.dining_light
-      to: 'on'
-    - platform: state
-      entity_id: light.dining_light
-      to: 'off'
+    platform: state
+    entity_id: updater.updater
   action:
-    - service: tts.amazon_polly_say
-      entity_id: media_player.mpd
-      data_template:
-        message: <speak> <break time="1s"/>The dining light is {{ states('light.dining_light') }}</speak>
-
-- alias: 'TV Lights Notification'
-  trigger:
-    - platform: state
-      entity_id: light.tv_light
-      to: 'on'
-    - platform: state
-      entity_id: light.tv_light
-      to: 'off'
-  action:
-    - service: tts.amazon_polly_say
-      entity_id: media_player.mpd
-      data_template:
-        message: <speak> <break time="1s"/>The TV light is {{ states('light.tv_light') }}</speak>
-
-- alias: 'Bedroom Lights Notification'
-  trigger:
-    - platform: state
-      entity_id: light.bedroom_light
-      to: 'on'
-    - platform: state
-      entity_id: light.bedroom_light
-      to: 'off'
-  action:
-    - service: tts.amazon_polly_say
-      entity_id: media_player.mpd
-      data_template:
-        message: <speak><break time="1s"/> The bedroom light is {{ states('light.bedroom_light') }}</speak>
+    service: notify.ios_eugene_iphone
+    data:
+      message: 'Update for Home Assistant is available.'
 
 - alias: Startup Notification
   trigger:
@@ -56,7 +23,31 @@
 - alias: Welcome home
   trigger:
     platform: state
-    entity_id: device_tracker.eugenesiphonenmap
+    entity_id: group.eugene_location
+    from: 'not_home'
+    to: 'home'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: group.eugene_location
+        state: 'home'
+      - condition: state
+        entity_id: device_tracker.eugenesiphonenmap
+        state: 'home'
+  action:
+  - service: notify.ios_eugene_iphone
+    data:
+      message: "Welcome home Eugene. New"
+  - service: tts.amazon_polly_say
+    entity_id: media_player.mpd
+    data:
+      message: <speak>Welcome home Eugene. New</speak>
+
+- alias: Welcome home 2
+  trigger:
+    platform: state
+    entity_id: group.eugene_location
     from: 'not_home'
     to: 'home'
   action:
@@ -86,9 +77,9 @@
 - alias: Leaving work
   trigger:
     platform: state
-    entity_id: device_tracker.eugenesiphone
-    from: 'work'
-    to: 'away'
+    entity_id: group.eugene_location
+    from: 'Work'
+    to: 'not_home'
   action:
   - service: notify.ios_eugene_iphone
     data:
@@ -163,7 +154,7 @@
       entity_id: light.bedroom_light
       data:
         transition: 600
-        brightness: 255
+        brightness: 130
 - alias: "Alarm for weekend days"
   trigger:
     - platform: time
@@ -187,4 +178,4 @@
     entity_id: light.bedroom_light
     data:
       transition: 600
-      brightness: 255
+      brightness: 130

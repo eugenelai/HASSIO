@@ -1,5 +1,11 @@
-device_tracker.eugenesiphone:
+device_tracker.eugenesiphonenmap:
   friendly_name: Euge iPhone
+
+device_tracker.eugenesiphone:
+  friendly_name: Euge iPhone iCloud
+
+device_tracker.eugene_iphone:
+  friendly_name: Euge iPhone iOS
 
 camera.generic_camera:
   friendly_name: Living Room Camera
@@ -20,10 +26,44 @@ sensor.bedroom_motion:
 sensor.living_room_motion:
   icon: mdi:blur-radial
 
+sensor.current_version:
+  icon: mdi:home-assistant
+
+sensor.certficate_expiry:
+  icon: mdi:security-home
+
 script.restart_ha:
   icon: mdi:restart
+
 script.systemupdate:
   icon: mdi:message-bulleted
 
+sensor.memory_use_percent:
+  friendly_name: RAM Usage
+
+sensor.disk_usage_template:
+  icon: mdi:harddisk
+
 sensor.alarm_time:
   icon: mdi:alarm
+
+sensor.uptime_templated:
+  icon: mdi:home-assistant
+
+sensor.since_last_boot_templated:
+  icon: mdi:desktop-tower
+
+light.living_room_lamp:
+  assumed_state: true
+
+light.workroom_light:
+  assumed_state: true
+
+light.bedroom_light:
+  assumed_state: true
+
+light.dining_light:
+  assumed_state: true
+
+light.tv_light:
+  assumed_state: true

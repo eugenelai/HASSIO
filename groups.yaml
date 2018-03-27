@@ -2,7 +2,6 @@ default_view:
   name: Home
   view: yes
   entities:
-    - device_tracker.eugenesiphonenmap
     - device_tracker.heleniphone
     - sensor.dark_sky_temperature
     - sensor.dark_sky_summary
@@ -10,7 +9,15 @@ default_view:
     - group.livingroom
     - group.bedroom
     - group.workroom
-    - group.bitcoin
+    - sensor.eugene_location
+
+eugene_location:
+  name: Euge's Location
+  view: false
+  entities:
+    - device_tracker.eugenesiphonenmap
+    - device_tracker.eugenesiphone
+    - device_tracker.eugene_iphone
 
 alarms:
   view: yes
@@ -24,11 +31,7 @@ system:
   name: System
   entities:
     - group.status
-    - group.trackeddevices
-    - script.restart_ha
-    - script.systemupdate
-    - script.test_notification
-
+    - group.locations
 
 livingroom:
   name: Living Room
@@ -51,27 +54,31 @@ bedroom:
     - sensor.bedroom_humidity
     - sensor.bedroom_motion
 
+locations:
+  name: User locations
+  entities:
+    - device_tracker.eugenesiphonenmap
+    - device_tracker.eugenesiphone
+    - device_tracker.eugene_iphone
+
 workroom:
   name: 'Workroom'
   control: hidden
   entities:
     - light.workroom_light
 
-trackeddevices:
-  name: Users
-  entities:
-    - device_tracker.iphone
-    - device_tracker.eugeiphonenmap
-    - device_tracker.euge_iphone
-    - device_tracker.heleniphone
-
 status:
   name: System status
   entities:
-    - sensor.cpu_temperature
-    - sensor.smart_mirror
-    - sensor.uptime
-    - sensor.ram_used
+    - sensor.moon
+    - sensor.uptime_templated
+    - sensor.since_last_boot_templated
+    - sensor.core_temperature
+    - sensor.memory_use_percent
+    - sensor.current_version
+    - sensor.certficate_expiry
+    - sensor.disk_usage_template
+    - script.restart_ha
 
 alarmclock:
   name: Natural Light Alarm

@@ -76,7 +76,7 @@ magicmirror:
   mac: B8:27:EB:A3:73:64
   name: b827eba37364
   picture:
-  track: true
+  track: false
   vendor: Raspberry Pi Foundation
 
 00236c98d337:
@@ -178,14 +178,6 @@ eugenelaismacbook:
   track: false
   vendor:
 
-iphone:
-  hide_if_away: false
-  icon:
-  mac:
-  name: Euge iPhone iCloud
-  picture:
-  track: true
-  vendor:
 
 eugenesmacbookredant:
   hide_if_away: false
@@ -274,7 +266,7 @@ plexmacserver:
   mac:
   name: Plex Mac Server
   picture:
-  track: true
+  track: false
   vendor:
 
 acbc32788637:
@@ -310,7 +302,7 @@ cc25ef7c894c:
   mac: CC:25:EF:7C:89:4C
   name: cc25ef7c894c
   picture:
-  track: true
+  track: false
   vendor: Apple, Inc.
 
 eugenesiphone:
@@ -345,6 +337,52 @@ eugenesiphonenmap:
   icon:
   mac: 54:EA:A8:06:6A:CE
   name: 54eaa8066ace
+  picture:
+  track: true
+  vendor: unknown
+
+eugene_iphone:
+  hide_if_away: false
+  icon:
+  mac:
+  name: eugene iphone
+  picture:
+  track: true
+  vendor:
+
+703eac8e7e5e:
+  hide_if_away: false
+  icon:
+  mac: 70:3E:AC:8E:7E:5E
+  name: 703eac8e7e5e
+  picture:
+  track: true
+  vendor: Apple, Inc.
+
+9ce33f8a6195:
+  hide_if_away: false
+  icon:
+  mac: 9C:E3:3F:8A:61:95
+  name: 9ce33f8a6195
+  picture:
+  track: true
+  vendor: Apple, Inc.
+## New updates should appear below 20 March 2018 After installing Bluetooth   
+
+skxs_800ba3_14:
+  hide_if_away: false
+  icon:
+  mac: BT_B8:96:74:80:0B:A3
+  name: SKXS 800ba3 14
+  picture:
+  track: true
+  vendor: AllDSP GmbH & Co. KG
+
+plex_mac_server:
+  hide_if_away: false
+  icon:
+  mac: BT_00:23:6C:B9:06:4B
+  name: Plex Mac Server
   picture:
   track: true
   vendor: unknown

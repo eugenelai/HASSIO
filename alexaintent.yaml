@@ -4,7 +4,7 @@ LocateIntent:
     text: >
       <speak>
       {%- if User.lower() == "eugene" -%}
-      {{User}}'s current location is set to {{ states('device_tracker.iphone') }}.
+      {{User}}'s current location is set to {{ states('sensor.eugene_location') }}.
       {%- else -%}
       Sorry. {{User}} isn't being tracked by me.
       {% endif %}
@@ -20,7 +20,7 @@ UpdateMe:
     service: homeassistant.turn_on
     entity_id: script.systemupdate
 
-amzn1.ask.skill.6f33c692-2547-41ce-af84-caf174917cf5:
-  action:
-    service: homeassistant.turn_on
-    entity_id: script.systemupdate
+Weather:
+  speech:
+    type: ssml
+    text: <speak> The current temperature in Hong Kong is {{ states('sensor.dark_sky_temperature')}}. Today it's expected to be {{ states('sensor.dark_sky_summary')}}. At home it is {{ states('sensor.bedroom_temperature') | int }} degrees in your bedroom and {{ states('sensor.living_room_temperature') | int }} degrees in your living room.</speak>

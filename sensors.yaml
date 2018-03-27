@@ -1,13 +1,12 @@
-- platform: yr
+- platform: version
+- platform: moon
+
 - platform: darksky
   api_key: !secret darksky_apikey
   monitored_conditions:
     - summary
     - temperature
-- platform: bitcoin
-  currency: HKD
-  display_options:
-    - exchangerate
+
 - platform: time_date
   display_options:
     - 'time'
@@ -15,7 +14,104 @@
 - platform: cert_expiry
   name: "Certficate Expiry"
   host: eugenelai.duckdns.org
-- platform: version
+
+- platform: systemmonitor
+  resources:
+    - type: memory_use_percent
+    - type: since_last_boot
+    - type: disk_free
+      arg: /home
+    - type: disk_use
+      arg: /home
+
+- platform: uptime
+  name: Uptime
+  unit_of_measurement: minutes
+
+- platform: template
+  sensors:
+    disk_usage_template:
+      friendly_name: "Storage Usage"
+      value_template: >-
+        {{states("sensor.disk_use_home")}} / {{(states.sensor.disk_free_home.state | float) + (states.sensor.disk_use_home.state | float)}} GB
+
+- platform: template
+  sensors:
+    since_last_boot_templated:
+      friendly_name: RPi Uptime
+      value_template: >-
+        {%- set slb = states.sensor.since_last_boot.state.split(' ') -%}
+        {%- set count = slb | length -%}
+        {%- set hms = slb[count - 1] -%}
+        {%- set hms_trimmed = hms.split('.')[0] -%}
+        {%- set hms_split = hms_trimmed.split(':') -%}
+        {%- set hours = hms_split[0] | int -%}
+
+        {%- if count == 3 -%}
+          {{ slb[0] ~ ' ' ~ slb[1] ~ ' ' }}
+        {%- endif -%}
+        {%- if hours > 0 -%}
+          {%- if hours == 1 -%}
+            1 hour
+          {%- else -%}
+            {{ hours }} hours
+          {%- endif -%}
+        {%- endif -%}
+
+- platform: template
+  sensors:
+    uptime_templated:
+      friendly_name: HASS.io Uptime
+      value_template: >-
+        {% set uptime = states.sensor.uptime.state | int %}
+         {% set minutes = ((uptime % 60) / 1) | int %}
+         {% set hours = ((uptime % 1440) / 60) | int %}
+         {% set days = (uptime /1440) | int %}
+
+         {%- if uptime < 1 -%}
+           Less than a minute
+         {%- else -%}
+           {%- if days > 0 -%}
+             {%- if days == 1 -%}
+               1 day
+             {%- else -%}
+               {{ days }} days
+             {%- endif -%}
+           {%- endif -%}
+           {%- if hours > 0 -%}
+             {%- if days > 0 -%}
+               {{ ', ' }}
+             {%- endif -%}
+             {%- if hours == 1 -%}
+               1 hour
+             {%- else -%}
+               {{ hours }} hours
+             {%- endif -%}
+           {%- endif -%}
+           {%- if minutes > 0 -%}
+             {%- if days > 0 or hours > 0 -%}
+               {{ ', ' }}
+             {%- endif -%}
+             {%- if minutes == 1 -%}
+               1 minute
+             {%- else -%}
+               {{ minutes }} minutes
+             {%- endif -%}
+           {%- endif -%}
+         {%- endif -%}
+
+- platform: template
+  sensors:
+    eugene_location:
+      friendly_name: "Euge's Location"
+      value_template: >-
+        {%- if is_state("group.eugene_location", "home") -%}
+          Home
+        {%- elif is_state("device_tracker.eugenesiphone", "Work") -%}
+          Work
+        {%- else -%}
+          Travelling
+        {%- endif %}
 
 # MQTT Sensors
 - platform: mqtt
@@ -41,15 +137,20 @@
   state_topic: sensor/bedroom/motion
   name: "Bedroom Motion"
 
-- platform: systemmonitor
-  resources:
-    - type: memory_use_percent
-
 - platform: command_line
   name: Core Temperature
   command: 'cat /sys/class/thermal/thermal_zone0/temp'
   unit_of_measurement: '°C'
   value_template: '{{ value | multiply(0.001) | round(0) }}'
+
+#Alarm Clock Value
+- platform: template
+  sensors:
+    alarm_time:
+      friendly_name: 'Time'
+      value_template: '{{ "%0.02d:%0.02d" | format(states("input_number.alarmhour") | int, states("input_number.alarmminutes") | int) }}'
+
+
 
 #- platform: command_line
 #  name: Smart mirror
@@ -60,16 +161,6 @@
 #    {% else %}
 #      Offline
 #    {% endif %}
-
-#Alarm Clock Value
-- platform: template
-  sensors:
-    alarm_time:
-      friendly_name: 'Time'
-      value_template: '{{ "%0.02d:%0.02d" | format(states("input_number.alarmhour") | int, states("input_number.alarmminutes") | int) }}'
-
-- platform: uptime
-  name: Uptime
 
 ### Bitcoin Sensors
 

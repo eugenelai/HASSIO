@@ -14,11 +14,6 @@ http:
   ssl_key: /ssl/privkey.pem
 
 updater:
-####################### Components
-#discovery:
-#  ignore:
-#    - plex_mediaserver
-#    - apple_tv
 cloud:
 config:
 hassio:
@@ -28,7 +23,6 @@ history:
 logbook:
 map:
 sun:
-alexa:
 frontend:
   themes: !include themes.yaml
 
@@ -40,8 +34,8 @@ tts:
     text_type: ssml
     voice: Joanna
 
-emulated_hue:
-  host_ip: 10.0.1.23
+#emulated_hue:
+#  host_ip: 10.0.1.23
 
 media_player:
   - platform: mpd
@@ -51,7 +45,7 @@ camera:
     still_image_url: http://10.0.1.107/ccm/ccm_pic_get.jpg?hfrom_handle=887330&dsess=1&dsess_nid=MF4MbYVCGQHE90Me9yynvnlCB7VhAw&dsess_sn=1jfiegbp4eanq&dtoken=p0_xxxxxxxxxx
 # Light setup
 light:
-  platform: limitlessled
+  platform: limitlessledcustom
   bridges:
     - host: 10.0.1.11
       version: 5
@@ -75,7 +69,6 @@ mqtt:
   password: !secret mqtt_password
   client_id: home assistant
 
-
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
@@ -83,6 +76,7 @@ zone: !include zones.yaml
 sensor: !include sensors.yaml
 device_tracker: !include devicetracker.yaml
 intent_script: !include alexaintent.yaml
+
 input_boolean:
   running_reminder:
     name: Running Reminder
