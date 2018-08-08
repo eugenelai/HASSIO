@@ -1,3 +1,49 @@
+############ Test automations
+- alias: Motion Sensor Living Room
+  trigger:
+    platform: state
+    entity_id: sensor.living_room_motion
+    to: 'ON'
+  action:
+  - service: notify.ios_eugene_iphone
+    data:
+      message: "Motion sensor in living room has triggered!"
+
+- alias: Motion Sensor Bedroom
+  trigger:
+    platform: state
+    entity_id: sensor.bedroom_room_motion
+    to: 'ON'
+  action:
+  - service: notify.ios_eugene_iphone
+    data:
+      message: "Motion sensor in bedroom has triggered!"
+
+- alias: Welcome home
+  trigger:
+    platform: state
+    entity_id: sensor.eugene_location
+    from: 'travelling'
+    to: 'home'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: sensor.eugene_location
+        state: 'home'
+      - condition: state
+        entity_id: device_tracker.eugenesiphonenmap
+        state: 'home'
+  action:
+  - service: notify.ios_eugene_iphone
+    data:
+      message: "Welcome home Eugene. New"
+  - service: tts.amazon_polly_say
+    entity_id: media_player.mpd
+    data:
+      message: <speak>Welcome home Eugene. New</speak>
+
+#################### Below are working Automations
 - alias: 'Update Available Notifications'
   trigger:
     platform: state
@@ -20,35 +66,12 @@
       data_template:
         message: <speak>Hello Eugene. It's Alice. I am up and running and all systems are good to go!</speak>
 
-- alias: Welcome home
-  trigger:
-    platform: state
-    entity_id: group.eugene_location
-    from: 'not_home'
-    to: 'home'
-  condition:
-    condition: and
-    conditions:
-      - condition: state
-        entity_id: group.eugene_location
-        state: 'home'
-      - condition: state
-        entity_id: device_tracker.eugenesiphonenmap
-        state: 'home'
-  action:
-  - service: notify.ios_eugene_iphone
-    data:
-      message: "Welcome home Eugene. New"
-  - service: tts.amazon_polly_say
-    entity_id: media_player.mpd
-    data:
-      message: <speak>Welcome home Eugene. New</speak>
 
 - alias: Welcome home 2
   trigger:
     platform: state
-    entity_id: group.eugene_location
-    from: 'not_home'
+    entity_id: sensor.eugene_location
+    from: 'travelling'
     to: 'home'
   action:
   - service: notify.ios_eugene_iphone
@@ -77,9 +100,9 @@
 - alias: Leaving work
   trigger:
     platform: state
-    entity_id: group.eugene_location
-    from: 'Work'
-    to: 'not_home'
+    entity_id: sensor.eugene_location
+    from: 'work'
+    to: 'travelling'
   action:
   - service: notify.ios_eugene_iphone
     data:

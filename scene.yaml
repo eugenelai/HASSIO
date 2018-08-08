@@ -1,0 +1,22 @@
+- name: Movie
+  entities:
+    light.living_room_lamp:
+      state: on
+      brightness: 255
+    light.bedroom_light:
+      state: off
+    light.tv_light:
+      state: off
+    light.dining_light:
+      state: off
+
+- name: Good night
+  entities:
+    light.living_room_lamp:
+      state: off
+    light.bedroom_light:
+      state: off
+    light.tv_light:
+      state: off
+    light.dining_light:
+      state: off

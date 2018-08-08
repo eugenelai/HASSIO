@@ -6,6 +6,15 @@
   monitored_conditions:
     - summary
     - temperature
+    - apparent_temperature
+    - humidity
+    - precip_probability
+    - precip_intensity
+    - precip_type
+    - wind_speed
+    - wind_bearing
+    - pressure
+    - icon
 
 - platform: time_date
   display_options:
@@ -106,11 +115,11 @@
       friendly_name: "Euge's Location"
       value_template: >-
         {%- if is_state("group.eugene_location", "home") -%}
-          Home
-        {%- elif is_state("device_tracker.eugenesiphone", "Work") -%}
-          Work
+          home
+        {%- elif is_state("device_tracker.eugenesiphone", "work") -%}
+          work
         {%- else -%}
-          Travelling
+          travelling
         {%- endif %}
 
 # MQTT Sensors

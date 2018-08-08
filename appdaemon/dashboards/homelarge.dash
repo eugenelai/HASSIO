@@ -1,0 +1,69 @@
+##
+## Main arguments, all optional
+##
+title: Home
+widget_dimensions: [58, 54]
+widget_margins: [5, 5]
+columns: 16
+rows: 10
+
+layout:
+    - homelabel(3x1)
+    - spacer(3x1), clock.clock(4x4), spacer(2x1), weather(4x3)
+    -
+    -
+    - spacer(9x1), livingroomtemp(2x1), bedroomtemp(2x1)
+    -
+    -
+    -
+    - testlabel(2x1), hello
+
+
+homelabel:
+    widget_type: label
+    text: Home
+    widget_style: "font-size: 70%; text-align: left; background: #222; padding: 10px 0 0 10px;"
+
+testlabel:
+    widget_type: label
+    text: test
+    icon_active: mdi-television-classic
+    widget_style: "font-size: 70%; text-align: left; background: #222; padding: 10px 0 0 10px;"
+
+livingroomtemp:
+    widget_type: sensor
+    entity: sensor.living_room_temperature
+    title: Living Room
+    title_style: "font-size: 60%; color: #fff"
+    value_style: "font-size: 27px; color: #fff; margin-top: 13px;"
+    unit_style: "font-size: 70%; color: #fff; margin-top: 15px;"
+
+bedroomtemp:
+    widget_type: sensor
+    entity: sensor.bedroom_temperature
+    title: Bed Room
+    title_style: "font-size: 60%; color: #fff"
+    value_style: "font-size: 27px; color: #fff; margin-top: 13px;"
+    unit_style: "font-size: 70%; color: #fff; margin-top: 15px;"
+
+
+settings:
+    widget_type: label
+    text: settings
+
+
+weather:
+    widget_type: weather
+    unit: "&deg;C"
+    main_style: "color: white; font-size: 80%;"
+    sub_style: "color: white; font-size: 0%;"
+    unit_style: "color: white;"
+    widget_style: "background: black; font-color: white;"
+    title: Today
+    title_style: "color: white;"
+
+
+camera:
+    widget_type: camera
+    entity_picture: http://eugenelai.duckdns.org/ccm/ccm_pic_get.jpg?hfrom_handle=887330&dsess=1&dsess_nid=MLP7GLincR0IFMG.XMs8t_dCIj1hBA&dsess_sn=1jfiegbp4eanq&dtoken=p0_xxxxxxxxxx
+    refresh: 5

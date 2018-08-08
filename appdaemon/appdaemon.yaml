@@ -1,15 +1,18 @@
-appdaemon:
+secrets: /config/secrets.yaml
+log:
   logfile: STDOUT
   errorfile: STDERR
+appdaemon:
   threads: 10
   app_dir: /config/appdaemon/apps
-HASS:
-  ha_url: https://eugenelai.duckdns.org
-HADashboard:
+  plugins:
+    HASS:
+      type: hass
+      ha_url: !secret hass_url
+      ha_key: !secret hass_pw
+hadashboard:
   dash_url: https://eugenelai.duckdns.org:5050
   dash_dir: /config/appdaemon/dashboards
-
-# Apps
-hello_world:
-  module: hello
-  class: HelloWorld
+  dash_ssl_certificate: /ssl/fullchain.pem
+  dash_ssl_key: /ssl/privkey.pem
+  dash_password: !secret dash_pw

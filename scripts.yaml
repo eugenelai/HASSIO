@@ -19,7 +19,11 @@ test_notification:
     - service: tts.amazon_polly_say
       entity_id: media_player.mpd
       data_template:
-        message: <speak>  Hello Eugene, this is Alice. speaking though the Raspberry Pi. <break time="1s"/> Testing 1, 2, 3! </speak>
+        message: <speak>Hello world! This is a test</speak>
+    - service: notify.ios_eugene_iphone
+      data:
+        message: 'Hello world! This is a test. You are currently, {{ states("sensor.eugene_location") }}'
+
 
 systemupdate:
   alias: System Update
