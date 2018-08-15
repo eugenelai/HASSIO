@@ -1,0 +1,71 @@
+alexattstest:
+  alias: Alexa TTS Test
+  sequence:
+    - service: media_player.alexa_tts
+      entity_id: media_player.echo_dot_living_room
+      data_template:
+        message: "Kenny Lai. I see you working at the dining table. "
+
+#running_reminder_set:
+#    alias: Toggle Running
+testscript:
+  alias: Test script
+  sequence:
+    - service: script.speech_notify_engine
+      data_template:
+        speech_message: "Kenny Lai. I see you working at the dining table. "
+    - service: script.text_notify_engine
+      data_template:
+        text_message: "Saying hello to dad"
+
+restart_ha:
+  alias: Restart Home Assistant
+  sequence:
+    - service: script.speech_notify_engine
+      data_template:
+        speech_message: >-
+          I am restarting in. 3. 2. 1. System will be back online shortly
+    - service: script.text_notify_engine
+      data_template:
+        text_message: "System restarting and will be back online shortly"
+    - service: homeassistant.restart
+
+systemupdate:
+  alias: System Update
+  sequence:
+    - service: script.speech_notify_engine
+      data_template:
+        speech_message: >
+          {% if now().strftime("%H")|int < 12 %}
+          Good morning.
+          {% elif now().strftime("%H")|int < 18 %}
+          Good afternoon.
+          {% else %}
+          Good evening.
+          {% endif %}
+          My name is Alice. I'm currently running version {{states("sensor.current_version")}}. The time now is {{states("sensor.time")}} and I see that your status is currently set to {{ states("sensor.eugene_location") }}. The current temperature in Hong Kong is {{ states("sensor.dark_sky_temperature") }} °C. And is expected to be {{ states("sensor.dark_sky_summary") }}. SSL certificate expiring in {{states("sensor.certficate_expiry")}} days.
+
+aliceskills:
+  alias: Alice Skill Set
+  sequence:
+    - service: script.speech_notify_engine
+      data_template:
+        speech_message: >
+          {% if now().strftime("%H")|int < 12 %}
+          Good morning.
+          {% elif now().strftime("%H")|int < 18 %}
+          Good afternoon.
+          {% else %}
+          Good evening.
+          {% endif %}
+          My name is Alice. I'm a home assistant developed by Eugene utilising Home Assistant open source platform and Alexa skill set. To get me to do something, just say, computer, followed by a command. You can ask me to turn on lights, the weather, and set timers.  Go ahead ask me something.
+
+#    alias: Alarm
+lightalarmclock:
+  alias: Natural Alarm
+  sequence:
+    - service: light.turn_on
+      data:
+        entity_id: light.light.bedroom_light
+        brightness: 255
+        transition: 1800

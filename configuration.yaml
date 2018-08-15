@@ -25,6 +25,8 @@ map:
 sun:
 frontend:
   themes: !include themes.yaml
+  extra_html_url:
+    - notificationhistory.txt
 
 tts:
   - platform: amazon_polly
@@ -34,12 +36,22 @@ tts:
     text_type: ssml
     voice: Joanna
 
+notify:
+  - name: notifcationhistory
+    platform: file
+    filename: notificationhistory.txt
+
 #emulated_hue:
 #  host_ip: 10.0.1.23
 
 media_player:
   - platform: mpd
     host: 10.0.1.23
+  - platform: alexa
+    email: !secret amazon_email
+    password: !secret amazon_password
+    url: "amazon.com"
+
 camera:
   - platform: generic
     still_image_url: http://eugenelai.duckdns.org/ccm/ccm_pic_get.jpg?hfrom_handle=887330&dsess=1&dsess_nid=MLP7GLincR0IFMG.XMs8t_dCIj1hBA&dsess_sn=1jfiegbp4eanq&dtoken=p0_xxxxxxxxxx
@@ -70,8 +82,8 @@ mqtt:
   client_id: home assistant
 
 group: !include groups.yaml
-automation: !include automations.yaml
-script: !include scripts.yaml
+automation: !include_dir_merge_list automations
+script: !include_dir_merge_named script
 zone: !include zones.yaml
 sensor: !include sensors.yaml
 device_tracker: !include devicetracker.yaml
@@ -89,6 +101,15 @@ input_boolean:
   alarmweekon:
     name: Alarm active
 
+  guest_mode:
+    name: Guest Mode
+    icon: mdi:home-modern
+    initial: off
+
+  notifications_alerts:
+    name: System Notifications
+    icon: mdi:cellphone-message
+    initial: on
 
 #alarm
 input_number:

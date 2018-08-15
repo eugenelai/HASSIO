@@ -1,0 +1,24 @@
+
+speech_notify_processing:
+  sequence:
+  - service: media_player.alexa_tts
+    data_template:
+      entity_id: media_player.echo_dot_living_room
+      message: "{{speech_message}}"
+
+text_notify_processing:
+  sequence:
+    - service: notify.ios_eugene_iphone
+      data_template:
+        message: |
+          {{now().strftime('%d-%b-%Y | %H:%M' )}}:
+          {{ text_message }}
+    - service: notify.notifcationhistory
+      data_template:
+        message: "{{now().strftime('%d-%b-%Y | %H:%M' )}}: {{ text_message }}"
+#    - service: persistent_notification.create
+#      data_template:
+#        title: "Notifications"
+#        message: |
+#          {{now().strftime('%d-%b-%Y | %H:%M' )}}:
+#          {{text_message}}

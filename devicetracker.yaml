@@ -5,9 +5,9 @@
 
 - platform: nmap_tracker
   hosts: 10.0.1.1/24
-  home_interval: 5
-  interval_seconds: 10
+  home_interval: 10
+  interval_seconds: 30
   consider_home: 10
   new_device_defaults:
-    track_new_devices: True
-    hide_if_away: False
+    track_new_devices: false
+    hide_if_away: false

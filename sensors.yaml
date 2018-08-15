@@ -20,6 +20,7 @@
   display_options:
     - 'time'
     - 'date'
+
 - platform: cert_expiry
   name: "Certficate Expiry"
   host: eugenelai.duckdns.org

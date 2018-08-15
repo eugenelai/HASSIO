@@ -11,6 +11,8 @@ default_view:
     - group.workroom
     - sensor.eugene_location
     - group.scenes
+    - input_boolean.guest_mode
+    - input_boolean.notifications_alerts
 
 eugene_location:
   name: Euge's Location
@@ -76,6 +78,7 @@ workroom:
 
 status:
   name: System status
+  control: hidden
   entities:
     - sensor.moon
     - sensor.uptime_templated
