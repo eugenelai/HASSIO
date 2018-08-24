@@ -20,7 +20,7 @@
           {{greeting_sentence(person)}}
 
 
-- alias: 'People Greeting'
+- alias: 'Welcome home'
   trigger:
     - platform: state
       entity_id:
@@ -41,7 +41,7 @@
           "Welcome back home " ~ person,
           "Guess who is home?" ~ person +" is!",
           person + " is now in the house.",
-          "Welcome Home " ~ person + ".  We have missed you. Or at least Molly did.",
+          "Welcome Home " ~ person + ".  We have missed you. Or at least Penny did",
           "Our home is now complete, Rest your head and relax your feet! Welcome Back " ~ person,
           "Life is like a song, you’re back where you belong. Welcome home " ~ person,
           "Hey there " ~ person + " Welcome Home!",
@@ -52,8 +52,8 @@
           "And the house becomes a home. Welcome back " ~ person,
           person + " is now here.  Hash tag Welcome Home.",
           person + " is now here.  Hash tag Home.",
-          "Just a quick announcement. " ~ person +" has arrived!",
-          "Pardon the interruption but " ~ person +" is home!",
+          "Just a quick announcement. " ~ person + " has arrived!",
+          "Pardon the interruption but " ~ person + " is home!",
           "My systems are picking up the presence of additional humans. " ~ person +" has been identified as home."
           ] | random }}
           {%- endmacro -%}
@@ -91,7 +91,50 @@
   action:
     - service: script.text_notify_engine
       data_template:
-        text_message: "Safe journey"
+        text_message: "Have a safe journey. All lights have been shut down and the doors locked."
+    - service: lock.lock
+      entity_id: lock.front_door
+    - service: light.turn_off
+      entity_id: group.all_lights
+
+- alias: Arriving home
+  trigger:
+    platform: state
+    entity_id: sensor.eugene_location
+    from: 'travelling'
+    to: 'home'
+  action:
+    - service: script.text_notify_engine
+      data_template:
+        text_message: "Looks like you'll be home soon. Turning on the light for you."
+    - service: light.turn_on
+      entity_id: light.living_room_lamp
+
+- alias: Door unlocked
+  trigger:
+    platform: state
+    entity_id: lock.front_door
+    to: 'unlocked'
+  action:
+    - service: script.speech_notify_engine
+      data_template:
+        speech_message: "Your front door has been unlocked"
+    - service: script.text_notify_engine
+      data_template:
+        text_message: "Door unlocked"
+
+- alias: Door locked
+  trigger:
+    platform: state
+    entity_id: lock.front_door
+    to: 'locked'
+  action:
+    - service: script.speech_notify_engine
+      data_template:
+        speech_message: "Your front door has been locked"
+    - service: script.text_notify_engine
+      data_template:
+        text_message: "Door locked"
 
 - alias: 'Update Available Notifications'
   trigger:
@@ -112,32 +155,12 @@
         text_message: "All systems up and running again."
     - service: script.speech_notify_engine
       data_template:
-        speech_message: "Hello Eugene. It's Alice. I am up and running and all systems are good to go!"
-
-
-- alias: Daily reminder
-  trigger:
-    - platform: time
-      at: '7:00:00'
-    - platform: time
-      at: '20:00:00'
-  action:
-  - service: script.text_notify_engine
-    data_template:
-      text_message: |
-        {% if now().strftime("%H")|int < 12 %}
-        Good morning, Eugene.
-        {% elif now().strftime("%H")|int < 18 %}
-        Good afternoon, Eugene.
-        {% else %}
-        Good evening, Eugene.
-        {% endif %}
-        Don't forget to do take your 10 minutes to clear your head.
-        {% if is_state("input_boolean.running_reminder", "0.0") %}
-        I have noticed you haven't gone for your run yet this week. Don't forget to go!
-        {% else %}
-        You've successfully gone for your run this week! Keep it up!
-        {% endif %}
+        speech_message: >
+        {{ [
+        "Hello Eugene. It's Alice. I am up and running and all systems are good to go!",
+        "Hi Eugene. Alice here. I've restarted and everything should be smooth sailing now.",
+        "And we're back! All systems restarted and back online."
+        ] | random" }}
 
 - alias: Morning routine
   trigger:
@@ -153,8 +176,9 @@
     data_template:
       speech_message: >
         {{ [
-        "Good morning. The sun's coming up shortly",
-        "Sorry to interrupt. I've taken the liberty to turn on the light for you. It'll be getting dark soon. "
+        "Good morning. The sun's coming up shortly. It's currently" + states.sensor.time.state+ ", and the temperature is" +  states.sensor.dark_sky_temperature.state  + " celcius. And is expected to be" +  states.sensor.dark_sky_summary.state ,
+        "Rise and shine. It's " + states.sensor.time.state+ ". Today it is expected to be" +  states.sensor.dark_sky_summary.state  + ", and the temperature is" +  states.sensor.dark_sky_temperature.state + " celcius.",
+        "Wake up now. It's" + states.sensor.time.state + ". The weather today is going to be" + states.sensor.dark_sky_summary.state + ", and the tempeature is" +  states.sensor.dark_sky_temperature.state + " celcius."
         ] | random }}
   - service: light.turn_on
     entity_id: light.living_room_lamp
@@ -163,7 +187,7 @@
   trigger:
     platform: sun
     event: sunset
-    offset: "-01:00:00"
+    offset: "00:00:00"
   condition:
     condition: state
     entity_id: group.all_devices
@@ -173,8 +197,12 @@
     data_template:
       speech_message: >
         {{ [
-        "Pardon me. It appears it's going to be dark soon. Let me switch the light on for you.",
+        "Pardon me. It appears it's going to be dark soon. Let me switch the light on for you." + states.sensor.time.state ,
         "Sorry to interrupt. I've taken the liberty to turn on the light for you. It'll be getting dark soon. ",
+        "The sun is about to set. Let me turn on a light for you."
         ] | random }}
+  - service: script.text_notify_engine
+    data_template:
+      text_message: "Evening mode activated!"
   - service: light.turn_on
     entity_id: light.living_room_lamp

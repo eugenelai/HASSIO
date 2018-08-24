@@ -2,9 +2,11 @@ alexattstest:
   alias: Alexa TTS Test
   sequence:
     - service: media_player.alexa_tts
-      entity_id: media_player.echo_dot_living_room
+      entity_id:
+        - media_player.echo_dot_room
+        - media_player.echo_dot_living_room
       data_template:
-        message: "Kenny Lai. I see you working at the dining table. "
+        message: "Kenny Lai. Check your messages! Eugene is texting you. "
 
 #running_reminder_set:
 #    alias: Toggle Running
@@ -13,7 +15,7 @@ testscript:
   sequence:
     - service: script.speech_notify_engine
       data_template:
-        speech_message: "Kenny Lai. I see you working at the dining table. "
+        speech_message: "Kenny Lai.  Put some clothes on we have dinner at Sha's!"
     - service: script.text_notify_engine
       data_template:
         text_message: "Saying hello to dad"
@@ -43,7 +45,7 @@ systemupdate:
           {% else %}
           Good evening.
           {% endif %}
-          My name is Alice. I'm currently running version {{states("sensor.current_version")}}. The time now is {{states("sensor.time")}} and I see that your status is currently set to {{ states("sensor.eugene_location") }}. The current temperature in Hong Kong is {{ states("sensor.dark_sky_temperature") }} °C. And is expected to be {{ states("sensor.dark_sky_summary") }}. SSL certificate expiring in {{states("sensor.certficate_expiry")}} days.
+          My name is Alice. I'm currently running version {{states("sensor.current_version")}}. The time now is {{states("sensor.time")}} and I see that your status is currently set to {{ states("sensor.eugene_location") }}. The current temperature in Hong Kong is {{ states("sensor.dark_sky_temperature") }} celcius. And is expected to be {{ states("sensor.dark_sky_summary") }}. SSL certificate expiring in {{states("sensor.certficate_expiry")}} days.
 
 aliceskills:
   alias: Alice Skill Set

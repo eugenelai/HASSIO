@@ -40,13 +40,6 @@
       message: "Motion sensor in bedroom has triggered!"
 
 
-#################### Below are working Automations
-
-
-
-
-
-
 # Natural Alarm Module
 - alias: "Alarm for weekdays"
   trigger:

@@ -16,3 +16,74 @@ notify_engine:
       data_template:
         message: >-
           {{ message }}
+
+
+
+{{ [
+"Good morning. The sun's coming up shortly. It's currently" + {{states.sensor.time.state}}+ ", and the temperature is" + {{ states.sensor.dark_sky_temperature.state }} + " °C. And is expected to be" + {{ states.sensor.dark_sky_summary.state }},
+"Rise and shine. It's " + {{states.sensor.time.state}}+ ". Today it is expected to be" + {{ states.sensor.dark_sky_summary.state }} + "and the temperature is" + {{ states.sensor.dark_sky_temperature.state }}+ "°C"
+] | random }}
+
+{{ [
+"Good morning. The sun's coming up shortly. It's currently {{states.sensor.time.state}}, and the temperature is {{ states.sensor.dark_sky_temperature.state }} °C. And is expected to be {{ states.sensor.dark_sky_summary.state }}",
+"Rise and shine. It's {{states.sensor.time.state}}. Today it is expected to be {{ states.sensor.dark_sky_summary.state }} and the temperature is {{ states.sensor.dark_sky_temperature.state }} °C"
+] | random }}
+
+
+"Good morning. The sun's coming up shortly. It's currently" + states.sensor.time.state+ ", and the temperature is" +  states.sensor.dark_sky_temperature.state  + " °C. And is expected to be" +  states.sensor.dark_sky_summary.state ,
+"Rise and shine. It's " + states.sensor.time.state+ ". Today it is expected to be" +  states.sensor.dark_sky_summary.state  + "and the temperature is" +  states.sensor.dark_sky_temperature.state + "°C"
+
+
+-Emmet
+-File Icons
+-Atom Live Server
+-Todo
+-Mini-Map
+-Pigments
+-Linter
+-Atom Beautify
+-Ask Stack
+-Highlight Selected
+
+
+automation:
+  - alias: Light hallway if motion 2
+    trigger:
+      - platform: state
+        entity_id: switch.net_hallsensor
+        to: 'on'
+    condition: state
+      entity_id: input_select.status_hallway
+      state: 'Hemma'
+    action:
+      - service: timer.start
+        entity_id: timer.timer_hallway
+      - service: switch.turn_on
+        entity_id: group.hallway_light
+  - alias: Turn off hallway lights at end of timer
+    trigger:
+      - platform: event
+        event_type: timer.finished
+        event_data:
+          entity_id: timer.timer_hallway
+    action:
+      service: switch.turn_off
+      entity_id: group.hallway_light
+
+timer:
+  timer_hallway:
+    duration: '00:03:00'
+
+group:
+  hallway_light:
+  name: "Hallway light"
+  entities:
+    - switch.hall_entre
+    - switch.hall_golvlampa
+    - switch.hall_kladhangare
+
+- alias: August Battery Level
+  trigger:
+    platform: time
+
+    {{states.lock.front_door.attributes.battery_level}}

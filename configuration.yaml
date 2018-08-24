@@ -12,6 +12,7 @@ http:
   base_url: eugenelai.duckdns.org
   ssl_certificate: /ssl/fullchain.pem
   ssl_key: /ssl/privkey.pem
+  ssl_profile: intermediate
 
 updater:
 cloud:
@@ -27,6 +28,8 @@ frontend:
   themes: !include themes.yaml
   extra_html_url:
     - notificationhistory.txt
+recorder:
+  purge_keep_days: 5
 
 tts:
   - platform: amazon_polly
@@ -43,6 +46,11 @@ notify:
 
 #emulated_hue:
 #  host_ip: 10.0.1.23
+august:
+  login_method: email
+  username: !secret august_username
+  password: !secret august_password
+  timeout: 60
 
 media_player:
   - platform: mpd
@@ -54,7 +62,8 @@ media_player:
 
 camera:
   - platform: generic
-    still_image_url: http://eugenelai.duckdns.org/ccm/ccm_pic_get.jpg?hfrom_handle=887330&dsess=1&dsess_nid=MLP7GLincR0IFMG.XMs8t_dCIj1hBA&dsess_sn=1jfiegbp4eanq&dtoken=p0_xxxxxxxxxx
+    still_image_url: !secret cameraaddress
+
 # Light setup
 light:
   platform: limitlessled
@@ -91,9 +100,6 @@ intent_script: !include alexaintent.yaml
 scene: !include scene.yaml
 
 input_boolean:
-  running_reminder:
-    name: Running Reminder
-    icon: mdi:run
 #alarm
   alarmweekday:
     name: Weekdays Only
@@ -104,12 +110,11 @@ input_boolean:
   guest_mode:
     name: Guest Mode
     icon: mdi:home-modern
-    initial: off
 
-  notifications_alerts:
-    name: System Notifications
-    icon: mdi:cellphone-message
-    initial: on
+  silence_mode:
+    name: Silence mode
+    icon: mdi:volume-off
+
 
 #alarm
 input_number:
