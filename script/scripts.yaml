@@ -1,24 +1,33 @@
-alexattstest:
-  alias: Alexa TTS Test
-  sequence:
-    - service: media_player.alexa_tts
-      entity_id:
-        - media_player.echo_dot_room
-        - media_player.echo_dot_living_room
-      data_template:
-        message: "Kenny Lai. Check your messages! Eugene is texting you. "
-
-#running_reminder_set:
-#    alias: Toggle Running
+# alexattstest:
+#   alias: Alexa TTS Test
+#   sequence:
+#     - service: media_player.alexa_tts
+#       entity_id:
+#         - media_player.echo_dot_room
+#         - media_player.echo_dot_living_room
+#       data_template:
+#         message: "Kenny Lai. Check your messages! Eugene is texting you. "
+#
 testscript:
   alias: Test script
   sequence:
     - service: script.speech_notify_engine
       data_template:
-        speech_message: "Kenny Lai.  Put some clothes on we have dinner at Sha's!"
+        speech_message: "..."
     - service: script.text_notify_engine
       data_template:
         text_message: "Saying hello to dad"
+
+restartserver:
+  alias: Notify Restarting Server
+  sequence:
+    - service: script.speech_notify_engine
+      data_template:
+        speech_message: "My server has been successfully restarted. I am now back online."
+    - service: script.text_notify_engine
+      data_template:
+        text_message: "Alice server is back online."
+
 
 restart_ha:
   alias: Restart Home Assistant
@@ -60,14 +69,4 @@ aliceskills:
           {% else %}
           Good evening.
           {% endif %}
-          My name is Alice. I'm a home assistant developed by Eugene utilising Home Assistant open source platform and Alexa skill set. To get me to do something, just say, computer, followed by a command. You can ask me to turn on lights, the weather, and set timers.  Go ahead ask me something.
-
-#    alias: Alarm
-lightalarmclock:
-  alias: Natural Alarm
-  sequence:
-    - service: light.turn_on
-      data:
-        entity_id: light.light.bedroom_light
-        brightness: 255
-        transition: 1800
+          My name is Alice. I'm a home assistant developed by Eugene. I uttilise Home Assistant. An open source platfor. To get me to do something, just say, computer, followed by a command. You can ask me to turn on lights, the weather, and set timers.  Go ahead ask me something.

@@ -1,3 +1,11 @@
+aliceserver:
+  hide_if_away: false
+  icon:
+  mac: 84:2b:2b:9b:14:4d
+  name: Alice Server
+  picture:
+  track: true
+
 6c4008ab446c:
   hide_if_away: false
   icon:
@@ -465,4 +473,20 @@ eugenesmacbookshiseido:
   picture:
   track: true
 
-  ## New updates should appear below 10 August 2018 
+18af6104b9cb:
+  hide_if_away: false
+  icon:
+  mac: 18:AF:61:04:B9:CB
+  name: 18af6104b9cb
+  picture:
+  track: false
+
+d861620a910a:
+  hide_if_away: false
+  icon:
+  mac: D8:61:62:0A:91:0A
+  name: d861620a910a
+  picture:
+  track: false
+
+## New updates should appear below 19 October 2018

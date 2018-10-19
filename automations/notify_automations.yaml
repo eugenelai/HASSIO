@@ -1,3 +1,12 @@
+- alias: 'New device connected'
+  trigger:
+    - platform: event
+      event_type: device_tracker_new_device
+  action:
+    - service: script.text_notify_engine
+      data_template:
+        text_message: "There has been a new device detected on the network.  Be sure to appropriately catagorize {{trigger.event.data.host_name}}."
+
 - alias: 'Disconnect WiFi'
   trigger:
     - platform: state
@@ -42,12 +51,12 @@
           "Guess who is home?" ~ person +" is!",
           person + " is now in the house.",
           "Welcome Home " ~ person + ".  We have missed you. Or at least Penny did",
-          "Our home is now complete, Rest your head and relax your feet! Welcome Back " ~ person,
+          "Our home is now complete, Rest your head and relax your feet!. Welcome Back " ~ person,
           "Life is like a song, you’re back where you belong. Welcome home " ~ person,
-          "Hey there " ~ person + " Welcome Home!",
+          "Hey there " ~ person + ". Welcome Home!",
           "Knock Knock. Who is There? "   ~ person +" is!",
-          person ~ "! You are home!",
-          "I know a secret! "  ~ person +" is home!",
+          person ~ ". You are home!",
+          "I know a secret. "  ~ person +" is home!",
           "I am sensing a disturbance in the force. "  ~ person +" must be home!",
           "And the house becomes a home. Welcome back " ~ person,
           person + " is now here.  Hash tag Welcome Home.",
@@ -103,6 +112,17 @@
     entity_id: sensor.eugene_location
     from: 'travelling'
     to: 'home'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: group.people_location
+        state: 'home'
+      - condition: state
+        entity_id: group.all_lights
+        state: 'off'
+      - condition: sun
+        after: sunset
   action:
     - service: script.text_notify_engine
       data_template:
@@ -150,26 +170,29 @@
     platform: homeassistant
     event: start
   action:
-    - service: script.text_notify_engine
-      data_template:
-        text_message: "All systems up and running again."
-    - service: script.speech_notify_engine
-      data_template:
-        speech_message: >
+  - service: script.text_notify_engine
+    data_template:
+      text_message: "All systems up and running again."
+  - service: script.speech_notify_engine
+    data_template:
+      speech_message: >
         {{ [
-        "Hello Eugene. It's Alice. I am up and running and all systems are good to go!",
-        "Hi Eugene. Alice here. I've restarted and everything should be smooth sailing now.",
-        "And we're back! All systems restarted and back online."
-        ] | random" }}
+        "Systems are back online.",
+        "Hello Eugene. It's Alice. I am back online.",
+        "I have successfully restarted. How can I help you?",
+        "Hello, it's Alice. I am back online.",
+        "I am back online.",
+        "Guess who's back?! Back again?! It is me Alice."
+        ] | random }}
 
 - alias: Morning routine
   trigger:
     platform: sun
     event: sunrise
-    offset: '-00:30:00'
+    offset: '+01:00:00'
   condition:
     condition: state
-    entity_id: group.all_devices
+    entity_id: group.people_location
     state: 'home'
   action:
   - service: script.speech_notify_engine
@@ -178,27 +201,32 @@
         {{ [
         "Good morning. The sun's coming up shortly. It's currently" + states.sensor.time.state+ ", and the temperature is" +  states.sensor.dark_sky_temperature.state  + " celcius. And is expected to be" +  states.sensor.dark_sky_summary.state ,
         "Rise and shine. It's " + states.sensor.time.state+ ". Today it is expected to be" +  states.sensor.dark_sky_summary.state  + ", and the temperature is" +  states.sensor.dark_sky_temperature.state + " celcius.",
-        "Wake up now. It's" + states.sensor.time.state + ". The weather today is going to be" + states.sensor.dark_sky_summary.state + ", and the tempeature is" +  states.sensor.dark_sky_temperature.state + " celcius."
+        "Wake up now. It is" + states.sensor.time.state + ". The weather today is going to be" + states.sensor.dark_sky_summary.state + ", and the tempeature is" +  states.sensor.dark_sky_temperature.state + " celcius."
         ] | random }}
   - service: light.turn_on
-    entity_id: light.living_room_lamp
+    entity_id: light.dresser_light
 
 - alias: Evening lights
   trigger:
     platform: sun
     event: sunset
-    offset: "00:00:00"
+    offset: "+01:00:00"
   condition:
-    condition: state
-    entity_id: group.all_devices
-    state: 'home'
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: group.people_location
+        state: 'home'
+      - condition: state
+        entity_id: group.all_lights
+        state: 'off'
   action:
   - service: script.speech_notify_engine
     data_template:
       speech_message: >
         {{ [
-        "Pardon me. It appears it's going to be dark soon. Let me switch the light on for you." + states.sensor.time.state ,
-        "Sorry to interrupt. I've taken the liberty to turn on the light for you. It'll be getting dark soon. ",
+        "Pardon me. It appears it's going to be dark soon. Let a switch the light on for you.",
+        "Sorry to interrupt. I've taken the liberty to turn on a light for you. It'll be getting dark soon. ",
         "The sun is about to set. Let me turn on a light for you."
         ] | random }}
   - service: script.text_notify_engine

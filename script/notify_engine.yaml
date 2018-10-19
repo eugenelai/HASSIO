@@ -17,6 +17,9 @@
 
 speech_notify_engine:
   sequence:
+    - condition: state
+      entity_id: input_boolean.silence_mode
+      state: 'off'
     - service: script.speech_notify_processing
       data_template:
         speech_message: "{{speech_message}}"

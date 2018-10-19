@@ -4,6 +4,14 @@ https://github.com/home-assistant/home-assistant/pull/12475
 
 https://github.com/search?utf8=%E2%9C%93&q=home-assistant-config&type=
 
+https://github.com/andrewjfreyer/presence
+
+
+B&O
+https://community.home-assistant.io/t/beolink-bang-olufsen/57192/5
+
+
+
 notify_engine:
   sequence:
     - service: script.notify_processing
@@ -19,19 +27,28 @@ notify_engine:
 
 
 
-{{ [
-"Good morning. The sun's coming up shortly. It's currently" + {{states.sensor.time.state}}+ ", and the temperature is" + {{ states.sensor.dark_sky_temperature.state }} + " °C. And is expected to be" + {{ states.sensor.dark_sky_summary.state }},
-"Rise and shine. It's " + {{states.sensor.time.state}}+ ". Today it is expected to be" + {{ states.sensor.dark_sky_summary.state }} + "and the temperature is" + {{ states.sensor.dark_sky_temperature.state }}+ "°C"
-] | random }}
+curl -X GET -H "x-ha-access: b651fx56PI" \
+       -H "Content-Type: application/json" https://eugenelai.duckdns.org/api/config
 
-{{ [
-"Good morning. The sun's coming up shortly. It's currently {{states.sensor.time.state}}, and the temperature is {{ states.sensor.dark_sky_temperature.state }} °C. And is expected to be {{ states.sensor.dark_sky_summary.state }}",
-"Rise and shine. It's {{states.sensor.time.state}}. Today it is expected to be {{ states.sensor.dark_sky_summary.state }} and the temperature is {{ states.sensor.dark_sky_temperature.state }} °C"
-] | random }}
+ curl -X POST -H "x-ha-access: b651fx56PI" \
+       -H "Content-Type: application/json" \
+       -d '{"entity_id": "light.dresser_light"}' \
+       https://eugenelai.duckdns.org/api/services/switch/turn_on
+
+curl -X POST -H "x-ha-access: b651fx56PI" \
+      -H "Content-Type: application/json" \
+      -d '{"entity_id": "lock.front_door"}' \
+      https://eugenelai.duckdns.org/api/services/lock/unlock
 
 
-"Good morning. The sun's coming up shortly. It's currently" + states.sensor.time.state+ ", and the temperature is" +  states.sensor.dark_sky_temperature.state  + " °C. And is expected to be" +  states.sensor.dark_sky_summary.state ,
-"Rise and shine. It's " + states.sensor.time.state+ ". Today it is expected to be" +  states.sensor.dark_sky_summary.state  + "and the temperature is" +  states.sensor.dark_sky_temperature.state + "°C"
+curl -H "Content-Type: application/json" -X PUT -d '{"standby":{"powerState":"standby"}}' http://192.168.0.50:8080/BeoDevice/powerManagement/standby
+
+curl -X POST -H "x-ha-access: b651fx56PI" \
+      -H "Content-Type: application/json" \
+      -d '{"entity_id": "script.restartserver"}' \
+      https://eugenelai.duckdns.org/api/services/script/turn_on
+
+https://bonani.tech/how-to-install-hass.io-on-ubuntu-server-18.04/
 
 
 -Emmet
@@ -87,3 +104,112 @@ group:
     platform: time
 
     {{states.lock.front_door.attributes.battery_level}}
+
+
+# ALARM PACKAGe
+- alias: "Alarm for weekdays"
+  trigger:
+    - platform: time
+      minutes: '/1'
+      seconds: 0
+  condition:
+    - condition: state
+      entity_id: input_boolean.alarmweekon
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.alarmweekday
+      state: 'on'
+    - condition: time
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+    - condition: template
+      value_template: '{{ now().strftime("%H:%M") == states.sensor.alarm_time.state }}'
+  action:
+    - service: light.turn_on
+      entity_id: light.bedroom_light
+      data:
+        transition: 600
+        brightness: 130
+- alias: "Alarm for weekend days"
+  trigger:
+    - platform: time
+      minutes: '/1'
+      seconds: 0
+  condition:
+    - condition: state
+      entity_id: input_boolean.alarmweekon
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.alarmweekday
+      state: 'off'
+    - condition: time
+      weekday:
+        - sat
+        - sun
+    - condition: template
+      value_template: '{{ now().strftime("%H:%M") == states.sensor.alarm_time.state }}'
+  action:
+    service: light.turn_on
+    entity_id: light.bedroom_light
+    data:
+      transition: 600
+      brightness: 130
+
+#alarm
+input_boolean:
+  alarmweekday:
+    name: Weekdays Only
+    icon: mdi:calendar
+  alarmweekon:
+    name: Alarm active
+#alarm
+input_number:
+  alarmhour:
+    name: Hour
+    icon: mdi:timer
+    initial: 6
+    min: 0
+    max: 23
+    step: 1
+  alarmminutes:
+    name: Minutes
+    icon: mdi:timer
+    initial: 30
+    min: 0
+    max: 59
+    step: 5
+
+#    Script
+lightalarmclock:
+  alias: Natural Alarm
+  sequence:
+    - service: light.turn_on
+      data:
+        entity_id: light.light.bedroom_light
+        brightness: 255
+        transition: 1800
+
+############ Test automations
+- alias: Motion Sensor Living Room
+  trigger:
+    platform: state
+    entity_id: sensor.living_room_motion
+    to: 'ON'
+  action:
+  - service: notify.ios_eugene_iphone
+    data:
+      message: "Motion sensor in living room has triggered!"
+
+- alias: Motion Sensor Bedroom
+  trigger:
+    platform: state
+    entity_id: sensor.bedroom_room_motion
+    to: 'ON'
+  action:
+  - service: notify.ios_eugene_iphone
+    data:
+      message: "Motion sensor in bedroom has triggered!"

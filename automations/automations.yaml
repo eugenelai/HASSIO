@@ -14,81 +14,17 @@
         "{{trigger.entity_id}} is a test message using templates. Sent at: {{now().strftime('%Y-%m-%d %I:%M %p')}}"
 
 
-######## Location based
-
-
-
-############ Test automations
-- alias: Motion Sensor Living Room
+- alias: Current Temperature
   trigger:
-    platform: state
-    entity_id: sensor.living_room_motion
-    to: 'ON'
+    platform: numeric_state
+    entity_id: sensor.bedroom_temperature
+    below: 25
   action:
-  - service: notify.ios_eugene_iphone
-    data:
-      message: "Motion sensor in living room has triggered!"
-
-- alias: Motion Sensor Bedroom
-  trigger:
-    platform: state
-    entity_id: sensor.bedroom_room_motion
-    to: 'ON'
-  action:
-  - service: notify.ios_eugene_iphone
-    data:
-      message: "Motion sensor in bedroom has triggered!"
-
-
-# Natural Alarm Module
-- alias: "Alarm for weekdays"
-  trigger:
-    - platform: time
-      minutes: '/1'
-      seconds: 0
-  condition:
-    - condition: state
-      entity_id: input_boolean.alarmweekon
-      state: 'on'
-    - condition: state
-      entity_id: input_boolean.alarmweekday
-      state: 'on'
-    - condition: time
-      weekday:
-        - mon
-        - tue
-        - wed
-        - thu
-        - fri
-    - condition: template
-      value_template: '{{ now().strftime("%H:%M") == states.sensor.alarm_time.state }}'
-  action:
-    - service: light.turn_on
-      entity_id: light.bedroom_light
-      data:
-        transition: 600
-        brightness: 130
-- alias: "Alarm for weekend days"
-  trigger:
-    - platform: time
-      minutes: '/1'
-      seconds: 0
-  condition:
-    - condition: state
-      entity_id: input_boolean.alarmweekon
-      state: 'on'
-    - condition: state
-      entity_id: input_boolean.alarmweekday
-      state: 'off'
-    - condition: time
-      weekday:
-        - sat
-        - sun
-    - condition: template
-      value_template: '{{ now().strftime("%H:%M") == states.sensor.alarm_time.state }}'
-  action:
-    service: light.turn_on
-    entity_id: light.bedroom_light
-    data:
-      transition: 600
-      brightness: 130
+    - service: script.speech_notify_engine
+      data_template:
+        speech_message: >
+          "The current temperature of your bedroom has dropped to {{states.sensor.bedroom_temperature.state | round | int }}."
+    - service: script.text_notify_engine
+      data_template:
+        text_message: >
+          "The current temperature of your bedroom has dropped to {{states.sensor.bedroom_temperature.state | round | int }}."
