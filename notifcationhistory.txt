@@ -1,0 +1,30 @@
+Home Assistant notifications (Log started: 2018-08-11T04:41:53.484210+00:00)
+--------------------------------------------------------------------------------
+2018-08-11T04:41:53.484382+00:00 Hello Eugene. It's Alice. I am up and running and all systems are good to go!
+2018-08-11T05:04:53.531196+00:00 You have been disconnected from Wifi
+2018-08-11T05:43:51.910787+00:00 sensor.eugene_location is a test message using templates. Sent at: 2018-08-11 01:43 PM
+2018-08-11T05:46:23.359322+00:00 You have been connected to Wifi
+2018-08-11T07:11:26.705812+00:00 You have been disconnected from Wifi
+2018-08-11T09:34:31.137651+00:00 Pardon the interruption but Helen is home!
+2018-08-11T12:00:11.125315+00:00 
+2018-08-11T13:47:25.819659+00:00 Guess who is home?Helen is!
+2018-08-11T19:39:57.607095+00:00 sensor.eugene_location is a test message using templates. Sent at: 2018-08-12 03:39 AM
+2018-08-11T19:42:45.280317+00:00 You have been connected to Wifi
+2018-08-11T20:47:36.753661+00:00 You have been disconnected from Wifi
+2018-08-11T23:00:11.973788+00:00 
+2018-08-12T04:36:47.831231+00:00 You have been connected to Wifi
+2018-08-12T06:02:21.647241+00:00 You have been disconnected from Wifi
+2018-08-12T06:20:55.305165+00:00 You have been connected to Wifi
+2018-08-12T11:11:46.825953+00:00 You have been disconnected from Wifi
+2018-08-12T12:00:11.727554+00:00 
+2018-08-12T12:08:57.330011+00:00 sensor.eugene_location is a test message using templates. Sent at: 2018-08-12 08:08 PM
+2018-08-12T12:09:32.370134+00:00 You have been connected to Wifi
+2018-08-12T12:22:21.925171+00:00 You have been disconnected from Wifi
+2018-08-12T12:26:33.859120+00:00 You have been connected to Wifi
+2018-08-12T12:30:41.553931+00:00 Hello Eugene. It's Alice. I am up and running and all systems are good to go!
+2018-08-12T12:32:57.009039+00:00 Hello Eugene. It's Alice. I am up and running and all systems are good to go!
+2018-08-12T12:34:17.960920+00:00 You have been disconnected from Wifi
+2018-08-12T12:34:54.564967+00:00 You have been connected to Wifi
+2018-08-12T12:52:05.214334+00:00 Hello Eugene. It's Alice. I am up and running and all systems are good to go!
+2018-08-12T13:15:39.325077+00:00 Hello Eugene. It's Alice. I am up and running and all systems are good to go!
+2018-08-12T13:26:48.922023+00:00 Hello Eugene. It's Alice. I am up and running and all systems are good to go!

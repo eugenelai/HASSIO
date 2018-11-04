@@ -1,0 +1,7 @@
+the speaker sends a JSON stream on:
+  http://http://10.0.1.20:8080/BeoNotify/Notifications
+the volume can be controlled with: curl -H "Content-Type: application/json" -X PUT -d '{"level":'${volume_level}'}' http://10.0.1.20:8080/BeoZone/Zone/Sound/Volume/Speaker/Level
+volume control: curl -H "Content-Type: application/json" -X PUT -d '{"level":'100'}' http://10.0.1.20:8080/BeoZone/Zone/Sound/Volume/Speaker/Level
+to play the song/radio/spotify that has been paused: curl -H "Content-Type: application/json" -X POST http://10.0.1.20:8080/BeoZone/Zone/Stream/Play curl -H "Content-Type: application/json" -X POST http://10.0.1.20:8080/BeoZone/Zone/Stream/Play/Release
+to pause the song/radio/spotify that has been playing: curl -H "Content-Type: application/json" -X POST http://10.0.1.20:8080/BeoZone/Zone/Stream/Pause curl -H "Content-Type: application/json" -X POST http://10.0.1.20:8080/BeoZone/Zone/Stream/Pause/Release
+to turn off the speaker (standby mode): curl -H "Content-Type: application/json" -X PUT -d '{"standby":{"powerState":"standby"}}' http://10.0.1.20:8080/BeoDevice/powerManagement/standby

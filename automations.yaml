@@ -1,3 +1,126 @@
+
+############ Templated notifcations:
+
+- alias: Templated Notification
+  trigger:
+    platform: state
+    entity_id: sensor.eugene_location
+    from: 'travelling'
+    to: 'home'
+  action:
+    service: script.notify_engine
+    data_template:
+      testMessage: >
+        "{{trigger.entity_id}} is a test message using templates. Sent at: {{now().strftime('%Y-%m-%d %I:%M %p')}}"
+
+
+######## Location based
+
+- alias: Connected to Home WiFi
+  trigger:
+    platform: state
+    entity_id: 'device_tracker.eugenesiphonenmap'
+    to: 'home'
+  action:
+    service: script.notify_engine
+    data_template:
+      connectedWiFi: "You have been connected to Wifi"
+
+- alias: Disconnect from Home WiFi
+  trigger:
+    platform: state
+    entity_id: 'device_tracker.eugenesiphonenmap'
+    to: 'not_home'
+  action:
+    service: script.notify_engine
+    data_template:
+      connectedWiFi: "You have been disconnected from Wifi"
+
+- alias: 'People Greeting'
+  trigger:
+    - platform: state
+      entity_id:
+        - sensor.eugene_location
+        - device_tracker.heleniphone
+      to: 'home'
+  action:
+    - service: script.notify_engine
+      data_template:
+        personarriving: >
+          {% if trigger.entity_id == "sensor.eugene_location"%}
+            {% set person = "Eugene"%}
+          {% else %}
+            {% set person = "Helen" %}
+          {% endif %}
+          {%- macro greeting_sentence(person) -%}
+          {{ [
+          "Welcome back home " ~ person,
+          "Guess who is home?" ~ person +" is!",
+          person + " is now in the house.",
+          "Welcome Home " ~ person + ".  We have missed you. Or at least Molly did.",
+          "Our home is now complete, Rest your head and relax your feet! Welcome Back " ~ person,
+          "Life is like a song, you’re back where you belong. Welcome home " ~ person,
+          "Hey there " ~ person + " Welcome Home!",
+          "Knock Knock. Who is There? "   ~ person +" is!",
+          person ~ "! You are home!",
+          "I know a secret! "  ~ person +" is home!",
+          "I am sensing a disturbance in the force. "  ~ person +" must be home!",
+          "And the house becomes a home. Welcome back " ~ person,
+          person + " is now here.  Hash tag Welcome Home.",
+          person + " is now here.  Hash tag Home.",
+          "Just a quick announcement. " ~ person +" hass arrived!",
+          "Pardon the interruption but " ~ person +" is home!",
+          "My systems are picking up the presence of additional humans. " ~ person +" has been identified as home."
+          ] | random }}
+          {%- endmacro -%}
+          {{greeting_sentence(person)}}
+
+- alias: Leaving work
+  trigger:
+    platform: state
+    entity_id: sensor.eugene_location
+    from: 'work'
+    to: 'travelling'
+  action:
+  - service: script.notify_engine
+    data_template:
+      leavingwork: "Hope you smashed work today."
+
+- alias: Leaving home
+  trigger:
+    platform: state
+    entity_id: sensor.eugene_location
+    from: 'home'
+    to: 'travelling'
+  action:
+  - service: script.notify_engine
+    data_template:
+      leavingwork: "It seems that you have left home. Turning off the lights."
+
+
+############ Test automations
+- alias: Motion Sensor Living Room
+  trigger:
+    platform: state
+    entity_id: sensor.living_room_motion
+    to: 'ON'
+  action:
+  - service: notify.ios_eugene_iphone
+    data:
+      message: "Motion sensor in living room has triggered!"
+
+- alias: Motion Sensor Bedroom
+  trigger:
+    platform: state
+    entity_id: sensor.bedroom_room_motion
+    to: 'ON'
+  action:
+  - service: notify.ios_eugene_iphone
+    data:
+      message: "Motion sensor in bedroom has triggered!"
+
+
+#################### Below are working Automations
 - alias: 'Update Available Notifications'
   trigger:
     platform: state
@@ -12,90 +135,21 @@
     platform: homeassistant
     event: start
   action:
-    - service: notify.ios_eugene_iphone
-      data:
-        message: 'Home Asssitant has started'
-    - service: tts.amazon_polly_say
-      entity_id: media_player.mpd
+    - service: script.notify_engine
       data_template:
-        message: <speak>Hello Eugene. It's Alice. I am up and running and all systems are good to go!</speak>
+        startup: "Hello Eugene. It's Alice. I am up and running and all systems are good to go!"
 
-- alias: Welcome home
-  trigger:
-    platform: state
-    entity_id: group.eugene_location
-    from: 'not_home'
-    to: 'home'
-  condition:
-    condition: and
-    conditions:
-      - condition: state
-        entity_id: group.eugene_location
-        state: 'home'
-      - condition: state
-        entity_id: device_tracker.eugenesiphonenmap
-        state: 'home'
-  action:
-  - service: notify.ios_eugene_iphone
-    data:
-      message: "Welcome home Eugene. New"
-  - service: tts.amazon_polly_say
-    entity_id: media_player.mpd
-    data:
-      message: <speak>Welcome home Eugene. New</speak>
-
-- alias: Welcome home 2
-  trigger:
-    platform: state
-    entity_id: group.eugene_location
-    from: 'not_home'
-    to: 'home'
-  action:
-  - service: notify.ios_eugene_iphone
-    data:
-      message: "Welcome home Eugene."
-  - service: tts.amazon_polly_say
-    entity_id: media_player.mpd
-    data:
-      message: <speak>Welcome home Eugene.</speak>
-
-- alias: Welcome home Helen
-  trigger:
-    platform: state
-    entity_id: device_tracker.heleniphone
-    from: 'not_home'
-    to: 'home'
-  action:
-  - service: notify.ios_eugene_iphone
-    data:
-      message: Helen has come home
-  - service: tts.amazon_polly_say
-    entity_id: media_player.mpd
-    data:
-      message: <speak>Welcome home Helen.</speak>
-
-- alias: Leaving work
-  trigger:
-    platform: state
-    entity_id: group.eugene_location
-    from: 'Work'
-    to: 'not_home'
-  action:
-  - service: notify.ios_eugene_iphone
-    data:
-      message: "Hope you smashed work today."
 
 - alias: Daily reminder
   trigger:
     - platform: time
-      at: '8:00:00'
+      at: '7:00:00'
     - platform: time
       at: '20:00:00'
   action:
-  - service: notify.ios_eugene_iphone
+  - service: script.notify_engine
     data_template:
-      title: Daily reminder
-      message: |
+      dailyreminder: |
         {% if now().strftime("%H")|int < 12 %}
         Good morning, Eugene.
         {% elif now().strftime("%H")|int < 18 %}
@@ -104,22 +158,6 @@
         Good evening, Eugene.
         {% endif %}
         Don't forget to do take your 10 minutes to clear your head.
-        {% if is_state("input_boolean.running_reminder", "0.0") %}
-        I have noticed you haven't gone for your run yet this week. Don't forget to go!
-        {% else %}
-        You've successfully gone for your run this week! Keep it up!
-        {% endif %}
-  - service: persistent_notification.create
-    data_template:
-      title: "Daily reminder"
-      message: |
-        {% if now().strftime("%H")|int < 12 %}
-        Good morning, Eugene. Don't forget to do take your 10 minutes to clear your head.
-        {% elif now().strftime("%H")|int < 18 %}
-        Good afternoon, Eugene. Don't forget to do take your 10 minutes to clear your head.
-        {% else %}
-        Good evening, Eugene. Don't forget to do take your 10 minutes to clear your head.
-        {% endif %}
         {% if is_state("input_boolean.running_reminder", "0.0") %}
         I have noticed you haven't gone for your run yet this week. Don't forget to go!
         {% else %}

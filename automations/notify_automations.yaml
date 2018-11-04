@@ -1,0 +1,246 @@
+- alias: 'New device connected'
+  trigger:
+    - platform: event
+      event_type: device_tracker_new_device
+  action:
+    - service: script.text_notify_engine
+      data_template:
+        text_message: "There has been a new device detected on the network.  Be sure to appropriately catagorize {{trigger.event.data.host_name}}."
+
+- alias: 'Disconnect WiFi'
+  trigger:
+    - platform: state
+      entity_id:
+        - device_tracker.eugenesiphonenmap
+        - device_tracker.heleniphone
+      to: 'not_home'
+  action:
+    - service: script.text_notify_engine
+      data_template:
+        text_message: >
+          {% if trigger.entity_id == "device_tracker.eugenesiphonenmap"%}
+            {% set person = "Eugene"%}
+          {% else %}
+            {% set person = "Helen" %}
+          {% endif %}
+          {%- macro greeting_sentence(person) -%}
+          {{ person + " has disconnected from WiFi"}}
+          {%- endmacro -%}
+          {{greeting_sentence(person)}}
+
+
+- alias: 'Welcome home'
+  trigger:
+    - platform: state
+      entity_id:
+        - device_tracker.eugenesiphonenmap
+        - device_tracker.heleniphone
+      to: 'home'
+  action:
+    - service: script.speech_notify_engine
+      data_template:
+        speech_message: >
+          {% if trigger.entity_id == "device_tracker.eugenesiphonenmap"%}
+            {% set person = "Eugene"%}
+          {% else %}
+            {% set person = "Helen" %}
+          {% endif %}
+          {%- macro speech_greeting(person) -%}
+          {{ [
+          "Welcome back home " ~ person,
+          "Guess who is home?" ~ person +" is!",
+          person + " is now in the house.",
+          "Welcome Home " ~ person + ".  We have missed you. Or at least Penny did",
+          "Our home is now complete, Rest your head and relax your feet!. Welcome Back " ~ person,
+          "Life is like a song, you’re back where you belong. Welcome home " ~ person,
+          "Hey there " ~ person + ". Welcome Home!",
+          "Knock Knock. Who is There? "   ~ person +" is!",
+          person ~ ". You are home!",
+          "I know a secret. "  ~ person +" is home!",
+          "I am sensing a disturbance in the force. "  ~ person +" must be home!",
+          "And the house becomes a home. Welcome back " ~ person,
+          person + " is now here.  Hash tag Welcome Home.",
+          person + " is now here.  Hash tag Home.",
+          "Just a quick announcement. " ~ person + " has arrived!",
+          "Pardon the interruption but " ~ person + " is home!",
+          "My systems are picking up the presence of additional humans. " ~ person +" has been identified as home."
+          ] | random }}
+          {%- endmacro -%}
+          {{speech_greeting(person)}}
+    - service: script.text_notify_engine
+      data_template:
+        text_message: >
+          {% if trigger.entity_id == "device_tracker.eugenesiphonenmap"%}
+            {% set person = "Eugene"%}
+          {% else %}
+            {% set person = "Helen" %}
+          {% endif %}
+          {%- macro text_greeting(person) -%}
+          {{ person + " has come home."}}
+          {%- endmacro -%}
+          {{text_greeting(person)}}
+
+- alias: Leaving work
+  trigger:
+    platform: state
+    entity_id: sensor.eugene_location
+    from: 'work'
+    to: 'travelling'
+  condition:
+    condition: time
+    # At least one of the following is required.
+    after: '13:00:00'
+    weekday:
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+  action:
+    - service: script.text_notify_engine
+      data_template:
+        text_message: "Hope you smashed work today."
+
+- alias: Leaving home
+  trigger:
+    platform: state
+    entity_id: sensor.eugene_location
+    from: 'home'
+    to: 'travelling'
+  action:
+    - service: script.text_notify_engine
+      data_template:
+        text_message: "Have a safe journey. All lights have been shut down and the doors locked."
+    - service: lock.lock
+      entity_id: lock.front_door
+    - service: light.turn_off
+      entity_id: group.all_lights
+
+- alias: Arriving home
+  trigger:
+    platform: state
+    entity_id: sensor.eugene_location
+    from: 'travelling'
+    to: 'home'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: group.people_location
+        state: 'home'
+      - condition: state
+        entity_id: group.all_lights
+        state: 'off'
+      - condition: sun
+        after: sunset
+  action:
+    - service: script.text_notify_engine
+      data_template:
+        text_message: "Looks like you'll be home soon. Turning on the light for you."
+    - service: light.turn_on
+      entity_id: light.living_room_lamp
+
+- alias: Door unlocked
+  trigger:
+    platform: state
+    entity_id: lock.front_door
+    to: 'unlocked'
+  action:
+    - service: script.speech_notify_engine
+      data_template:
+        speech_message: "Your front door has been unlocked"
+    - service: script.text_notify_engine
+      data_template:
+        text_message: "Door unlocked"
+
+- alias: Door locked
+  trigger:
+    platform: state
+    entity_id: lock.front_door
+    to: 'locked'
+  action:
+    - service: script.speech_notify_engine
+      data_template:
+        speech_message: "Your front door has been locked"
+    - service: script.text_notify_engine
+      data_template:
+        text_message: "Door locked"
+
+- alias: 'Update Available Notifications'
+  trigger:
+    platform: state
+    entity_id: updater.updater
+  action:
+    - service: script.text_notify_engine
+      data_template:
+        text_message: "Update for Home Assistant is available."
+
+- alias: Startup Notification
+  trigger:
+    platform: homeassistant
+    event: start
+  action:
+  - service: script.text_notify_engine
+    data_template:
+      text_message: "All systems up and running again."
+  - service: script.speech_notify_engine
+    data_template:
+      speech_message: >
+        {{ [
+        "Systems are back online.",
+        "Hello Eugene. It's Alice. I am back online.",
+        "I have successfully restarted. How can I help you?",
+        "Hello, it's Alice. I am back online.",
+        "I am back online.",
+        "Guess who's back. Back again. It is me Alice."
+        ] | random }}
+
+- alias: Morning routine
+  trigger:
+    platform: sun
+    event: sunrise
+    offset: '+01:00:00'
+  condition:
+    condition: state
+    entity_id: group.people_location
+    state: 'home'
+  action:
+  - service: script.speech_notify_engine
+    data_template:
+      speech_message: >
+        {{ [
+        "Good morning. The sun's coming up shortly. It's currently" + states.sensor.time.state+ ", and the temperature is" +  states.sensor.dark_sky_temperature.state  + " celcius. And is expected to be" +  states.sensor.dark_sky_summary.state ,
+        "Rise and shine. It's " + states.sensor.time.state+ ". Today it is expected to be" +  states.sensor.dark_sky_summary.state  + ", and the temperature is" +  states.sensor.dark_sky_temperature.state + " celcius.",
+        "Wake up now. It is" + states.sensor.time.state + ". The weather today is going to be" + states.sensor.dark_sky_summary.state + ", and the temperature is" +  states.sensor.dark_sky_temperature.state + " celcius."
+        ] | random }}
+  - service: light.turn_on
+    entity_id: light.dresser_light
+
+- alias: Evening lights
+  trigger:
+    platform: sun
+    event: sunset
+    offset: "+01:00:00"
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: group.people_location
+        state: 'home'
+      - condition: state
+        entity_id: group.all_lights
+        state: 'off'
+  action:
+  - service: script.speech_notify_engine
+    data_template:
+      speech_message: >
+        {{ [
+        "Pardon me. It appears it's going to be dark soon. Let a switch the light on for you.",
+        "Sorry to interrupt. I've taken the liberty to turn on a light for you. It'll be getting dark soon. ",
+        "The sun is about to set. Let me turn on a light for you."
+        ] | random }}
+  - service: script.text_notify_engine
+    data_template:
+      text_message: "Evening mode activated!"
+  - service: light.turn_on
+    entity_id: light.living_room_lamp

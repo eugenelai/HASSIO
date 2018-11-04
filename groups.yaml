@@ -10,6 +10,10 @@ default_view:
     - group.bedroom
     - group.workroom
     - sensor.eugene_location
+    - group.scenes
+    - lock.front_door
+    - device_tracker.aliceserver
+
 
 eugene_location:
   name: Euge's Location
@@ -19,12 +23,20 @@ eugene_location:
     - device_tracker.eugenesiphone
     - device_tracker.eugene_iphone
 
-alarms:
-  view: yes
-  name: Alarms
+people_location:
+  name: People's Location
+  view: false
   entities:
-    - group.alarmclock
-    - group.reminders
+    - device_tracker.eugenesiphonenmap
+    - device_tracker.eugenesiphone
+    - device_tracker.eugene_iphone
+    - device_tracker.heleniphone
+
+scenes:
+  name: Scenes
+  entities:
+    - scene.movie
+    - scene.good_night
 
 system:
   view: yes
@@ -32,6 +44,8 @@ system:
   entities:
     - group.status
     - group.locations
+    - input_boolean.guest_mode
+    - input_boolean.silence_mode
 
 livingroom:
   name: Living Room
@@ -40,19 +54,24 @@ livingroom:
     - light.tv_light
     - light.dining_light
     - light.living_room_lamp
+    - light.livingroom_moodlight
     - sensor.living_room_temperature
     - sensor.living_room_humidity
     - sensor.living_room_motion
     - camera.generic_camera
+
 
 bedroom:
   name: Bedroom
   control: hidden
   entities:
     - light.bedroom_light
+    - light.dresser_light
     - sensor.bedroom_temperature
     - sensor.bedroom_humidity
     - sensor.bedroom_motion
+    - script.bedroomacon
+    - script.bedroomacoff
 
 locations:
   name: User locations
@@ -60,6 +79,13 @@ locations:
     - device_tracker.eugenesiphonenmap
     - device_tracker.eugenesiphone
     - device_tracker.eugene_iphone
+
+media_player_alexa:
+  name: Alexa Speakers
+  entities:
+    - media_player.echo_dot_room
+    - media_player.echo_dot_living_room
+
 
 workroom:
   name: 'Workroom'
@@ -69,6 +95,7 @@ workroom:
 
 status:
   name: System status
+  control: hidden
   entities:
     - sensor.moon
     - sensor.uptime_templated
@@ -79,6 +106,7 @@ status:
     - sensor.certficate_expiry
     - sensor.disk_usage_template
     - script.restart_ha
+    - script.test_notification
 
 alarmclock:
   name: Natural Light Alarm

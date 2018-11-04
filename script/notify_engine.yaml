@@ -1,0 +1,35 @@
+######################################################################################################
+###Script to send notifications notificantion area for processing during normal hours and only when we are home! Call like this:
+  # action:
+    # service: script.speech_engine
+    # data:
+    #   call_no_announcement:
+    #   call_dark_outside:
+    #   call_window_check:
+    #   call_garage_check:
+    #   call_responsibilities
+    #   call_light_check
+    #   call_inside_weather
+    #   call_outside_weather
+# # @CCOSTAN
+# Original Repo : https://github.com/CCOSTAN/Home-AssistantConfig/blob/master/config/script/speech_engine.yaml
+######################################################################################################
+
+speech_notify_engine:
+  sequence:
+    - condition: state
+      entity_id: input_boolean.silence_mode
+      state: 'off'
+    - service: script.speech_notify_processing
+      data_template:
+        speech_message: "{{speech_message}}"
+#          {# call a Random fact about the house #}
+#          {{ ([iss, moon, uv, holiday]|random)() }}
+
+text_notify_engine:
+  sequence:
+    - service: script.text_notify_processing
+      data_template:
+        text_message: "{{text_message}}"
+#          {# call a Random fact about the house #}
+#          {{ ([iss, moon, uv, holiday]|random)() }}

@@ -1,0 +1,75 @@
+light.workroom_light:
+  config_entry_id:
+  name:
+  platform: wemo
+  unique_id: 94103EF6BF43FC29
+light.living_room_lamp:
+  config_entry_id:
+  name:
+  platform: wemo
+  unique_id: 94103EF6BF441EA1
+sensor.eugenes_iphone_battery_state:
+  config_entry_id:
+  name:
+  platform: ios
+  unique_id: state_eugene_iphone
+sensor.euge_iphone_battery_state:
+  config_entry_id:
+  name:
+  platform: ios
+  unique_id: state_euge_iphon
+sensor.eugenes_iphone_battery_level:
+  config_entry_id:
+  name:
+  platform: ios
+  unique_id: level_euge_iphone
+sensor.euge_iphone_battery_level:
+  config_entry_id:
+  name:
+  platform: ios
+  unique_id: level_euge_iphon
+sensor.eugenes_iphone_battery_level_2:
+  config_entry_id:
+  name:
+  platform: ios
+  unique_id: level_eugene_iphone
+sensor.eugenes_iphone_battery_state_2:
+  config_entry_id:
+  name:
+  platform: ios
+  unique_id: state_euge_iphone
+media_player.home:
+  config_entry_id:
+  name:
+  platform: alexa
+  unique_id: 8e479b9fe99c480181a7d5c57f32ae80
+media_player.echo_dot_living_room:
+  config_entry_id:
+  name:
+  platform: alexa
+  unique_id: G090L90965050T1H
+media_player.eugenes_alexa_apps:
+  config_entry_id:
+  name:
+  platform: alexa
+  unique_id: 611656CF9D4548338612164494643C36
+media_player.eugenes_fire:
+  config_entry_id:
+  name:
+  platform: alexa
+  unique_id: G0W0MA0772670UX4
+media_player.echo_dot_room:
+  config_entry_id:
+  name:
+  platform: alexa
+  unique_id: G090L90965050RAT
+sensor.s_iphone_battery_level:
+  config_entry_id:
+  name:
+  platform: ios
+  unique_id: level_s_iphone
+sensor.s_iphone_battery_state:
+  config_entry_id:
+  name:
+  platform: ios
+  unique_id: state_s_iphone

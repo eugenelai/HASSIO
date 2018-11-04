@@ -1,0 +1,40 @@
+##
+## Main arguments, all optional
+##
+title: Home
+widget_dimensions: [122, 114]
+widget_margins: [5, 5]
+columns: 8
+rows: 5
+
+layout:
+    - homelabel(3x1),  spacer, spacer, spacer, sensor.bedroom_temperature, sensor.living_room_temperature
+    - clock.clock(2x2), weather(2x2)
+    -
+    - spacer, light.tv_light, spacer, light.dining_light
+    - light.living_room_lamp, spacer, light.bedroom_light, spacer, spacer, spacer, settings(2x1)
+
+
+homelabel:
+    widget_type: label
+    text: Welcome
+
+settings:
+    widget_type: label
+    text: settings
+
+weather:
+    widget_type: weather
+    unit: "&deg;C"
+    main_style: "color: white; font-size: 80%;"
+    sub_style: "color: white; font-size: 0%;"
+    unit_style: "color: white;"
+    widget_style: "background: black; font-color: white;"
+    title: Today
+    title_style: "color: white;"
+
+
+camera:
+    widget_type: camera
+    entity_picture: http://eugenelai.duckdns.org/ccm/ccm_pic_get.jpg?hfrom_handle=887330&dsess=1&dsess_nid=MLP7GLincR0IFMG.XMs8t_dCIj1hBA&dsess_sn=1jfiegbp4eanq&dtoken=p0_xxxxxxxxxx
+    refresh: 5

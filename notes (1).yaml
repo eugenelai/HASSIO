@@ -1,0 +1,21 @@
+https://blog.ceard.tech/2018/01/home-assistant-and-basic-presence.html
+
+https://github.com/home-assistant/home-assistant/pull/12475
+
+#Home Assistant Configs for inspiration
+https://github.com/search?utf8=%E2%9C%93&q=home-assistant-config&type=
+
+#Using MQTT lights to control Limitless LED
+http://blog.christophermullins.com/2017/02/11/milight-wifi-gateway-emulator-on-an-esp8266/
+
+# Fix for Limiteless LED
+https://github.com/home-assistant/home-assistant/issues/12976
+
+#Node-Red
+https://www.reddit.com/r/homeassistant/comments/7tmv5z/nodered_hassio_tutorial_or_resources/dte13li/
+
+#Xiaomi integration
+https://smarthomehobby.com/2018/03/21/the-xiaomi-robot-vacuum-home-assistant-and-alexa/
+
+# Alexa
+https://community.home-assistant.io/t/how-to-trigger-a-home-assistant-scene-from-alexa-using-ha-cloud/37574/2
