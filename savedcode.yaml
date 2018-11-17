@@ -1,15 +1,3 @@
-https://blog.ceard.tech/2018/01/home-assistant-and-basic-presence.html
-
-https://github.com/home-assistant/home-assistant/pull/12475
-
-https://github.com/search?utf8=%E2%9C%93&q=home-assistant-config&type=
-
-https://github.com/andrewjfreyer/presence
-
-
-B&O
-https://community.home-assistant.io/t/beolink-bang-olufsen/57192/5
-
 
 
 notify_engine:
@@ -26,16 +14,20 @@ notify_engine:
           {{ message }}
 
 
+###################################################################################################################
+########################################### Example cURL Messages  ################################################
+###################################################################################################################
 
-curl -X GET -H "x-ha-access: b651fx56PI" \
+
+curl -X GET -H "x-ha-access: <PASSWORD>" \
        -H "Content-Type: application/json" https://eugenelai.duckdns.org/api/config
 
- curl -X POST -H "x-ha-access: b651fx56PI" \
+ curl -X POST -H "x-ha-access: <PASSWORD>" \
        -H "Content-Type: application/json" \
        -d '{"entity_id": "light.dresser_light"}' \
        https://eugenelai.duckdns.org/api/services/switch/turn_on
 
-curl -X POST -H "x-ha-access: b651fx56PI" \
+curl -X POST -H "x-ha-access: <PASSWORD>" \
       -H "Content-Type: application/json" \
       -d '{"entity_id": "lock.front_door"}' \
       https://eugenelai.duckdns.org/api/services/lock/unlock
@@ -43,70 +35,39 @@ curl -X POST -H "x-ha-access: b651fx56PI" \
 
 curl -H "Content-Type: application/json" -X PUT -d '{"standby":{"powerState":"standby"}}' http://192.168.0.50:8080/BeoDevice/powerManagement/standby
 
-curl -X POST -H "x-ha-access: b651fx56PI" \
+curl -X POST -H "x-ha-access: <PASSWORD>" \
       -H "Content-Type: application/json" \
       -d '{"entity_id": "script.restartserver"}' \
       https://eugenelai.duckdns.org/api/services/script/turn_on
 
-https://bonani.tech/how-to-install-hass.io-on-ubuntu-server-18.04/
+###################################################################################################################
+########################################### Morning Routine  ######################################################
+###################################################################################################################
 
-
--Emmet
--File Icons
--Atom Live Server
--Todo
--Mini-Map
--Pigments
--Linter
--Atom Beautify
--Ask Stack
--Highlight Selected
-
-
-automation:
-  - alias: Light hallway if motion 2
-    trigger:
-      - platform: state
-        entity_id: switch.net_hallsensor
-        to: 'on'
-    condition: state
-      entity_id: input_select.status_hallway
-      state: 'Hemma'
-    action:
-      - service: timer.start
-        entity_id: timer.timer_hallway
-      - service: switch.turn_on
-        entity_id: group.hallway_light
-  - alias: Turn off hallway lights at end of timer
-    trigger:
-      - platform: event
-        event_type: timer.finished
-        event_data:
-          entity_id: timer.timer_hallway
-    action:
-      service: switch.turn_off
-      entity_id: group.hallway_light
-
-timer:
-  timer_hallway:
-    duration: '00:03:00'
-
-group:
-  hallway_light:
-  name: "Hallway light"
-  entities:
-    - switch.hall_entre
-    - switch.hall_golvlampa
-    - switch.hall_kladhangare
-
-- alias: August Battery Level
+- alias: Morning routine
   trigger:
-    platform: time
+    platform: sun
+    event: sunrise
+    offset: '+01:00:00'
+  condition:
+    condition: state
+    entity_id: group.people_location
+    state: 'home'
+  action:
+  - service: script.speech_notify_engine
+    data_template:
+      speech_message: >
+        {{ [
+        "Good morning. The sun's coming up shortly. It's currently" + states.sensor.time.state+ ", and the temperature is" +  states.sensor.dark_sky_temperature.state  + " celcius. And is expected to be" +  states.sensor.dark_sky_summary.state ,
+        "Rise and shine. It's " + states.sensor.time.state+ ". Today it is expected to be" +  states.sensor.dark_sky_summary.state  + ", and the temperature is" +  states.sensor.dark_sky_temperature.state + " celcius.",
+        "Wake up now. It is" + states.sensor.time.state + ". The weather today is going to be" + states.sensor.dark_sky_summary.state + ", and the temperature is" +  states.sensor.dark_sky_temperature.state + " celcius."
+        ] | random }}
+  - service: light.turn_on
+    entity_id: light.dresser_light
 
-    {{states.lock.front_door.attributes.battery_level}}
-
-
-# ALARM PACKAGe
+###################################################################################################################
+###################################### Alarm Package ###############################################################
+###################################################################################################################
 - alias: "Alarm for weekdays"
   trigger:
     - platform: time
@@ -193,7 +154,10 @@ lightalarmclock:
         brightness: 255
         transition: 1800
 
-############ Test automations
+###################################################################################################################
+########################################### Motion Sensor #########################################################
+###################################################################################################################
+
 - alias: Motion Sensor Living Room
   trigger:
     platform: state
@@ -204,12 +168,76 @@ lightalarmclock:
     data:
       message: "Motion sensor in living room has triggered!"
 
-- alias: Motion Sensor Bedroom
+###################################################################################################################
+########################################### Motion Sensor w/ actions ##############################################
+###################################################################################################################
+
+automation:
+  - alias: Light hallway if motion 2
+    trigger:
+      - platform: state
+        entity_id: switch.net_hallsensor
+        to: 'on'
+    condition: state
+      entity_id: input_select.status_hallway
+      state: 'Hemma'
+    action:
+      - service: timer.start
+        entity_id: timer.timer_hallway
+      - service: switch.turn_on
+        entity_id: group.hallway_light
+  - alias: Turn off hallway lights at end of timer
+    trigger:
+      - platform: event
+        event_type: timer.finished
+        event_data:
+          entity_id: timer.timer_hallway
+    action:
+      service: switch.turn_off
+      entity_id: group.hallway_light
+
+timer:
+  timer_hallway:
+    duration: '00:03:00'
+
+group:
+  hallway_light:
+  name: "Hallway light"
+  entities:
+    - switch.hall_entre
+    - switch.hall_golvlampa
+    - switch.hall_kladhangare
+
+- alias: August Battery Level
+  trigger:
+    platform: time
+
+    {{states.lock.front_door.attributes.battery_level}}
+
+
+###################################################################################################################
+###################################### iPhone Charging Package ####################################################
+###################################################################################################################
+- alias: 'iPhone Charging'
   trigger:
     platform: state
-    entity_id: sensor.bedroom_room_motion
-    to: 'ON'
+    entity_id: sensor.iphonecharging
+    from: 'off'
+    to: 'on'
   action:
-  - service: notify.ios_eugene_iphone
-    data:
-      message: "Motion sensor in bedroom has triggered!"
+    - service: script.text_notify_engine
+      data_template:
+        text_message: >
+          "Your iPhone is charging"
+
+- alias: 'iPhone Charging'
+  trigger:
+    platform: state
+    entity_id: sensor.iphonecharging
+    from: 'off'
+    to: 'on'
+  action:
+    - service: script.text_notify_engine
+      data_template:
+        text_message: >
+          "Your iPhone is no longing charging"

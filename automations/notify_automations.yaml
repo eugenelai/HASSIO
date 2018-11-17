@@ -107,6 +107,14 @@
     entity_id: sensor.eugene_location
     from: 'home'
     to: 'travelling'
+    for:
+#      hours: 1
+      minutes: 2
+#      seconds: 5
+  condition:
+    - condition: state
+      entity_id: group.people_location
+      state: 'not_home'
   action:
     - service: script.text_notify_engine
       data_template:
@@ -194,27 +202,6 @@
         "I am back online.",
         "Guess who's back. Back again. It is me Alice."
         ] | random }}
-
-- alias: Morning routine
-  trigger:
-    platform: sun
-    event: sunrise
-    offset: '+01:00:00'
-  condition:
-    condition: state
-    entity_id: group.people_location
-    state: 'home'
-  action:
-  - service: script.speech_notify_engine
-    data_template:
-      speech_message: >
-        {{ [
-        "Good morning. The sun's coming up shortly. It's currently" + states.sensor.time.state+ ", and the temperature is" +  states.sensor.dark_sky_temperature.state  + " celcius. And is expected to be" +  states.sensor.dark_sky_summary.state ,
-        "Rise and shine. It's " + states.sensor.time.state+ ". Today it is expected to be" +  states.sensor.dark_sky_summary.state  + ", and the temperature is" +  states.sensor.dark_sky_temperature.state + " celcius.",
-        "Wake up now. It is" + states.sensor.time.state + ". The weather today is going to be" + states.sensor.dark_sky_summary.state + ", and the temperature is" +  states.sensor.dark_sky_temperature.state + " celcius."
-        ] | random }}
-  - service: light.turn_on
-    entity_id: light.dresser_light
 
 - alias: Evening lights
   trigger:

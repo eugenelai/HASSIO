@@ -5,14 +5,17 @@ log:
 appdaemon:
   threads: 10
   app_dir: /config/appdaemon/apps
+  time_zone: Asia/Hong_Kong
+  api_key: dash_pw
+  api_ssl_certificate: /ssl/fullchain.pem
+  api_ssl_key: /ssl/privkey.pem
   plugins:
     HASS:
       type: hass
-      ha_url: !secret hass_url
-      ha_key: !secret hass_pw
+      ha_url: http://hassio/homeassistant
 hadashboard:
   dash_url: https://eugenelai.duckdns.org:5050
   dash_dir: /config/appdaemon/dashboards
   dash_ssl_certificate: /ssl/fullchain.pem
   dash_ssl_key: /ssl/privkey.pem
-  dash_password: !secret dash_pw
+  dash_password: !secret dash_password

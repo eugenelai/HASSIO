@@ -115,6 +115,33 @@ light:
           service: script.turn_on
           entity_id: script.livingroomledoff
 
+switch:
+  - platform: template
+    switches:
+      bedroom_fan:
+        friendly_name: "Bedroom Aircon"
+        value_template: "{{ states('input_boolean.bedroomac') }}"
+        turn_on:
+          service: script.turn_on
+          data:
+            entity_id: script.bedroomacon
+        turn_off:
+          service: script.turn_on
+          data:
+            entity_id: script.bedroomacoff
+  - platform: template
+    switches:
+      xboxmediaplayer:
+        friendly_name: "Xbox"
+        value_template: "{{ states('input_boolean.xbox') }}"
+        turn_on:
+          service: script.turn_on
+          data:
+            entity_id: script.xboxon
+        turn_off:
+          service: script.turn_on
+          data:
+            entity_id: script.xboxoff
 
 mqtt:
   broker: core-mosquitto
@@ -139,3 +166,9 @@ input_boolean:
   silence_mode:
     name: Silence mode
     icon: mdi:volume-off
+  bedroomac:
+    name: Bedroom AC
+    initial: off
+  xbox:
+    name: Xbox Status
+    initial: off

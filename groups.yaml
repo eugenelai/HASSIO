@@ -13,6 +13,7 @@ default_view:
     - group.scenes
     - lock.front_door
     - device_tracker.aliceserver
+    - sensor.iphonecharging
 
 
 eugene_location:
@@ -38,6 +39,12 @@ scenes:
     - scene.movie
     - scene.good_night
 
+camera:
+  view: yes
+  name: Camera
+  entities:
+    - camera.generic_camera
+
 system:
   view: yes
   name: System
@@ -58,7 +65,9 @@ livingroom:
     - sensor.living_room_temperature
     - sensor.living_room_humidity
     - sensor.living_room_motion
-    - camera.generic_camera
+    - switch.xboxmediaplayer
+    # - script.xboxon
+    # - script.xboxoff
 
 
 bedroom:
@@ -70,8 +79,9 @@ bedroom:
     - sensor.bedroom_temperature
     - sensor.bedroom_humidity
     - sensor.bedroom_motion
-    - script.bedroomacon
-    - script.bedroomacoff
+    - switch.bedroom_fan
+    # - script.bedroomacon
+    # - script.bedroomacoff
 
 locations:
   name: User locations

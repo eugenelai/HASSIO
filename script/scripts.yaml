@@ -1,3 +1,4 @@
+
 #ifttt Triggers
 
 livingroomledon:
@@ -20,13 +21,36 @@ bedroomacon:
     - service: ifttt.trigger
       data:
         event: bedroomacon
-
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.bedroomac
 bedroomacoff:
-  alias: Turn on Bedroom AC
+  alias: Turn off Bedroom AC
   sequence:
     - service: ifttt.trigger
       data:
         event: bedroomacoff
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.bedroomac
+
+xboxon:
+  alias: Turn on Xbox One
+  sequence:
+    - service: media_player.turn_on
+      entity_id: media_player.xbox
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.xbox
+
+xboxoff:
+  alias: Turn off Xbox One
+  sequence:
+    - service: media_player.turn_off
+      entity_id: media_player.xbox
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.xbox
 
 # alexattstest:
 #   alias: Alexa TTS Test

@@ -28,3 +28,33 @@
       data_template:
         text_message: >
           "The current temperature of your bedroom has dropped to {{states.sensor.bedroom_temperature.state | round | int }}."
+
+
+- alias: 'Getting Up'
+  trigger:
+    platform: state
+    entity_id: sensor.iphonecharging
+    from: 'on'
+    to: 'off'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: sensor.eugene_location
+        state: 'home'
+      - condition: time
+        after: '05:00:00'
+        before: '10:00:00'
+  action:
+    - service: light.turn_on
+      entity_id: light.livingroom_moodlight
+    - service: light.turn_on
+      entity_id: light.dresser_light
+    - service: script.speech_notify_engine
+      data_template:
+        speech_message: >
+          {{ [
+          "Good morning. The sun's coming up shortly. It's currently" + states.sensor.time.state+ ", and the temperature is" +  states.sensor.dark_sky_temperature.state  + " celcius. And is expected to be" +  states.sensor.dark_sky_summary.state ,
+          "Rise and shine. It's " + states.sensor.time.state+ ". Today it is expected to be" +  states.sensor.dark_sky_summary.state  + ", and the temperature is" +  states.sensor.dark_sky_temperature.state + " celcius.",
+          "Wake up now. It is" + states.sensor.time.state + ". The weather today is going to be" + states.sensor.dark_sky_summary.state + ", and the temperature is" +  states.sensor.dark_sky_temperature.state + " celcius."
+          ] | random }}"
