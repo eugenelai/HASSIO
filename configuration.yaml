@@ -55,9 +55,12 @@ august:
   username: !secret august_username
   password: !secret august_password
   timeout: 60
+<<<<<<< HEAD
 
 ifttt:
   key: !secret ifttt_key
+=======
+>>>>>>> c58734b8ed8b87123dab6c7b38997b85ddfcf057
 
 media_player:
   #- platform: mpd
@@ -104,6 +107,7 @@ light:
         turn_off:
           service: switch.turn_off
           entity_id: switch.bedroom_dresser
+<<<<<<< HEAD
   - platform: template
     lights:
       livingroom_moodlight:
@@ -142,6 +146,9 @@ switch:
           service: script.turn_on
           data:
             entity_id: script.xboxoff
+=======
+
+>>>>>>> c58734b8ed8b87123dab6c7b38997b85ddfcf057
 
 mqtt:
   broker: core-mosquitto
@@ -166,9 +173,12 @@ input_boolean:
   silence_mode:
     name: Silence mode
     icon: mdi:volume-off
+<<<<<<< HEAD
   bedroomac:
     name: Bedroom AC
     initial: off
   xbox:
     name: Xbox Status
     initial: off
+=======
+>>>>>>> c58734b8ed8b87123dab6c7b38997b85ddfcf057

@@ -1,0 +1,186 @@
+Home Assistant notifications (Log started: 2018-10-10T13:43:37.464092+00:00)
+--------------------------------------------------------------------------------
+10-Oct-2018 | 21:43: Saying hello to dad
+11-Oct-2018 | 05:22: Door unlocked
+11-Oct-2018 | 05:33: Eugene has disconnected from WiFi
+11-Oct-2018 | 05:33: Have a safe journey. All lights have been shut down and the doors locked.
+11-Oct-2018 | 05:34: Door locked
+11-Oct-2018 | 05:45: Door unlocked
+11-Oct-2018 | 05:45: Have a safe journey. All lights have been shut down and the doors locked.
+11-Oct-2018 | 05:46: Eugene has come home.
+11-Oct-2018 | 05:46: Door locked
+11-Oct-2018 | 06:18: Door unlocked
+11-Oct-2018 | 06:22: Door locked
+11-Oct-2018 | 06:29: Eugene has disconnected from WiFi
+11-Oct-2018 | 06:36: Have a safe journey. All lights have been shut down and the doors locked.
+11-Oct-2018 | 07:21: Hope you smashed work today.
+11-Oct-2018 | 07:38: Hope you smashed work today.
+11-Oct-2018 | 09:27: Door unlocked
+11-Oct-2018 | 09:28: Helen has come home.
+11-Oct-2018 | 10:19: Door locked
+11-Oct-2018 | 10:32: Helen has disconnected from WiFi
+11-Oct-2018 | 11:25: Door unlocked
+11-Oct-2018 | 11:25: Helen has come home.
+11-Oct-2018 | 11:33: Door locked
+11-Oct-2018 | 11:38: Helen has disconnected from WiFi
+11-Oct-2018 | 14:30: Hope you smashed work today.
+11-Oct-2018 | 16:00: Door unlocked
+11-Oct-2018 | 16:01: Door locked
+11-Oct-2018 | 16:01: Helen has come home.
+11-Oct-2018 | 16:14: Helen has disconnected from WiFi
+11-Oct-2018 | 18:42: Looks like you'll be home soon. Turning on the light for you.
+11-Oct-2018 | 18:43: Door unlocked
+11-Oct-2018 | 18:43: Eugene has come home.
+11-Oct-2018 | 18:53: Helen has come home.
+11-Oct-2018 | 19:30: Door locked
+11-Oct-2018 | 19:37: Helen has disconnected from WiFi
+12-Oct-2018 | 05:30: Door unlocked
+12-Oct-2018 | 05:36: Eugene has disconnected from WiFi
+12-Oct-2018 | 05:36: Door locked
+12-Oct-2018 | 05:53: Door unlocked
+12-Oct-2018 | 05:54: Eugene has come home.
+12-Oct-2018 | 06:27: Door locked
+12-Oct-2018 | 06:27: Eugene has disconnected from WiFi
+12-Oct-2018 | 06:33: Have a safe journey. All lights have been shut down and the doors locked.
+12-Oct-2018 | 07:02: Hope you smashed work today.
+12-Oct-2018 | 07:05: Hope you smashed work today.
+12-Oct-2018 | 07:11: Hope you smashed work today.
+12-Oct-2018 | 07:32: Hope you smashed work today.
+12-Oct-2018 | 07:41: Hope you smashed work today.
+12-Oct-2018 | 07:43: Hope you smashed work today.
+12-Oct-2018 | 07:48: Hope you smashed work today.
+12-Oct-2018 | 07:52: Hope you smashed work today.
+12-Oct-2018 | 08:24: Hope you smashed work today.
+12-Oct-2018 | 08:27: Hope you smashed work today.
+12-Oct-2018 | 09:35: Door unlocked
+12-Oct-2018 | 09:35: Door locked
+12-Oct-2018 | 09:35: Helen has come home.
+12-Oct-2018 | 11:24: Helen has disconnected from WiFi
+12-Oct-2018 | 11:25: Helen has come home.
+12-Oct-2018 | 12:01: Helen has disconnected from WiFi
+12-Oct-2018 | 13:21: Hope you smashed work today.
+12-Oct-2018 | 13:33: Hope you smashed work today.
+12-Oct-2018 | 16:36: Saying hello to dad
+12-Oct-2018 | 16:37: Saying hello to dad
+12-Oct-2018 | 18:08: Hope you smashed work today.
+12-Oct-2018 | 18:17: Door unlocked
+12-Oct-2018 | 18:17: Door locked
+12-Oct-2018 | 18:18: Helen has come home.
+12-Oct-2018 | 20:03: Helen has disconnected from WiFi
+13-Oct-2018 | 06:13: Door unlocked
+13-Oct-2018 | 06:19: Eugene has come home.
+13-Oct-2018 | 11:32: Eugene has disconnected from WiFi
+13-Oct-2018 | 11:45: Eugene has come home.
+13-Oct-2018 | 14:21: Door locked
+13-Oct-2018 | 14:23: Eugene has disconnected from WiFi
+13-Oct-2018 | 14:36: Have a safe journey. All lights have been shut down and the doors locked.
+13-Oct-2018 | 18:26: Looks like you'll be home soon. Turning on the light for you.
+13-Oct-2018 | 18:29: Door unlocked
+13-Oct-2018 | 18:29: Eugene has come home.
+13-Oct-2018 | 19:17: Door locked
+13-Oct-2018 | 21:58: Update for Home Assistant is available.
+14-Oct-2018 | 07:22: Door unlocked
+14-Oct-2018 | 07:27: Eugene has disconnected from WiFi
+14-Oct-2018 | 07:38: Eugene has come home.
+14-Oct-2018 | 10:57: Eugene has disconnected from WiFi
+14-Oct-2018 | 11:00: Have a safe journey. All lights have been shut down and the doors locked.
+14-Oct-2018 | 11:01: Door locked
+14-Oct-2018 | 11:28: Hope you smashed work today.
+14-Oct-2018 | 11:31: Hope you smashed work today.
+14-Oct-2018 | 11:37: Hope you smashed work today.
+14-Oct-2018 | 11:39: Hope you smashed work today.
+14-Oct-2018 | 11:42: Hope you smashed work today.
+14-Oct-2018 | 11:45: Hope you smashed work today.
+14-Oct-2018 | 11:51: Hope you smashed work today.
+14-Oct-2018 | 11:58: Hope you smashed work today.
+14-Oct-2018 | 12:01: Hope you smashed work today.
+14-Oct-2018 | 12:25: Hope you smashed work today.
+14-Oct-2018 | 12:33: Hope you smashed work today.
+14-Oct-2018 | 13:06: Hope you smashed work today.
+14-Oct-2018 | 13:09: Hope you smashed work today.
+14-Oct-2018 | 13:27: Hope you smashed work today.
+14-Oct-2018 | 14:41: Hope you smashed work today.
+14-Oct-2018 | 15:45: Have a safe journey. All lights have been shut down and the doors locked.
+14-Oct-2018 | 15:54: Door unlocked
+14-Oct-2018 | 15:55: Eugene has come home.
+14-Oct-2018 | 17:09: Eugene has disconnected from WiFi
+14-Oct-2018 | 17:19: Eugene has come home.
+14-Oct-2018 | 18:33: Door locked
+14-Oct-2018 | 20:02: Door unlocked
+14-Oct-2018 | 20:02: Door locked
+15-Oct-2018 | 05:37: Door unlocked
+15-Oct-2018 | 05:46: Eugene has disconnected from WiFi
+15-Oct-2018 | 05:57: Eugene has come home.
+15-Oct-2018 | 06:31: Eugene has disconnected from WiFi
+15-Oct-2018 | 06:58: Have a safe journey. All lights have been shut down and the doors locked.
+15-Oct-2018 | 06:58: Door locked
+15-Oct-2018 | 08:38: System restarting and will be back online shortly
+15-Oct-2018 | 08:40: All systems up and running again.
+15-Oct-2018 | 09:40: Update for Home Assistant is available.
+15-Oct-2018 | 11:48: Door unlocked
+15-Oct-2018 | 11:50: Helen has come home.
+15-Oct-2018 | 12:00: Door locked
+15-Oct-2018 | 12:03: Helen has disconnected from WiFi
+15-Oct-2018 | 14:20: Door unlocked
+15-Oct-2018 | 14:20: Helen has come home.
+15-Oct-2018 | 14:21: Door locked
+15-Oct-2018 | 15:29: Door unlocked
+15-Oct-2018 | 16:47: Helen has disconnected from WiFi
+15-Oct-2018 | 16:52: Helen has come home.
+15-Oct-2018 | 16:54: Door locked
+15-Oct-2018 | 17:04: Helen has disconnected from WiFi
+15-Oct-2018 | 18:30: Hope you smashed work today.
+15-Oct-2018 | 18:48: Looks like you'll be home soon. Turning on the light for you.
+15-Oct-2018 | 18:49: Have a safe journey. All lights have been shut down and the doors locked.
+15-Oct-2018 | 18:52: Looks like you'll be home soon. Turning on the light for you.
+15-Oct-2018 | 18:52: Door unlocked
+15-Oct-2018 | 18:53: Eugene has come home.
+15-Oct-2018 | 19:01: Helen has come home.
+15-Oct-2018 | 19:13: Helen has disconnected from WiFi
+15-Oct-2018 | 19:55: Door locked
+16-Oct-2018 | 05:13: Door unlocked
+16-Oct-2018 | 05:17: Eugene has disconnected from WiFi
+16-Oct-2018 | 05:33: Eugene has come home.
+16-Oct-2018 | 06:12: Door locked
+16-Oct-2018 | 06:17: Eugene has disconnected from WiFi
+16-Oct-2018 | 06:30: Have a safe journey. All lights have been shut down and the doors locked.
+16-Oct-2018 | 08:40: Door unlocked
+16-Oct-2018 | 08:41: Eugene has come home.
+16-Oct-2018 | 09:40: Update for Home Assistant is available.
+16-Oct-2018 | 10:21: Helen has come home.
+16-Oct-2018 | 10:34: Helen has disconnected from WiFi
+16-Oct-2018 | 10:40: Helen has come home.
+16-Oct-2018 | 10:53: Helen has disconnected from WiFi
+16-Oct-2018 | 11:07: Helen has come home.
+16-Oct-2018 | 11:17: Door locked
+16-Oct-2018 | 11:17: Door unlocked
+16-Oct-2018 | 11:17: Door locked
+16-Oct-2018 | 11:20: Helen has disconnected from WiFi
+16-Oct-2018 | 11:28: Eugene has disconnected from WiFi
+16-Oct-2018 | 18:50: Hope you smashed work today.
+16-Oct-2018 | 18:57: Hope you smashed work today.
+16-Oct-2018 | 19:04: Hope you smashed work today.
+16-Oct-2018 | 19:22: Have a safe journey. All lights have been shut down and the doors locked.
+16-Oct-2018 | 19:23: Looks like you'll be home soon. Turning on the light for you.
+16-Oct-2018 | 19:25: Door unlocked
+16-Oct-2018 | 19:25: Eugene has come home.
+16-Oct-2018 | 20:12: All systems up and running again.
+16-Oct-2018 | 21:12: Update for Home Assistant is available.
+16-Oct-2018 | 21:29: Door locked
+17-Oct-2018 | 01:23: Door unlocked
+17-Oct-2018 | 05:27: Eugene has disconnected from WiFi
+17-Oct-2018 | 08:33: Eugene has come home.
+17-Oct-2018 | 17:53: Eugene has disconnected from WiFi
+17-Oct-2018 | 18:03: Eugene has come home.
+17-Oct-2018 | 20:20: Door locked
+18-Oct-2018 | 07:14: Door unlocked
+18-Oct-2018 | 07:21: Eugene has disconnected from WiFi
+18-Oct-2018 | 07:21: Door locked
+18-Oct-2018 | 07:26: Door unlocked
+18-Oct-2018 | 07:26: Eugene has come home.
+18-Oct-2018 | 11:47: Door locked
+18-Oct-2018 | 12:02: Door unlocked
+18-Oct-2018 | 12:03: Door locked
+18-Oct-2018 | 12:07: Eugene has disconnected from WiFi
+18-Oct-2018 | 12:09: Have a safe journey. All lights have been shut down and the doors locked.
+18-Oct-2018 | 12:20: Have a safe journey. All lights have been shut down and the doors locked.

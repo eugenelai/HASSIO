@@ -490,6 +490,7 @@ d861620a910a:
   track: false
 
 ## New updates should appear below 19 October 2018
+<<<<<<< HEAD
 
 b4750e71eafd:
   hide_if_away: false
@@ -514,3 +515,5 @@ bcddc2814f2e:
   name: bcddc2814f2e
   picture:
   track: true
+=======
+>>>>>>> c58734b8ed8b87123dab6c7b38997b85ddfcf057

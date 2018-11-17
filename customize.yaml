@@ -1,5 +1,5 @@
 device_tracker.eugenesiphonenmap:
-  friendly_name: Euge iPhone
+  friendly_name: Euge iPhone NMAP
 
 device_tracker.eugenesiphone:
   friendly_name: Euge iPhone iCloud
@@ -66,4 +66,7 @@ light.dining_light:
   assumed_state: true
 
 light.tv_light:
+  assumed_state: true
+
+light.dresser_light:
   assumed_state: true

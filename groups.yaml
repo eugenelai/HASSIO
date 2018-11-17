@@ -13,7 +13,10 @@ default_view:
     - group.scenes
     - lock.front_door
     - device_tracker.aliceserver
+<<<<<<< HEAD
     - sensor.iphonecharging
+=======
+>>>>>>> c58734b8ed8b87123dab6c7b38997b85ddfcf057
 
 
 eugene_location:
@@ -27,6 +30,7 @@ eugene_location:
 people_location:
   name: People's Location
   view: false
+<<<<<<< HEAD
   entities:
     - device_tracker.eugenesiphonenmap
     - device_tracker.eugenesiphone
@@ -44,6 +48,19 @@ camera:
   name: Camera
   entities:
     - camera.generic_camera
+=======
+  entities:
+    - device_tracker.eugenesiphonenmap
+    - device_tracker.eugenesiphone
+    - device_tracker.eugene_iphone
+    - device_tracker.heleniphone
+
+scenes:
+  name: Scenes
+  entities:
+    - scene.movie
+    - scene.good_night
+>>>>>>> c58734b8ed8b87123dab6c7b38997b85ddfcf057
 
 system:
   view: yes

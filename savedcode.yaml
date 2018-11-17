@@ -1,3 +1,18 @@
+<<<<<<< HEAD
+=======
+https://blog.ceard.tech/2018/01/home-assistant-and-basic-presence.html
+
+https://github.com/home-assistant/home-assistant/pull/12475
+
+https://github.com/search?utf8=%E2%9C%93&q=home-assistant-config&type=
+
+https://github.com/andrewjfreyer/presence
+
+
+B&O
+https://community.home-assistant.io/t/beolink-bang-olufsen/57192/5
+
+>>>>>>> c58734b8ed8b87123dab6c7b38997b85ddfcf057
 
 
 notify_engine:
@@ -14,6 +29,7 @@ notify_engine:
           {{ message }}
 
 
+<<<<<<< HEAD
 ###################################################################################################################
 ########################################### Example cURL Messages  ################################################
 ###################################################################################################################
@@ -23,11 +39,22 @@ curl -X GET -H "x-ha-access: <PASSWORD>" \
        -H "Content-Type: application/json" https://eugenelai.duckdns.org/api/config
 
  curl -X POST -H "x-ha-access: <PASSWORD>" \
+=======
+
+curl -X GET -H "x-ha-access: b651fx56PI" \
+       -H "Content-Type: application/json" https://eugenelai.duckdns.org/api/config
+
+ curl -X POST -H "x-ha-access: b651fx56PI" \
+>>>>>>> c58734b8ed8b87123dab6c7b38997b85ddfcf057
        -H "Content-Type: application/json" \
        -d '{"entity_id": "light.dresser_light"}' \
        https://eugenelai.duckdns.org/api/services/switch/turn_on
 
+<<<<<<< HEAD
 curl -X POST -H "x-ha-access: <PASSWORD>" \
+=======
+curl -X POST -H "x-ha-access: b651fx56PI" \
+>>>>>>> c58734b8ed8b87123dab6c7b38997b85ddfcf057
       -H "Content-Type: application/json" \
       -d '{"entity_id": "lock.front_door"}' \
       https://eugenelai.duckdns.org/api/services/lock/unlock
@@ -35,11 +62,16 @@ curl -X POST -H "x-ha-access: <PASSWORD>" \
 
 curl -H "Content-Type: application/json" -X PUT -d '{"standby":{"powerState":"standby"}}' http://192.168.0.50:8080/BeoDevice/powerManagement/standby
 
+<<<<<<< HEAD
 curl -X POST -H "x-ha-access: <PASSWORD>" \
+=======
+curl -X POST -H "x-ha-access: b651fx56PI" \
+>>>>>>> c58734b8ed8b87123dab6c7b38997b85ddfcf057
       -H "Content-Type: application/json" \
       -d '{"entity_id": "script.restartserver"}' \
       https://eugenelai.duckdns.org/api/services/script/turn_on
 
+<<<<<<< HEAD
 ###################################################################################################################
 ########################################### Morning Routine  ######################################################
 ###################################################################################################################
@@ -68,6 +100,67 @@ curl -X POST -H "x-ha-access: <PASSWORD>" \
 ###################################################################################################################
 ###################################### Alarm Package ###############################################################
 ###################################################################################################################
+=======
+https://bonani.tech/how-to-install-hass.io-on-ubuntu-server-18.04/
+
+
+-Emmet
+-File Icons
+-Atom Live Server
+-Todo
+-Mini-Map
+-Pigments
+-Linter
+-Atom Beautify
+-Ask Stack
+-Highlight Selected
+
+
+automation:
+  - alias: Light hallway if motion 2
+    trigger:
+      - platform: state
+        entity_id: switch.net_hallsensor
+        to: 'on'
+    condition: state
+      entity_id: input_select.status_hallway
+      state: 'Hemma'
+    action:
+      - service: timer.start
+        entity_id: timer.timer_hallway
+      - service: switch.turn_on
+        entity_id: group.hallway_light
+  - alias: Turn off hallway lights at end of timer
+    trigger:
+      - platform: event
+        event_type: timer.finished
+        event_data:
+          entity_id: timer.timer_hallway
+    action:
+      service: switch.turn_off
+      entity_id: group.hallway_light
+
+timer:
+  timer_hallway:
+    duration: '00:03:00'
+
+group:
+  hallway_light:
+  name: "Hallway light"
+  entities:
+    - switch.hall_entre
+    - switch.hall_golvlampa
+    - switch.hall_kladhangare
+
+- alias: August Battery Level
+  trigger:
+    platform: time
+
+    {{states.lock.front_door.attributes.battery_level}}
+
+
+# ALARM PACKAGe
+>>>>>>> c58734b8ed8b87123dab6c7b38997b85ddfcf057
 - alias: "Alarm for weekdays"
   trigger:
     - platform: time
@@ -154,10 +247,14 @@ lightalarmclock:
         brightness: 255
         transition: 1800
 
+<<<<<<< HEAD
 ###################################################################################################################
 ########################################### Motion Sensor #########################################################
 ###################################################################################################################
 
+=======
+############ Test automations
+>>>>>>> c58734b8ed8b87123dab6c7b38997b85ddfcf057
 - alias: Motion Sensor Living Room
   trigger:
     platform: state
@@ -168,6 +265,7 @@ lightalarmclock:
     data:
       message: "Motion sensor in living room has triggered!"
 
+<<<<<<< HEAD
 ###################################################################################################################
 ########################################### Motion Sensor w/ actions ##############################################
 ###################################################################################################################
@@ -241,3 +339,14 @@ group:
       data_template:
         text_message: >
           "Your iPhone is no longing charging"
+=======
+- alias: Motion Sensor Bedroom
+  trigger:
+    platform: state
+    entity_id: sensor.bedroom_room_motion
+    to: 'ON'
+  action:
+  - service: notify.ios_eugene_iphone
+    data:
+      message: "Motion sensor in bedroom has triggered!"
+>>>>>>> c58734b8ed8b87123dab6c7b38997b85ddfcf057

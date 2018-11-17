@@ -9,42 +9,20 @@ rows: 10
 
 layout:
     - homelabel(3x1)
-    - spacer(3x1), clock.clock(4x4), spacer(2x1), weather(4x3)
-    -
-    -
-    - spacer(9x1), livingroomtemp(2x1), bedroomtemp(2x1)
+    - spacer(3x1), clock.clock(4x4), spacer(2x1), weather(4x4)
     -
     -
     -
-    - testlabel(2x1), hello
+    - spacer(9x1), spacer, sensor.living_room_temperature, spacer, sensor.bedroom_temperature
+    - gg
+    - hh
+    - ii
 
 
 homelabel:
     widget_type: label
     text: Home
     widget_style: "font-size: 70%; text-align: left; background: #222; padding: 10px 0 0 10px;"
-
-testlabel:
-    widget_type: label
-    text: test
-    icon_active: mdi-television-classic
-    widget_style: "font-size: 70%; text-align: left; background: #222; padding: 10px 0 0 10px;"
-
-livingroomtemp:
-    widget_type: sensor
-    entity: sensor.living_room_temperature
-    title: Living Room
-    title_style: "font-size: 60%; color: #fff"
-    value_style: "font-size: 27px; color: #fff; margin-top: 13px;"
-    unit_style: "font-size: 70%; color: #fff; margin-top: 15px;"
-
-bedroomtemp:
-    widget_type: sensor
-    entity: sensor.bedroom_temperature
-    title: Bed Room
-    title_style: "font-size: 60%; color: #fff"
-    value_style: "font-size: 27px; color: #fff; margin-top: 13px;"
-    unit_style: "font-size: 70%; color: #fff; margin-top: 15px;"
 
 
 settings:

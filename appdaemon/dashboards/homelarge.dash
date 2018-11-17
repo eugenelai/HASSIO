@@ -9,14 +9,14 @@ rows: 10
 
 layout:
     - homelabel(3x1)
-    - spacer(3x1), clock.clock(4x4), spacer(2x1), weather(4x4)
+    - spacer(3x1), clock.clock(4x4), spacer(2x1), weather(4x3)
+    -
+    -
+    - spacer(9x1), livingroomtemp(2x1), bedroomtemp(2x1)
     -
     -
     -
-    - spacer(9x1), spacer, sensor.living_room_temperature, spacer, sensor.bedroom_temperature
-    - gg
-    - hh
-    - ii
+    - testlabel(2x1), hello
 
 
 homelabel:
