@@ -47,7 +47,7 @@
         before: '10:00:00'
   action:
     - service: light.turn_on
-      entity_id: light.livingroom_moodlight
+      entity_id: light.living_room_mood
     - service: light.turn_on
       entity_id: light.dresser_light
     - service: script.speech_notify_engine

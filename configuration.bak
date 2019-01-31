@@ -60,6 +60,8 @@ august:
 ifttt:
   key: !secret ifttt_key
 
+
+
 media_player:
   #- platform: mpd
   #  host: 10.0.1.23
@@ -71,15 +73,15 @@ media_player:
     device: FD007AB48F31058E
     name: Xbox
 
-# camera:
-#   - platform: generic
-#     still_image_url: !secret cameraaddress
+camera:
+  - platform: generic
+    still_image_url: !secret cameraaddress
 
 # Light setup
 light:
   - platform: limitlessled
     bridges:
-      - host: 192.165.86.22
+      - host: 10.0.1.11
         version: 5
         port: 8899
         groups:
@@ -105,12 +107,17 @@ light:
         turn_off:
           service: switch.turn_off
           entity_id: switch.bedroom_dresser
-  - platform: flux_led
-    devices:
-      192.168.86.20:
-        name: "Living Room Mood"
-      192.168.86.21:
-        name: "Bedroom Mood"
+
+  - platform: template
+    lights:
+      livingroom_moodlight:
+        friendly_name: 'Living Room Mood'
+        turn_on:
+          service: script.turn_on
+          entity_id: script.livingroomledon
+        turn_off:
+          service: script.turn_on
+          entity_id: script.livingroomledoff
 
 switch:
   - platform: template
@@ -140,11 +147,14 @@ switch:
           data:
             entity_id: script.xboxoff
 
-# mqtt:
-#   broker: core-mosquitto
-#   username: !secret mqtt_username
-#   password: !secret mqtt_password
-#   client_id: home assistant
+
+
+
+mqtt:
+  broker: core-mosquitto
+  username: !secret mqtt_username
+  password: !secret mqtt_password
+  client_id: home assistant
 
 group: !include groups.yaml
 automation: !include_dir_merge_list automations
@@ -170,3 +180,5 @@ input_boolean:
   xbox:
     name: Xbox Status
     initial: off
+
+

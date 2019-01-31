@@ -13,11 +13,7 @@ default_view:
     - group.scenes
     - lock.front_door
     - device_tracker.aliceserver
-<<<<<<< HEAD
     - sensor.iphonecharging
-=======
->>>>>>> c58734b8ed8b87123dab6c7b38997b85ddfcf057
-
 
 eugene_location:
   name: Euge's Location
@@ -30,12 +26,18 @@ eugene_location:
 people_location:
   name: People's Location
   view: false
-<<<<<<< HEAD
+
   entities:
     - device_tracker.eugenesiphonenmap
     - device_tracker.eugenesiphone
     - device_tracker.eugene_iphone
     - device_tracker.heleniphone
+
+# camera:
+#   view: yes
+#   name: Camera
+#   entities:
+#     - camera.generic_camera
 
 scenes:
   name: Scenes
@@ -43,24 +45,6 @@ scenes:
     - scene.movie
     - scene.good_night
 
-camera:
-  view: yes
-  name: Camera
-  entities:
-    - camera.generic_camera
-=======
-  entities:
-    - device_tracker.eugenesiphonenmap
-    - device_tracker.eugenesiphone
-    - device_tracker.eugene_iphone
-    - device_tracker.heleniphone
-
-scenes:
-  name: Scenes
-  entities:
-    - scene.movie
-    - scene.good_night
->>>>>>> c58734b8ed8b87123dab6c7b38997b85ddfcf057
 
 system:
   view: yes
@@ -78,7 +62,7 @@ livingroom:
     - light.tv_light
     - light.dining_light
     - light.living_room_lamp
-    - light.livingroom_moodlight
+    - light.living_room_mood
     - sensor.living_room_temperature
     - sensor.living_room_humidity
     - sensor.living_room_motion

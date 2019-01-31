@@ -1,20 +1,6 @@
 
 #ifttt Triggers
 
-livingroomledon:
-  alias: Turn on living room mood
-  sequence:
-    - service: ifttt.trigger
-      data:
-        event: livingroomledon
-
-livingroomledoff:
-  alias: Turn off living room mood
-  sequence:
-    - service: ifttt.trigger
-      data:
-        event: livingroomledoff
-
 bedroomacon:
   alias: Turn on Bedroom AC
   sequence:
