@@ -6,15 +6,6 @@
 - platform: nmap_tracker
   hosts: 192.168.86.1/24
 
-<<<<<<< HEAD
-  home_interval: 15 #NMAP option
-  consider_home: 300
-  interval_seconds: 900
-
-  # home_interval: 10
-  # interval_seconds: 30
-  # consider_home: 10
-=======
   # home_interval: 15 #NMAP option
   # consider_home: 300
   # interval_seconds: 900
@@ -22,7 +13,6 @@
   home_interval: 10
   interval_seconds: 30
   consider_home: 10
->>>>>>> 5b46be00e166c37d7f15f961ce9ef95b2af14ee0
   new_device_defaults:
     track_new_devices: false
     hide_if_away: false

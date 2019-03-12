@@ -1,8 +1,5 @@
 light.workroom_light:
-<<<<<<< HEAD
-=======
 
->>>>>>> 5b46be00e166c37d7f15f961ce9ef95b2af14ee0
   config_entry_id:
   name:
   platform: wemo
@@ -77,10 +74,6 @@ sensor.s_iphone_battery_state:
   name:
   platform: ios
   unique_id: state_s_iphone
-<<<<<<< HEAD
-=======
-
->>>>>>> 5b46be00e166c37d7f15f961ce9ef95b2af14ee0
   platform: wemo
   unique_id: 94103EF6BF43FC29
 light.living_room_lamp:
@@ -104,7 +97,3 @@ sensor.eugenes_iphone_battery_level_2:
 sensor.eugenes_iphone_battery_state_2:
   platform: ios
   unique_id: state_euge_iphone
-<<<<<<< HEAD
-=======
-
->>>>>>> 5b46be00e166c37d7f15f961ce9ef95b2af14ee0
