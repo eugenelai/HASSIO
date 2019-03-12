@@ -1,5 +1,9 @@
 
 #ifttt Triggers
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5b46be00e166c37d7f15f961ce9ef95b2af14ee0
 bedroomacon:
   alias: Turn on Bedroom AC
   sequence:

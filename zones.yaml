@@ -4,6 +4,10 @@
   radius: 25
   icon: mdi:account-multiple
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5b46be00e166c37d7f15f961ce9ef95b2af14ee0
 - name: Work
   latitude: 22.320631
   longitude: 114.210165
@@ -13,3 +17,7 @@
   latitude: 22.320631
   longitude: 114.210165
   radius: 25
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5b46be00e166c37d7f15f961ce9ef95b2af14ee0

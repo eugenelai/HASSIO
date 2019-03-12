@@ -50,6 +50,8 @@
   action:
     - service: light.turn_on
       entity_id: light.living_room_mood
+    - service: light.turn_on
+      entity_id: light.dresser_light
     - service: script.speech_notify_engine
       data_template:
         speech_message: >

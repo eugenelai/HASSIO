@@ -45,10 +45,6 @@ august:
   password: !secret august_password
   timeout: 60
 
-notify:
-  - name: notificationhistory
-    platform: file
-    filename: www/notificationhistory.txt
 
 ifttt:
   key: !secret ifttt_key
@@ -59,9 +55,9 @@ alexa_media:
       password: !secret amazon_password
       url: amazon.com
 
-camera:
-  - platform: generic
-    still_image_url: !secret cameraaddress
+# camera:
+#   - platform: generic
+#     still_image_url: !secret cameraaddress
 
 # Light setup
 light:

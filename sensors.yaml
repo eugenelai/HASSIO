@@ -47,7 +47,11 @@
 - platform: systemmonitor
   resources:
     - type: memory_use_percent
+<<<<<<< HEAD
     #- type: since_last_boot
+=======
+    # - type: since_last_boot
+>>>>>>> 5b46be00e166c37d7f15f961ce9ef95b2af14ee0
     - type: disk_free
       arg: /home
     - type: disk_use
@@ -57,6 +61,7 @@
   name: Uptime
   unit_of_measurement: minutes
 
+<<<<<<< HEAD
 - platform: template
   sensors:
     disk_usage_template:
@@ -65,6 +70,37 @@
         {{states("sensor.disk_use_home")}} / {{(states.sensor.disk_free_home.state | float) + (states.sensor.disk_use_home.state | float)}} GB
 
 
+=======
+# - platform: template
+#   sensors:
+#     disk_usage_template:
+#       friendly_name: "Storage Usage"
+#       value_template: >-
+#         {{states("sensor.disk_use_home")}} / {{(states.sensor.disk_free_home.state | float) + (states.sensor.disk_use_home.state | float)}} GB
+
+# - platform: template
+#   sensors:
+#     since_last_boot_templated:
+#       friendly_name: RPi Uptime
+#       value_template: >-
+#         {%- set slb = states.sensor.since_last_boot.state.split(' ') -%}
+#         {%- set count = slb | length -%}
+#         {%- set hms = slb[count - 1] -%}
+#         {%- set hms_trimmed = hms.split('.')[0] -%}
+#         {%- set hms_split = hms_trimmed.split(':') -%}
+#         {%- set hours = hms_split[0] | int -%}
+#
+#         {%- if count == 3 -%}
+#           {{ slb[0] ~ ' ' ~ slb[1] ~ ' ' }}
+#         {%- endif -%}
+#         {%- if hours > 0 -%}
+#           {%- if hours == 1 -%}
+#             1 hour
+#           {%- else -%}
+#             {{ hours }} hours
+#           {%- endif -%}
+#         {%- endif -%}
+>>>>>>> 5b46be00e166c37d7f15f961ce9ef95b2af14ee0
 
 - platform: template
   sensors:
@@ -122,6 +158,7 @@
         {%- endif %}
 
 # MQTT Sensors
+<<<<<<< HEAD
 - platform: mqtt
   state_topic: sensor/livingroom/temperature
   name: "Living Room Temperature"
@@ -149,6 +186,36 @@
   command: 'cat /sys/class/thermal/cooling_device0/cur_state'
   unit_of_measurement: '°C'
   value_template: '{{ value | multiply(0.001) | round(0) }}'
+=======
+# - platform: mqtt
+#   state_topic: sensor/livingroom/temperature
+#   name: "Living Room Temperature"
+#   unit_of_measurement: "°C"
+# - platform: mqtt
+#   state_topic: sensor/livingroom/humidity
+#   name: "Living Room Humidity"
+#   unit_of_measurement: "%"
+# - platform: mqtt
+#   state_topic: sensor/livingroom/motion
+#   name: "Living Room Motion"
+# - platform: mqtt
+#   state_topic: sensor/bedroom/temperature
+#   name: "Bedroom Temperature"
+#   unit_of_measurement: "°C"
+# - platform: mqtt
+#   state_topic: sensor/bedroom/humidity
+#   name: "Bedroom Humidity"
+#   unit_of_measurement: "%"
+# - platform: mqtt
+#   state_topic: sensor/bedroom/motion
+#   name: "Bedroom Motion"
+
+# - platform: command_line
+#   name: Core Temperature
+#   command: 'cat /sys/class/thermal/thermal_zone0/temp'
+#   unit_of_measurement: '°C'
+#   value_template: '{{ value | multiply(0.001) | round(0) }}'
+>>>>>>> 5b46be00e166c37d7f15f961ce9ef95b2af14ee0
 
 #Alarm Clock Value
 - platform: template

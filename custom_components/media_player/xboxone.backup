@@ -507,6 +507,10 @@ class XboxOne:
         """
         Enumerate devices and refresh status info
         """
+<<<<<<< HEAD:custom_components/media_player/xboxone.backup
+=======
+
+>>>>>>> 5b46be00e166c37d7f15f961ce9ef95b2af14ee0:custom_components/media_player/xboxone.py
         if not self._check_server():
             return
 
@@ -535,6 +539,7 @@ class XboxOne:
                     self._connected = True
 
         if self.available and self.connected:
+<<<<<<< HEAD:custom_components/media_player/xboxone.backup
             self._console_status = self._get_console_status()
             self._media_status = self._get_media_status()
             self._volume_controls = self._get_volume_controls()
@@ -547,6 +552,15 @@ class XboxOneDevice(MediaPlayerDevice):
     def __init__(self, base_url, liveid, name, auth):
         """Initialize the Xbox One device."""
         self._xboxone = XboxOne(base_url, liveid, auth)
+=======
+            self._update_console_status()
+            self._update_media_status()
+            self._update_volume_controls()
+
+
+class XboxOneDevice(MediaPlayerDevice):
+    """Representation of an Xbox One device on the network."""
+>>>>>>> 5b46be00e166c37d7f15f961ce9ef95b2af14ee0:custom_components/media_player/xboxone.py
 
     def __init__(self, base_url, liveid, ip, name, auth):
         """Initialize the Xbox One device."""
@@ -576,9 +590,12 @@ class XboxOneDevice(MediaPlayerDevice):
     def supported_features(self):
         """Flag media player features that are supported."""
         active_support = SUPPORT_XBOXONE
+<<<<<<< HEAD:custom_components/media_player/xboxone.backup
         if self.state not in [STATE_PLAYING, STATE_PAUSED] \
             and (self._xboxone.active_app_type not in ['Application', 'App'] or self._xboxone.active_app == 'Home'):
             active_support &= ~SUPPORT_PLAY & ~SUPPORT_PAUSE & ~SUPPORT_NEXT_TRACK & ~SUPPORT_PREVIOUS_TRACK
+=======
+>>>>>>> 5b46be00e166c37d7f15f961ce9ef95b2af14ee0:custom_components/media_player/xboxone.py
         if self.state not in [STATE_PLAYING, STATE_PAUSED]\
                 and (self._xboxone.active_app_type not in ['Application', 'App'] or self._xboxone.active_app == 'Home'):
             active_support &= ~SUPPORT_NEXT_TRACK & ~SUPPORT_PREVIOUS_TRACK
@@ -590,9 +607,12 @@ class XboxOneDevice(MediaPlayerDevice):
     def state(self):
         """Return the state of the player."""
         playback_state = {
+<<<<<<< HEAD:custom_components/media_player/xboxone.backup
             'Closed': STATE_UNKNOWN,
             'Changing': STATE_UNKNOWN,
             'Stopped': STATE_UNKNOWN,
+=======
+>>>>>>> 5b46be00e166c37d7f15f961ce9ef95b2af14ee0:custom_components/media_player/xboxone.py
             'Closed': STATE_IDLE,
             'Changing': STATE_IDLE,
             'Stopped': STATE_IDLE,
@@ -603,7 +623,10 @@ class XboxOneDevice(MediaPlayerDevice):
         if playback_state:
             state = playback_state
         elif self._xboxone.connected or self._xboxone.available:
+<<<<<<< HEAD:custom_components/media_player/xboxone.backup
             state = STATE_UNKNOWN
+=======
+>>>>>>> 5b46be00e166c37d7f15f961ce9ef95b2af14ee0:custom_components/media_player/xboxone.py
             if self._xboxone.active_app_type not in ['Application', 'App'] or self._xboxone.active_app == 'Home':
                 state = STATE_ON
             else:
@@ -703,11 +726,14 @@ class XboxOneDevice(MediaPlayerDevice):
 
     def media_previous_track(self):
         """Send previous track command."""
+<<<<<<< HEAD:custom_components/media_player/xboxone.backup
         self._xboxone.media_command('prev_track')
 
     def media_next_track(self):
         """Send next track command."""
         self._xboxone.media_command('next_track')
+=======
+>>>>>>> 5b46be00e166c37d7f15f961ce9ef95b2af14ee0:custom_components/media_player/xboxone.py
         if self._xboxone.active_app == 'TV':
             self._xboxone.ir_command('stb', 'btn.ch_down')
         else:

@@ -226,8 +226,32 @@ wemo_lan:
 helens_iphone_lan:
   hide_if_away: false
   icon:
+<<<<<<< HEAD
   mac: 90:8D:6C:CF:B3:5E
   name: helens-iphone.lan
+=======
+  mac: 18:AF:61:04:B9:CB
+  name: 18af6104b9cb
+  picture:
+  track: false
+
+d861620a910a:
+  hide_if_away: false
+  icon:
+  mac: D8:61:62:0A:91:0A
+  name: d861620a910a
+  picture:
+  track: false
+
+## New updates should appear below 19 October 2018
+
+
+b4750e71eafd:
+  hide_if_away: false
+  icon:
+  mac: B4:75:0E:71:EA:FD
+  name: b4750e71eafd
+>>>>>>> 5b46be00e166c37d7f15f961ce9ef95b2af14ee0
   picture:
   track: true
 
@@ -246,3 +270,8 @@ helens_iphone_lan_2:
   name: helens-iphone.lan
   picture:
   track: true
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 5b46be00e166c37d7f15f961ce9ef95b2af14ee0
