@@ -68,6 +68,27 @@ curl -X POST -H "x-ha-access: <PASSWORD>" \
 ###################################################################################################################
 ###################################### Alarm Package ###############################################################
 ###################################################################################################################
+
+# Group
+
+alarmclock:
+  name: Natural Light Alarm
+  control: hidden
+  entities:
+    - sensor.alarm_time
+    - input_number.alarmhour
+    - input_number.alarmminutes
+    - input_boolean.alarmweekday
+    - input_boolean.alarmweekon
+reminders:
+  name: Reminders
+  control: hidden
+  entities:
+    - input_boolean.running_reminder
+    - automation.daily_reminder
+
+# automation
+
 - alias: "Alarm for weekdays"
   trigger:
     - platform: time
@@ -218,7 +239,7 @@ group:
 ###################################################################################################################
 ###################################### iPhone Charging Package ####################################################
 ###################################################################################################################
-- alias: 'iPhone Charging'
+- alias: 'iPhone Charging off'
   trigger:
     platform: state
     entity_id: sensor.iphonecharging
@@ -230,7 +251,7 @@ group:
         text_message: >
           "Your iPhone is charging"
 
-- alias: 'iPhone Charging'
+- alias: 'iPhone Charging on'
   trigger:
     platform: state
     entity_id: sensor.iphonecharging
@@ -241,3 +262,123 @@ group:
       data_template:
         text_message: >
           "Your iPhone is no longing charging"
+
+- alias: 'iPhone Charging off'
+  trigger:
+    platform: state
+    entity_id: sensor.iphonecharging
+    from: 'off'
+    to: 'on'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: sensor.eugene_location
+        state: 'home'
+      - condition: time
+        after: '05:00:00'
+        before: '11:00:00'
+  action:
+  - service: script.text_notify_engine
+    data_template:
+      text_message: >
+        "Your iPhone is charging"
+  - service: script.speech_notify_engine
+    data_template:
+      speech_message: >
+        {{ [
+        "Good morning. The sun's coming up shortly. It's currently" + states.sensor.time.state+ ", and the temperature is" +  states.sensor.dark_sky_temperature.state  + " celcius. And is expected to be" +  states.sensor.dark_sky_summary.state ,
+        "Rise and shine. It's " + states.sensor.time.state+ ". Today it is expected to be" +  states.sensor.dark_sky_summary.state  + ", and the temperature is" +  states.sensor.dark_sky_temperature.state + " celcius.",
+        "Wake up now. It is" + states.sensor.time.state + ". The weather today is going to be" + states.sensor.dark_sky_summary.state + ", and the temperature is" +  states.sensor.dark_sky_temperature.state + " celcius."
+        ] | random }}
+
+
+###################################################################################################################
+############################################### Sensors ###########################################################
+###################################################################################################################
+
+
+- platform: command_line
+ name: Smart mirror
+ command: 'curl -Is http://xxx.duckdns.org:8080 | head -n 1'
+ value_template: >-
+   {% if value == 'HTTP/1.1 200 OK' %}
+     Online
+   {% else %}
+     Offline
+   {% endif %}
+
+## Bitcoin Sensors
+
+Bitcoin
+- platform: bitcoin
+ friendly_name: bitcoinhkd
+ currency: HKD
+ display_options:
+   - exchangerate
+- platform: bitcoin
+ friendly_name: bitcoinusd
+ currency: USD
+ display_options:
+   - exchangerate
+
+- platform: template
+ sensors:
+   bcvalue:
+     friendly_name: "Bitcoin Wallet"
+     value_template: " HKD{{ '{0:,.0f}'.format(states('sensor.exchange_rate_1_btc') | float * 0.113) | round(0) }}"
+
+- platform: template
+ sensors:
+   bcratehkd:
+     friendly_name: "Bitcoin HKD"
+     value_template: "HKD{{ '{0:,.0f}'.format(states('sensor.exchange_rate_1_btc') | float ) | round(0) }}"
+
+- platform: template
+ sensors:
+   bcrateusd:
+     friendly_name: "Bitcoin USD"
+     value_template: "USD{{ '{0:,.0f}'.format(states('sensor.exchange_rate_1_btc') | float / 7.8 ) | round(0) }}"
+
+- platform: template
+ sensors:
+   bcrateusd:
+     friendly_name: "Bitcoin USD"
+     value_template: "USD {{ '{0:,.0f}'.format((states.sensor.exchange_rate_1_btc.state) | float ) | round(0) }}"
+
+#Customer iPhone Sensor
+- platform: template
+ sensors:
+   euge_iphone:
+     friendly_name: "Euge iPhone"
+     value_template: >-
+       {% if is_state('device_tracker.iphone', 'home') or is_state('device_tracker.eugeiphonenmap', 'home') or is_state('device_tracker.euge_iphone', 'home') %}
+         Home
+       {% else %}
+         Away
+       {% endif %}
+
+
+
+- platform: template
+  sensors:
+    since_last_boot_templated:
+      friendly_name: RPi Uptime
+      value_template: >-
+        {%- set slb = states.sensor.since_last_boot.state.split(' ') -%}
+        {%- set count = slb | length -%}
+        {%- set hms = slb[count - 1] -%}
+        {%- set hms_trimmed = hms.split('.')[0] -%}
+        {%- set hms_split = hms_trimmed.split(':') -%}
+        {%- set hours = hms_split[0] | int -%}
+
+        {%- if count == 3 -%}
+          {{ slb[0] ~ ' ' ~ slb[1] ~ ' ' }}
+        {%- endif -%}
+        {%- if hours > 0 -%}
+          {%- if hours == 1 -%}
+            1 hour
+          {%- else -%}
+            {{ hours }} hours
+          {%- endif -%}
+        {%- endif -%}

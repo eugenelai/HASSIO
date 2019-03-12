@@ -1,3 +1,15 @@
+- platform: template
+  sensors:
+    iphonecharging:
+      friendly_name: iPhone Charging status
+      unit_of_measurement: '%'
+      value_template: >-
+          {% if (states.device_tracker.eugenesiphone.attributes.battery_status == "Charging") or (states.device_tracker.eugenesiphone.attributes.battery_status == "Charged") or ((states.device_tracker.eugenesiphone.attributes.battery_status == "NotCharging") and (states.device_tracker.eugenesiphone.attributes.battery == 100)) %}
+            on
+          {% else %}
+            off
+          {%- endif %}
+
 - platform: version
 - platform: moon
 
@@ -16,6 +28,13 @@
     - pressure
     - icon
 
+- platform: google_wifi
+# - platform: speedtest
+#   monitored_conditions:
+#     - ping
+#     - download
+#     - upload
+
 - platform: time_date
   display_options:
     - 'time'
@@ -28,7 +47,7 @@
 - platform: systemmonitor
   resources:
     - type: memory_use_percent
-    - type: since_last_boot
+    #- type: since_last_boot
     - type: disk_free
       arg: /home
     - type: disk_use
@@ -45,28 +64,7 @@
       value_template: >-
         {{states("sensor.disk_use_home")}} / {{(states.sensor.disk_free_home.state | float) + (states.sensor.disk_use_home.state | float)}} GB
 
-- platform: template
-  sensors:
-    since_last_boot_templated:
-      friendly_name: RPi Uptime
-      value_template: >-
-        {%- set slb = states.sensor.since_last_boot.state.split(' ') -%}
-        {%- set count = slb | length -%}
-        {%- set hms = slb[count - 1] -%}
-        {%- set hms_trimmed = hms.split('.')[0] -%}
-        {%- set hms_split = hms_trimmed.split(':') -%}
-        {%- set hours = hms_split[0] | int -%}
 
-        {%- if count == 3 -%}
-          {{ slb[0] ~ ' ' ~ slb[1] ~ ' ' }}
-        {%- endif -%}
-        {%- if hours > 0 -%}
-          {%- if hours == 1 -%}
-            1 hour
-          {%- else -%}
-            {{ hours }} hours
-          {%- endif -%}
-        {%- endif -%}
 
 - platform: template
   sensors:
@@ -146,10 +144,9 @@
 - platform: mqtt
   state_topic: sensor/bedroom/motion
   name: "Bedroom Motion"
-
 - platform: command_line
   name: Core Temperature
-  command: 'cat /sys/class/thermal/thermal_zone0/temp'
+  command: 'cat /sys/class/thermal/cooling_device0/cur_state'
   unit_of_measurement: '°C'
   value_template: '{{ value | multiply(0.001) | round(0) }}'
 
@@ -159,65 +156,3 @@
     alarm_time:
       friendly_name: 'Time'
       value_template: '{{ "%0.02d:%0.02d" | format(states("input_number.alarmhour") | int, states("input_number.alarmminutes") | int) }}'
-
-
-
-#- platform: command_line
-#  name: Smart mirror
-#  command: 'curl -Is http://eugenelai.duckdns.org:8080 | head -n 1'
-#  value_template: >-
-#    {% if value == 'HTTP/1.1 200 OK' %}
-#      Online
-#    {% else %}
-#      Offline
-#    {% endif %}
-
-### Bitcoin Sensors
-
-#Bitcoin
-#- platform: bitcoin
-#  friendly_name: bitcoinhkd
-#  currency: HKD
-#  display_options:
-#    - exchangerate
-#- platform: bitcoin
-#  friendly_name: bitcoinusd
-#  currency: USD
-#  display_options:
-#    - exchangerate
-
-#- platform: template
-#  sensors:
-#    bcvalue:
-#      friendly_name: "Bitcoin Wallet"
-#      value_template: " HKD{{ '{0:,.0f}'.format(states('sensor.exchange_rate_1_btc') | float * 0.113) | round(0) }}"
-
-#- platform: template
-#  sensors:
-#    bcratehkd:
-#      friendly_name: "Bitcoin HKD"
-#      value_template: "HKD{{ '{0:,.0f}'.format(states('sensor.exchange_rate_1_btc') | float ) | round(0) }}"
-
-#- platform: template
-#  sensors:
-#    bcrateusd:
-#      friendly_name: "Bitcoin USD"
-#      value_template: "USD{{ '{0:,.0f}'.format(states('sensor.exchange_rate_1_btc') | float / 7.8 ) | round(0) }}"
-
-#- platform: template
-#  sensors:
-#    bcrateusd:
-#      friendly_name: "Bitcoin USD"
-#      value_template: "USD {{ '{0:,.0f}'.format((states.sensor.exchange_rate_1_btc.state) | float ) | round(0) }}"
-
-#Customer iPhone Sensor
-#- platform: template
-#  sensors:
-#    euge_iphone:
-#      friendly_name: "Euge iPhone"
-#      value_template: >-
-#        {% if is_state('device_tracker.iphone', 'home') or is_state('device_tracker.eugeiphonenmap', 'home') or is_state('device_tracker.euge_iphone', 'home') %}
-#          Home
-#        {% else %}
-#          Away
-#        {% endif %}

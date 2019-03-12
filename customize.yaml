@@ -30,7 +30,7 @@ sensor.current_version:
   icon: mdi:home-assistant
 
 sensor.certficate_expiry:
-  icon: mdi:security-home
+  icon: mdi:security
 
 script.restart_ha:
   icon: mdi:restart
@@ -68,5 +68,15 @@ light.dining_light:
 light.tv_light:
   assumed_state: true
 
-light.dresser_light:
-  assumed_state: true
+sensor.google_wifi_status:
+  friendly_name: WiFi Status
+sensor.google_wifi_uptime:
+  friendly_name: Uptime
+sensor.google_wifi_local_ip:
+  friendly_name: Local IP
+sensor.google_wifi_new_version:
+  friendly_name: Firmware Version
+sensor.google_wifi_current_version:
+  friendly_name: Current Firmware Version
+sensor.google_wifi_last_restart:
+  friendly_name: Last Restart

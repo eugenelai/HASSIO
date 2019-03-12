@@ -1,0 +1,116 @@
+{
+    "data": {
+        "entities": [
+            {
+                "config_entry_id": null,
+                "device_id": null,
+                "disabled_by": null,
+                "entity_id": "switch.dresser",
+                "name": null,
+                "platform": "wemo",
+                "unique_id": "221408K1100253"
+            },
+            {
+                "config_entry_id": null,
+                "device_id": null,
+                "disabled_by": null,
+                "entity_id": "light.living_room_lamp",
+                "name": null,
+                "platform": "wemo",
+                "unique_id": "94103EF6BF441EA1"
+            },
+            {
+                "config_entry_id": null,
+                "device_id": null,
+                "disabled_by": null,
+                "entity_id": "light.workroom_light",
+                "name": null,
+                "platform": "wemo",
+                "unique_id": "94103EF6BF43FC29"
+            },
+            {
+                "config_entry_id": null,
+                "device_id": null,
+                "disabled_by": null,
+                "entity_id": "remote.living_room",
+                "name": null,
+                "platform": "roku",
+                "unique_id": "YG005Y610935"
+            },
+            {
+                "config_entry_id": null,
+                "device_id": null,
+                "disabled_by": null,
+                "entity_id": "media_player.living_room",
+                "name": null,
+                "platform": "roku",
+                "unique_id": "YG005Y610935"
+            },
+            {
+                "config_entry_id": null,
+                "device_id": null,
+                "disabled_by": null,
+                "entity_id": "remote.bedroom",
+                "name": null,
+                "platform": "roku",
+                "unique_id": "YG009J943069"
+            },
+            {
+                "config_entry_id": null,
+                "device_id": null,
+                "disabled_by": null,
+                "entity_id": "media_player.bedroom",
+                "name": null,
+                "platform": "roku",
+                "unique_id": "YG009J943069"
+            },
+            {
+                "config_entry_id": "e5b87bc4200a4cd89e5e7b28a6f90503",
+                "device_id": "88486fed1df24018bf08f3a1f07d0218",
+                "disabled_by": null,
+                "entity_id": "sensor.eugenes_iphone_battery_state",
+                "name": null,
+                "platform": "ios",
+                "unique_id": "state_eugene_iphone"
+            },
+            {
+                "config_entry_id": "e5b87bc4200a4cd89e5e7b28a6f90503",
+                "device_id": "88486fed1df24018bf08f3a1f07d0218",
+                "disabled_by": null,
+                "entity_id": "sensor.eugenes_iphone_battery_level",
+                "name": null,
+                "platform": "ios",
+                "unique_id": "level_eugene_iphone"
+            },
+            {
+                "config_entry_id": null,
+                "device_id": null,
+                "disabled_by": null,
+                "entity_id": "lock.front_door",
+                "name": null,
+                "platform": "august",
+                "unique_id": "DF8EB30470354158844DE919A5FD6130_lock"
+            },
+            {
+                "config_entry_id": "e5b87bc4200a4cd89e5e7b28a6f90503",
+                "device_id": "bdf0372a73e442bf9947c8d6a2b9266d",
+                "disabled_by": null,
+                "entity_id": "sensor.helens_iphone_battery_level",
+                "name": null,
+                "platform": "ios",
+                "unique_id": "level_helens_iphone"
+            },
+            {
+                "config_entry_id": "e5b87bc4200a4cd89e5e7b28a6f90503",
+                "device_id": "bdf0372a73e442bf9947c8d6a2b9266d",
+                "disabled_by": null,
+                "entity_id": "sensor.helens_iphone_battery_state",
+                "name": null,
+                "platform": "ios",
+                "unique_id": "state_helens_iphone"
+            }
+        ]
+    },
+    "key": "core.entity_registry",
+    "version": 1
+}

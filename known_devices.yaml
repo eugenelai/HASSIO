@@ -1,172 +1,179 @@
-aliceserver:
+
+testwifi_here:
   hide_if_away: false
   icon:
-  mac: 84:2b:2b:9b:14:4d
-  name: Alice Server
+  mac: 88:3D:24:B8:C6:0A
+  name: testwifi.here
   picture:
   track: true
 
-6c4008ab446c:
+esp_b9acbd_lan:
   hide_if_away: false
   icon:
-  mac: 6C:40:08:AB:44:6C
-  name: 6c4008ab446c
-  picture:
-  track: false
-  vendor: Apple, Inc.
-
-heleniphone:
-  hide_if_away: false
-  icon:
-  mac: 70:3E:AC:C3:FE:BF
-  name: Helen iPhone
+  mac: 60:01:94:B9:AC:BD
+  name: esp b9acbd.lan
   picture:
   track: true
-  vendor: Apple, Inc.
 
-18742eceafd9:
+esp_d87d56_lan:
   hide_if_away: false
   icon:
-  mac: 18:74:2E:CE:AF:D9
-  name: 18742eceafd9
+  mac: DC:4F:22:D8:7D:56
+  name: esp d87d56.lan
   picture:
-  track: false
-  vendor: Amazon Technologies Inc.
+  track: true
 
-20f41bbcf114:
-  hide_if_away: false
-  icon:
-  mac: 20:F4:1B:BC:F1:14
-  name: 20f41bbcf114
-  picture:
-  track: false
-  vendor: Shenzhen Bilian electronic CO.,LTD
-
-ec1a59a1ac41:
-  hide_if_away: false
-  icon:
-  mac: EC:1A:59:A1:AC:41
-  name: ec1a59a1ac41
-  picture:
-  track: false
-  vendor: Belkin International Inc.
-
-64a5c360c78b:
-  hide_if_away: false
-  icon:
-  mac: 64:A5:C3:60:C7:8B
-  name: 64a5c360c78b
-  picture:
-  track: false
-  vendor: Apple, Inc.
-
-6854fd907b82:
-  hide_if_away: false
-  icon:
-  mac: 68:54:FD:90:7B:82
-  name: 6854fd907b82
-  picture:
-  track: false
-  vendor: Amazon Technologies Inc.
-
-5ccf7fd1a713:
-  hide_if_away: false
-  icon:
-  mac: 5C:CF:7F:D1:A7:13
-  name: 5ccf7fd1a713
-  picture:
-  track: false
-  vendor: Espressif Inc.
-
-magicmirror:
-  hide_if_away: false
-  icon:
-  mac: B8:27:EB:A3:73:64
-  name: b827eba37364
-  picture:
-  track: false
-  vendor: Raspberry Pi Foundation
-
-00236c98d337:
-  hide_if_away: false
-  icon:
-  mac: 00:23:6C:98:D3:37
-  name: 00236c98d337
-  picture:
-  track: false
-  vendor: unknown
-
-94103ecefd09:
-  hide_if_away: false
-  icon:
-  mac: 94:10:3E:CE:FD:09
-  name: 94103ecefd09
-  picture:
-  track: false
-  vendor: unknown
-
-34d270907ed3:
-  hide_if_away: false
-  icon:
-  mac: 34:D2:70:90:7E:D3
-  name: 34d270907ed3
-  picture:
-  track: false
-  vendor: unknown
-
-b09fba0b5de4:
-  hide_if_away: false
-  icon:
-  mac: B0:9F:BA:0B:5D:E4
-  name: b09fba0b5de4
-  picture:
-  track: false
-  vendor: unknown
-
-0090a9d9d986:
-  hide_if_away: false
-  icon:
-  mac: 00:90:A9:D9:D9:86
-  name: 0090a9d9d986
-  picture:
-  track: false
-  vendor: unknown
-
-accf23a6cce8:
+ac_cf_23_a6_cc_e8:
   hide_if_away: false
   icon:
   mac: AC:CF:23:A6:CC:E8
-  name: accf23a6cce8
+  name: ac cf 23 a6 cc e8
   picture:
-  track: false
-  vendor: unknown
+  track: true
 
-b88d126444e5:
+rmmini_5a_dd_1d_lan:
   hide_if_away: false
   icon:
-  mac: B8:8D:12:64:44:E5
-  name: b88d126444e5
+  mac: 78:0F:77:5A:DD:1D
+  name: rmmini-5a-dd-1d.lan
   picture:
-  track: false
-  vendor: unknown
+  track: true
 
-4c0bbea80ebc:
-  hide_if_away: false
-  icon:
-  mac: 4C:0B:BE:A8:0E:BC
-  name: 4c0bbea80ebc
-  picture:
-  track: false
-  vendor: unknown
-
-044bed9a5eac:
+apple_tv_lan:
   hide_if_away: false
   icon:
   mac: 04:4B:ED:9A:5E:AC
-  name: 044bed9a5eac
+  name: apple-tv.lan
   picture:
-  track: false
-  vendor: unknown
+  track: true
+
+amazon_a387b5f51_lan:
+  hide_if_away: false
+  icon:
+  mac: 34:D2:70:90:7E:D3
+  name: amazon-a387b5f51.lan
+  picture:
+  track: true
+
+94_10_3e_ce_fd_09:
+  hide_if_away: false
+  icon:
+  mac: 94:10:3E:CE:FD:09
+  name: 94 10 3e ce fd 09
+  picture:
+  track: true
+
+88_3d_24_b8_d9_d9:
+  hide_if_away: false
+  icon:
+  mac: 88:3D:24:B8:D9:D9
+  name: 88 3d 24 b8 d9 d9
+  picture:
+  track: true
+
+1jfiegbp4eanq_ra0_lan:
+  hide_if_away: false
+  icon:
+  mac: 20:F4:1B:BC:F1:14
+  name: 1jfiegbp4eanq ra0.lan
+  picture:
+  track: true
+
+alice_homeserver_lan:
+  hide_if_away: false
+  icon:
+  mac: 84:2B:2B:9B:14:4D
+  name: alice-homeserver.lan
+  picture:
+  track: true
+
+homenetwork_lan:
+  hide_if_away: false
+  icon:
+  mac: 00:90:A9:D9:D9:86
+  name: homenetwork.lan
+  picture:
+  track: true
+
+eugenes_mbp_4_lan:
+  hide_if_away: false
+  icon:
+  mac: 6C:40:08:AB:44:6C
+  name: eugenes-mbp-4.lan
+  picture:
+  track: true
+
+88_3d_24_b8_d7_0e:
+  hide_if_away: false
+  icon:
+  mac: 88:3D:24:B8:D7:0E
+  name: 88 3d 24 b8 d7 0e
+  picture:
+  track: true
+
+esp_cdd54d_lan:
+  hide_if_away: false
+  icon:
+  mac: 68:C6:3A:CD:D5:4D
+  name: esp cdd54d.lan
+  picture:
+  track: true
+
+esp_d2c215_lan:
+  hide_if_away: false
+  icon:
+  mac: 5C:CF:7F:D2:C2:15
+  name: esp d2c215.lan
+  picture:
+  track: true
+
+esp_dc44d8_lan:
+  hide_if_away: false
+  icon:
+  mac: 5C:CF:7F:DC:44:D8
+  name: esp dc44d8.lan
+  picture:
+  track: true
+
+d8_31_34_c9_48_e2:
+  hide_if_away: false
+  icon:
+  mac: D8:31:34:C9:48:E2
+  name: d8 31 34 c9 48 e2
+  picture:
+  track: true
+
+august_connect_lan:
+  hide_if_away: false
+  icon:
+  mac: D8:61:62:0A:91:0A
+  name: august-connect.lan
+  picture:
+  track: true
+
+bedroom_lan:
+  hide_if_away: false
+  icon:
+  mac: D8:31:34:CA:01:61
+  name: bedroom.lan
+  picture:
+  track: true
+
+alice_lan:
+  hide_if_away: false
+  icon:
+  mac: 00:11:32:A6:88:9F
+  name: alice.lan
+  picture:
+  track: true
+
+zhimi_airpurifier_mb1_miio132487790_lan:
+  hide_if_away: false
+  icon:
+  mac: 04:CF:8C:99:09:9C
+  name: zhimi-airpurifier-mb1 miio132487790.lan
+  picture:
+  track: true
 
 eugenesmacbookpro:
   hide_if_away: false
@@ -174,144 +181,7 @@ eugenesmacbookpro:
   mac:
   name: Eugene’s MacBook Pro
   picture:
-  track: false
-  vendor:
-
-eugenelaismacbook:
-  hide_if_away: false
-  icon:
-  mac:
-  name: Eugene Lai’s MacBook
-  picture:
-  track: false
-  vendor:
-
-
-eugenesmacbookredant:
-  hide_if_away: false
-  icon:
-  mac:
-  name: Eugene’s Macbook Red Ant
-  picture:
-  track: false
-  vendor:
-
-eugenesapple_watch:
-  hide_if_away: false
-  icon:
-  mac:
-  name: Eugene’s Apple Watch
-  picture:
-  track: false
-  vendor:
-
-404d7f4ea69e:
-  hide_if_away: false
-  icon:
-  mac: 40:4D:7F:4E:A6:9E
-  name: 404d7f4ea69e
-  picture:
-  track: false
-  vendor: Apple, Inc.
-
-5ccf7fdc44d8:
-  hide_if_away: false
-  icon:
-  mac: 5C:CF:7F:DC:44:D8
-  name: 5ccf7fdc44d8
-  picture:
-  track: false
-  vendor: unknown
-
-f4f5e81e44c8:
-  hide_if_away: false
-  icon:
-  mac: F4:F5:E8:1E:44:C8
-  name: f4f5e81e44c8
-  picture:
-  track: false
-  vendor: unknown
-
-b0f1ec3ce48c:
-  hide_if_away: false
-  icon:
-  mac: B0:F1:EC:3C:E4:8C
-  name: b0f1ec3ce48c
-  picture:
-  track: false
-  vendor: AMPAK Technology, Inc.
-
-5ccf7fd2c215:
-  hide_if_away: false
-  icon:
-  mac: 5C:CF:7F:D2:C2:15
-  name: 5ccf7fd2c215
-  picture:
   track: true
-  vendor: Espressif Inc.
-
-f0cba1bdff9e:
-  hide_if_away: false
-  icon:
-  mac: F0:CB:A1:BD:FF:9E
-  name: f0cba1bdff9e
-  picture:
-  track: false
-  vendor: unknown
-
-accf23a6b2ce:
-  hide_if_away: false
-  icon:
-  mac: AC:CF:23:A6:B2:CE
-  name: accf23a6b2ce
-  picture:
-  track: true
-  vendor: Hi-flying electronics technology Co.,Ltd
-
-plexmacserver:
-  hide_if_away: false
-  icon:
-  mac:
-  name: Plex Mac Server
-  picture:
-  track: false
-  vendor:
-
-acbc32788637:
-  hide_if_away: false
-  icon:
-  mac: AC:BC:32:78:86:37
-  name: acbc32788637
-  picture:
-  track: false
-  vendor: unknown
-
-748114615dcf:
-  hide_if_away: false
-  icon:
-  mac: 74:81:14:61:5D:CF
-  name: 748114615dcf
-  picture:
-  track: true
-  vendor: Apple, Inc.
-
-1c232c04c72d:
-  hide_if_away: false
-  icon:
-  mac: 1C:23:2C:04:C7:2D
-  name: 1c232c04c72d
-  picture:
-  track: false
-  vendor: Samsung Electronics Co.,Ltd
-
-cc25ef7c894c:
-  hide_if_away: false
-  icon:
-  mac: CC:25:EF:7C:89:4C
-  name: cc25ef7c894c
-  picture:
-  track: false
-  vendor: Apple, Inc.
 
 eugenesiphone:
   hide_if_away: false
@@ -320,200 +190,59 @@ eugenesiphone:
   name: Eugene’s iPhone
   picture:
   track: true
-  vendor:
 
-eugenesiphonenmap:
+amazon_13a18cacf_lan:
+  hide_if_away: false
+  icon:
+  mac: 68:54:FD:90:7B:82
+  name: amazon-13a18cacf.lan
+  picture:
+  track: true
+
+eugenes_iphone_lan:
   hide_if_away: false
   icon:
   mac: B8:63:4D:63:87:2E
-  name: Eugene iPhone NMAP
+  name: eugenes-iphone.lan
   picture:
   track: true
-  vendor: Apple, Inc.
-
-6c8dc1c28dbb:
-  hide_if_away: false
-  icon:
-  mac: 6C:8D:C1:C2:8D:BB
-  name: 6c8dc1c28dbb
-  picture:
-  track: false
-  vendor: Apple, Inc.
-
-54eaa8066ace:
-  hide_if_away: false
-  icon:
-  mac: 54:EA:A8:06:6A:CE
-  name: 54eaa8066ace
-  picture:
-  track: false
-  vendor: unknown
 
 eugene_iphone:
   hide_if_away: false
   icon:
   mac:
-  name: eugene iphone
-  picture:
-  track: true
-  vendor:
-
-703eac8e7e5e:
-  hide_if_away: false
-  icon:
-  mac: 70:3E:AC:8E:7E:5E
-  name: 703eac8e7e5e
-  picture:
-  track: true
-  vendor: Apple, Inc.
-
-9ce33f8a6195:
-  hide_if_away: false
-  icon:
-  mac: 9C:E3:3F:8A:61:95
-  name: 9ce33f8a6195
-  picture:
-  track: true
-  vendor: Apple, Inc.
-
-skxs_800ba3_14:
-  hide_if_away: false
-  icon:
-  mac: BT_B8:96:74:80:0B:A3
-  name: SKXS 800ba3 14
-  picture:
-  track: false
-  vendor: AllDSP GmbH & Co. KG
-
-plex_mac_server:
-  hide_if_away: false
-  icon:
-  mac: BT_00:23:6C:B9:06:4B
-  name: Plex Mac Server
-  picture:
-  track: false
-  vendor: unknown
-
-eugenes_iphone:
-  hide_if_away: false
-  icon:
-  mac: BT_B8:63:4D:63:87:2F
-  name: Eugene’s iPhone BT
-  picture:
-  track: false
-  vendor: Apple, Inc.
-
-laptop1l14pqjo:
-  hide_if_away: false
-  icon:
-  mac: BT_F8:59:71:28:C7:AA
-  name: LAPTOP-1L14PQJO
-  picture:
-  track: false
-  vendor: Intel Corporate
-
-24df6af38a32:
-  hide_if_away: false
-  icon:
-  mac: 24:DF:6A:F3:8A:32
-  name: 24df6af38a32
-  picture:
-  track: false
-  vendor: HUAWEI TECHNOLOGIES CO.,LTD
-
-dcefcaec1cde:
-  hide_if_away: false
-  icon:
-  mac: DC:EF:CA:EC:1C:DE
-  name: dcefcaec1cde
-  picture:
-  track: false
-  vendor: Murata Manufacturing Co., Ltd.
-
-8c8590c3b76f:
-  hide_if_away: false
-  icon:
-  mac: 8C:85:90:C3:B7:6F
-  name: 8c8590c3b76f
-  picture:
-  track: false
-  vendor: Apple, Inc.
-
-0cd7462570bb:
-  hide_if_away: false
-  icon:
-  mac: 0C:D7:46:25:70:BB
-  name: 0cd7462570bb
-  picture:
-  track: false
-  vendor: Apple, Inc.
-
-eugenesipadson:
-  hide_if_away: false
-  icon:
-  mac:
-  name: Eugene's iPad SON!
-  picture:
-  track: false
-  vendor:
-
-eugenesipad:
-  hide_if_away: false
-  icon:
-  mac:
-  name: Eugene's iPad
-  picture:
-  track: false
-
-eugenesmacbookshiseido:
-  hide_if_away: false
-  icon:
-  mac:
-  name: Eugene’s MacBook Shiseido
+  name: Eugene’s iPhone
   picture:
   track: true
 
-18af6104b9cb:
-  hide_if_away: false
-  icon:
-  mac: 18:AF:61:04:B9:CB
-  name: 18af6104b9cb
-  picture:
-  track: false
-
-d861620a910a:
-  hide_if_away: false
-  icon:
-  mac: D8:61:62:0A:91:0A
-  name: d861620a910a
-  picture:
-  track: false
-
-## New updates should appear below 19 October 2018
-<<<<<<< HEAD
-
-b4750e71eafd:
+wemo_lan:
   hide_if_away: false
   icon:
   mac: B4:75:0E:71:EA:FD
-  name: b4750e71eafd
+  name: wemo.lan
   picture:
   track: true
 
-68c63acdd54d:
+helens_iphone_lan:
   hide_if_away: false
   icon:
-  mac: 68:C6:3A:CD:D5:4D
-  name: 68c63acdd54d
+  mac: 90:8D:6C:CF:B3:5E
+  name: helens-iphone.lan
   picture:
   track: true
 
-bcddc2814f2e:
+58_2f_40_96_c5_09:
   hide_if_away: false
   icon:
-  mac: BC:DD:C2:81:4F:2E
-  name: bcddc2814f2e
+  mac: 58:2F:40:96:C5:09
+  name: 58 2f 40 96 c5 09
   picture:
   track: true
-=======
->>>>>>> c58734b8ed8b87123dab6c7b38997b85ddfcf057
+
+helens_iphone_lan_2:
+  hide_if_away: false
+  icon:
+  mac: 70:3E:AC:C3:FE:BF
+  name: helens-iphone.lan
+  picture:
+  track: true

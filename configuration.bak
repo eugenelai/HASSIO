@@ -1,0 +1,184 @@
+homeassistant:
+  name: Home
+  latitude: !secret home_latitude
+  longitude: !secret home_longitude
+  elevation: 50
+  unit_system: metric
+  time_zone: Asia/Hong_Kong
+  customize: !include customize.yaml
+
+http:
+  api_password: !secret http_api_password
+  base_url: eugenelai.duckdns.org
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem
+  ssl_profile: intermediate
+
+updater:
+cloud:
+config:
+hassio:
+wemo:
+ios:
+history:
+logbook:
+map:
+sun:
+frontend:
+  themes: !include themes.yaml
+recorder:
+  purge_keep_days: 5
+
+#tts:
+#  - platform: amazon_polly
+#    aws_access_key_id: !secret aws_access_key_id
+#    aws_secret_access_key: !secret aws_secret_access_key
+#    region_name: 'us-east-1'
+#    text_type: ssml
+#    voice: Joanna
+
+# panel_iframe:
+#   pihole:
+#     title: Pi-Hole
+#     icon: mdi:block-helper
+#     url: https://eugenelai.duckdns.org:4865
+
+notify:
+  - name: notificationhistory
+    platform: file
+    filename: www/notificationhistory.txt
+
+#emulated_hue:
+#  host_ip: 10.0.1.23
+august:
+  login_method: email
+  username: !secret august_username
+  password: !secret august_password
+  timeout: 60
+
+
+ifttt:
+  key: !secret ifttt_key
+
+
+
+media_player:
+  #- platform: mpd
+  #  host: 10.0.1.23
+  - platform: alexa
+    email: !secret amazon_email
+    password: !secret amazon_password
+    url: "amazon.com"
+  - platform: xboxone
+    device: FD007AB48F31058E
+    name: Xbox
+
+camera:
+  - platform: generic
+    still_image_url: !secret cameraaddress
+
+# Light setup
+light:
+  - platform: limitlessled
+    bridges:
+      - host: 10.0.1.11
+        version: 5
+        port: 8899
+        groups:
+        - number: 1
+          type: rgbw
+          name: TV Light
+          fade: true
+        - number: 2
+          type: rgbw
+          name: Bedroom Light
+          fade: true
+        - number: 4
+          type: rgbw
+          name: Dining Light
+          fade: true
+  - platform: template
+    lights:
+      dresser_light:
+        friendly_name: 'Dresser Light'
+        turn_on:
+          service: switch.turn_on
+          entity_id: switch.bedroom_dresser
+        turn_off:
+          service: switch.turn_off
+          entity_id: switch.bedroom_dresser
+
+  - platform: template
+    lights:
+      livingroom_moodlight:
+        friendly_name: 'Living Room Mood'
+        turn_on:
+          service: script.turn_on
+          entity_id: script.livingroomledon
+        turn_off:
+          service: script.turn_on
+          entity_id: script.livingroomledoff
+
+switch:
+  - platform: template
+    switches:
+      bedroom_fan:
+        friendly_name: "Bedroom Aircon"
+        value_template: "{{ states('input_boolean.bedroomac') }}"
+        turn_on:
+          service: script.turn_on
+          data:
+            entity_id: script.bedroomacon
+        turn_off:
+          service: script.turn_on
+          data:
+            entity_id: script.bedroomacoff
+  - platform: template
+    switches:
+      xboxmediaplayer:
+        friendly_name: "Xbox"
+        value_template: "{{ states('input_boolean.xbox') }}"
+        turn_on:
+          service: script.turn_on
+          data:
+            entity_id: script.xboxon
+        turn_off:
+          service: script.turn_on
+          data:
+            entity_id: script.xboxoff
+
+
+
+
+mqtt:
+  broker: core-mosquitto
+  username: !secret mqtt_username
+  password: !secret mqtt_password
+  client_id: home assistant
+
+group: !include groups.yaml
+automation: !include_dir_merge_list automations
+script: !include_dir_merge_named script
+zone: !include zones.yaml
+sensor: !include sensors.yaml
+device_tracker: !include devicetracker.yaml
+intent_script: !include alexaintent.yaml
+scene: !include scene.yaml
+
+input_boolean:
+  guest_mode:
+    name: Guest Mode
+    icon: mdi:home-modern
+
+  silence_mode:
+    name: Silence mode
+    icon: mdi:volume-off
+
+  bedroomac:
+    name: Bedroom AC
+    initial: off
+  xbox:
+    name: Xbox Status
+    initial: off
+
+

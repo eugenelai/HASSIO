@@ -1,0 +1,48 @@
+{
+    "data": {
+        "devices": [
+            {
+                "area_id": null,
+                "config_entries": [
+                    "e5b87bc4200a4cd89e5e7b28a6f90503"
+                ],
+                "connections": [],
+                "hub_device_id": null,
+                "id": "88486fed1df24018bf08f3a1f07d0218",
+                "identifiers": [
+                    [
+                        "ios",
+                        "CC421C07-E30C-434E-BC3F-AFEE858FC1DE"
+                    ]
+                ],
+                "manufacturer": "Apple",
+                "model": "iPhone 7 Plus",
+                "name": "Eugene\u2019s iPhone",
+                "name_by_user": null,
+                "sw_version": "12.1"
+            },
+            {
+                "area_id": null,
+                "config_entries": [
+                    "e5b87bc4200a4cd89e5e7b28a6f90503"
+                ],
+                "connections": [],
+                "hub_device_id": null,
+                "id": "bdf0372a73e442bf9947c8d6a2b9266d",
+                "identifiers": [
+                    [
+                        "ios",
+                        "3E233BB1-6FAC-4DAC-94A8-3F94D8821E1C"
+                    ]
+                ],
+                "manufacturer": "Apple",
+                "model": "iPhone 6 Plus",
+                "name": "Helen\u2019s iPhone",
+                "name_by_user": null,
+                "sw_version": "12.1.4"
+            }
+        ]
+    },
+    "key": "core.device_registry",
+    "version": 1
+}

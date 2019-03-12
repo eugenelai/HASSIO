@@ -1,0 +1,12 @@
+{
+    "data": {
+        "areas": [
+            {
+                "id": "e99250b3e351464fa5e31e35f9917e25",
+                "name": "Living Room"
+            }
+        ]
+    },
+    "key": "core.area_registry",
+    "version": 1
+}

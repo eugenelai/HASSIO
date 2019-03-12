@@ -2,6 +2,7 @@
 ############ Templated notifcations:
 
 - alias: Templated Notification
+  initial_state: 'on'
   trigger:
     platform: state
     entity_id: sensor.eugene_location
@@ -15,6 +16,7 @@
 
 
 - alias: Current Temperature
+  initial_state: 'on'
   trigger:
     platform: numeric_state
     entity_id: sensor.bedroom_temperature
@@ -31,11 +33,11 @@
 
 
 - alias: 'Getting Up'
+  initial_state: 'on'
   trigger:
     platform: state
-    entity_id: sensor.iphonecharging
-    from: 'on'
-    to: 'off'
+    entity_id: sensor.eugenes_iphone_battery_state
+    to: 'Charging'
   condition:
     condition: and
     conditions:
@@ -47,9 +49,7 @@
         before: '10:00:00'
   action:
     - service: light.turn_on
-      entity_id: light.livingroom_moodlight
-    - service: light.turn_on
-      entity_id: light.dresser_light
+      entity_id: light.living_room_mood
     - service: script.speech_notify_engine
       data_template:
         speech_message: >

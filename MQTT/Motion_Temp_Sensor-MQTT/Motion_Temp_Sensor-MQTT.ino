@@ -24,7 +24,7 @@ PubSubClient client(espClient);
 #define temperature_topic "sensor/livingroom/temperature"
 #define motion_topic "sensor/livingroom/motion"
 
-#define DHTPIN 13     // what digital pin the DHT22 is conected to
+#define DHTPIN 13     // what digital pin the DHT22 is conected to (Digital Pin D7
 #define DHTTYPE DHT22   // there are multiple kinds of DHT sensors
 int motionSensor = 12;  // Digital pin D6
 
@@ -76,7 +76,8 @@ void reconnect() {
     // Attempt to connect
     // If you do not want to use a username and password, change next line to
     // if (client.connect("ESP8266Client")) {
-    if (client.connect("ESP8266Client", mqtt_user, mqtt_password)) {
+    if (client.connect("LivingRoomESP8266", mqtt_user, mqtt_password)) ///Must change ClientID every time
+    {
       Serial.println("connected");
     } else {
       Serial.print("failed, rc=");
@@ -150,21 +151,21 @@ void loop() {
       
     
     
-//    Serial.print("Humidity: ");
-//   Serial.print(newHum);
-//    Serial.print(" %\t");
-//    Serial.print("Temperature: ");
-//    Serial.print(newTemp);
-//    Serial.print(" *C ");
+    Serial.print("Humidity: ");
+    Serial.print(newHum);
+    Serial.print(" %\t");
+    Serial.print("Temperature: ");
+    Serial.print(newTemp);
+    Serial.print(" *C ");
 
-//    long state = digitalRead(sensor);
+    long state = digitalRead(motionSensor);
     
-//    if(state == HIGH) {
-//      Serial.println("Motion detected!");
-//    }
-//    else {
-//      Serial.println("Motion absent!");
-//    }
+    if(state == HIGH) {
+      Serial.println("Motion detected!");
+    }
+    else {
+      Serial.println("Motion absent!");
+    }
 
     timeSinceLastRead = 0;
   }

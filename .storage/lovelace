@@ -1,0 +1,307 @@
+{
+    "data": {
+        "config": {
+            "resources": [
+                {
+                    "type": "js",
+                    "url": "/local/custom-lovelace/compact-custom-header/compact-custom-header.js?v=0.0.1  "
+                },
+                {
+                    "type": "module",
+                    "url": "/local/custom-lovelace/button-card.js"
+                }
+            ],
+            "title": "Home",
+            "views": [
+                {
+                    "badges": null,
+                    "cards": [
+                        {
+                            "cards": [
+                                {
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.living_room_temperature"
+                                        },
+                                        {
+                                            "entity": "sensor.living_room_humidity"
+                                        }
+                                    ],
+                                    "show_name": false,
+                                    "show_state": true,
+                                    "title": "Living Room",
+                                    "type": "glance"
+                                },
+                                {
+                                    "cards": [
+                                        {
+                                            "entity": "light.living_room_light",
+                                            "name": "Main",
+                                            "tap_action": {
+                                                "action": "toggle"
+                                            },
+                                            "type": "entity-button"
+                                        },
+                                        {
+                                            "entity": "light.dining_light",
+                                            "name": "Dining",
+                                            "tap_action": {
+                                                "action": "toggle"
+                                            },
+                                            "type": "entity-button"
+                                        },
+                                        {
+                                            "entity": "light.living_room_lamp",
+                                            "icon": "mdi:lamp",
+                                            "name": "Lamp",
+                                            "tap_action": {
+                                                "action": "toggle"
+                                            },
+                                            "type": "entity-button"
+                                        },
+                                        {
+                                            "entity": "light.living_room_mood",
+                                            "icon": "mdi:led-strip",
+                                            "name": "Mood",
+                                            "tap_action": {
+                                                "action": "toggle"
+                                            },
+                                            "type": "entity-button"
+                                        }
+                                    ],
+                                    "type": "horizontal-stack"
+                                },
+                                {
+                                    "cards": [
+                                        {
+                                            "entity": "switch.living_room_tv",
+                                            "icon": "mdi:television-classic",
+                                            "name": "TV",
+                                            "tap_action": {
+                                                "action": "toggle"
+                                            },
+                                            "type": "entity-button"
+                                        },
+                                        {
+                                            "entity": "switch.living_room_aircon",
+                                            "icon": "mdi:snowflake",
+                                            "name": "Aircon",
+                                            "tap_action": {
+                                                "action": "toggle"
+                                            },
+                                            "type": "entity-button"
+                                        }
+                                    ],
+                                    "type": "horizontal-stack"
+                                },
+                                {
+                                    "entities": [
+                                        {
+                                            "entity": "scene.living_room_off",
+                                            "name": "Living room off"
+                                        },
+                                        {
+                                            "entity": "scene.movie_time",
+                                            "name": "Movie"
+                                        }
+                                    ],
+                                    "show_header_toggle": false,
+                                    "type": "entities"
+                                }
+                            ],
+                            "type": "vertical-stack"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.bedroom_temperature"
+                                        },
+                                        {
+                                            "entity": "sensor.bedroom_humidity"
+                                        }
+                                    ],
+                                    "show_name": false,
+                                    "show_state": true,
+                                    "title": "Bedroom",
+                                    "type": "glance"
+                                },
+                                {
+                                    "cards": [
+                                        {
+                                            "entity": "light.bedroom_light",
+                                            "name": "Main",
+                                            "tap_action": {
+                                                "action": "toggle"
+                                            },
+                                            "type": "entity-button"
+                                        },
+                                        {
+                                            "entity": "switch.dresser",
+                                            "icon": "mdi:lamp",
+                                            "name": "Dresser",
+                                            "tap_action": {
+                                                "action": "toggle"
+                                            },
+                                            "type": "entity-button"
+                                        },
+                                        {
+                                            "entity": "light.bedroom_mood",
+                                            "icon": "mdi:led-strip",
+                                            "name": "Mood",
+                                            "tap_action": {
+                                                "action": "toggle"
+                                            },
+                                            "type": "entity-button"
+                                        }
+                                    ],
+                                    "type": "horizontal-stack"
+                                },
+                                {
+                                    "cards": [
+                                        {
+                                            "entity": "switch.bedroom_fan",
+                                            "icon": "mdi:snowflake",
+                                            "name": "Aircon",
+                                            "tap_action": {
+                                                "action": "toggle"
+                                            },
+                                            "type": "entity-button"
+                                        }
+                                    ],
+                                    "type": "horizontal-stack"
+                                },
+                                {
+                                    "entities": [
+                                        {
+                                            "entity": "scene.bedroom_off",
+                                            "name": "Bedroom off"
+                                        }
+                                    ],
+                                    "show_header_toggle": false,
+                                    "type": "entities"
+                                }
+                            ],
+                            "type": "vertical-stack"
+                        },
+                        {
+                            "camera_image": "camera.generic_camera",
+                            "entities": [
+                                "fdgd.sfdsd"
+                            ],
+                            "title": "Living room",
+                            "type": "picture-glance"
+                        }
+                    ],
+                    "icon": "mdi:home",
+                    "path": "default_view",
+                    "title": "Home"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.certficate_expiry"
+                                },
+                                {
+                                    "entity": "sensor.current_version"
+                                },
+                                {
+                                    "entity": "sensor.uptime_templated"
+                                },
+                                {
+                                    "entity": "sensor.memory_use_percent"
+                                },
+                                {
+                                    "entity": "sensor.disk_use_home"
+                                },
+                                {
+                                    "entity": "sensor.disk_free_home"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "System Stats",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "label": "Speed Test",
+                                    "type": "section"
+                                },
+                                {
+                                    "entity": "sensor.speedtest_download"
+                                },
+                                {
+                                    "entity": "sensor.speedtest_upload"
+                                },
+                                {
+                                    "entity": "sensor.speedtest_ping"
+                                },
+                                {
+                                    "label": "Google WiFi",
+                                    "type": "section"
+                                },
+                                {
+                                    "entity": "sensor.google_wifi_status"
+                                },
+                                {
+                                    "entity": "sensor.google_wifi_local_ip"
+                                },
+                                {
+                                    "entity": "sensor.google_wifi_uptime"
+                                },
+                                {
+                                    "entity": "sensor.google_wifi_last_restart"
+                                },
+                                {
+                                    "entity": "sensor.google_wifi_new_version"
+                                },
+                                {
+                                    "entity": "sensor.google_wifi_current_version"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "WiFi Stats",
+                            "type": "entities"
+                        }
+                    ],
+                    "icon": "hass:home-assistant",
+                    "title": "System"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "entity": "script.restart_ha",
+                            "hold_action": {
+                                "action": "none"
+                            },
+                            "tap_action": {
+                                "action": "more-info"
+                            },
+                            "type": "entity-button"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.bedroom_motion"
+                                },
+                                {
+                                    "entity": "sensor.living_room_motion"
+                                }
+                            ],
+                            "type": "entities"
+                        }
+                    ],
+                    "title": "Test"
+                }
+            ]
+        }
+    },
+    "key": "lovelace",
+    "version": 1
+}

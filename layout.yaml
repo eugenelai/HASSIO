@@ -1,0 +1,209 @@
+############ Demo
+cards:
+  - cards:
+      - entity: scene.morning_lights
+        tap_action:
+          action: call-service
+          service: script.goodnight
+        type: entity-button
+        icon: 'mdi:weather-night'
+      - entity: scene.morning_lights
+        tap_action:
+          action: call-service
+          service_data:
+            entity_id: scene.morning_lights
+          service: scene.turn_on
+        type: entity-button
+        icon: 'mdi:coffee-outline'
+      - entity: scene.movie_time
+        tap_action:
+          action: call-service
+          service_data:
+            entity_id: scene.movie_time
+          service: scene.turn_on
+        type: entity-button
+        icon: 'mdi:television-classic'
+    type: horizontal-stack
+  - entities:
+      - type: section
+        label: Front
+      - name: Chain lights
+        entity: light.outdoor_front_hanging_lights
+      - type: section
+        label: Yard
+      - name: Chain lights
+        entity: light.outdoor_hanging_lights
+      - name: Light net
+        entity: light.outdoor_yard_light_net
+    show_header_toggle: false
+    type: entities
+    title: Outdoor
+  - cards:
+    - entity: lcok.front_l
+      icon: 'mdi:xbox'
+      tap_action:
+        action: toggle
+      type: entity-button
+    type: horizontal-stack
+type: vertical-stack
+
+############ Bedroom
+
+cards:
+  - entities:
+      - entity: sensor.bedroom_temperature
+      - entity: sensor.bedroom_humidity
+    show_state: true
+    show_name: false
+    title: Bedroom
+    type: glance
+
+  - cards:
+      - entity: light.bedroom_light
+        name: Main
+        tap_action:
+          action: toggle
+        type: entity-button
+      - entity: switch.dresser
+        icon: 'mdi:lamp'
+        name: Dresser
+        tap_action:
+          action: toggle
+        type: entity-button
+      - entity: light.bedroom_mood
+        icon: 'mdi:led-strip'
+        name: Mood
+        tap_action:
+          action: toggle
+        type: entity-button
+    type: horizontal-stack
+  - cards:
+      - entity: switch.bedroom_fan
+        icon: 'mdi:snowflake'
+        name: Aircon
+        tap_action:
+          action: toggle
+        type: entity-button
+    type: horizontal-stack
+  - entities:
+      - entity: scene.bedroom_off
+        name: Bedroom off
+    show_header_toggle: false
+    type: entities
+type: vertical-stack
+
+
+
+############ Living Room
+cards:
+  - entities:
+      - entity: sensor.living_room_temperature
+      - entity: sensor.living_room_humidity
+    show_state: true
+    show_name: false
+    title: Living Room
+    type: glance
+  - cards:
+      - entity: light.living_room_light
+        name: Main
+        tap_action:
+          action: toggle
+        type: entity-button
+      - entity: light.dining_light
+        name: Dining
+        tap_action:
+          action: toggle
+        type: entity-button
+      - entity: light.living_room_lamp
+        icon: 'mdi:lamp'
+        name: Lamp
+        tap_action:
+          action: toggle
+        type: entity-button
+      - entity: light.living_room_mood
+        icon: 'mdi:led-strip'
+        name: Mood
+        tap_action:
+          action: toggle
+        type: entity-button
+    type: horizontal-stack
+  - cards:
+      - entity: media_player.xbox
+        icon: 'mdi:xbox'
+        tap_action:
+          action: toggle
+        type: entity-button
+      - entity: switch.living_room_aircon
+        icon: 'mdi:snowflake'
+        name: Aircon
+        tap_action:
+          action: toggle
+        type: entity-button
+    type: horizontal-stack
+  - entities:
+      - entity: scene.living_room_off
+        name: Living room off
+      - entity: scene.movie_time
+        name: Movie
+    show_header_toggle: false
+    type: entities
+type: vertical-stack
+
+
+############ Status
+cards:
+
+  - entities:
+      - entity: sensor.dark_sky_summary
+      - entity: sensor.dark_sky_temperature
+      - entity: sensor.dark_sky_humidity
+      - entity: sensor.moon
+    show_name: false
+    type: glance
+  - cards:
+      - type: picture-entity
+        image: /local/eugeHASS.jpg
+        entity: sensor.eugene_location
+        show_name: false
+      - type: picture-entity
+        image: /local/eugeHASS.jpg
+        entity: device_tracker.heleniphone
+      - type: picture-entity
+        image: /local/eugeHASS.jpg
+        entity: device_tracker.laiyanlgsiphone_lan
+    type: horizontal-stack
+
+  - cards:
+      - entity: lock.front_door
+        name: Lock
+        tap_action:
+          action: toggle
+        type: entity-button
+    type: horizontal-stack
+  - entities:
+      - entity: updater.updater
+    type: entities
+type: vertical-stack
+
+############# Compact show_header_toggle
+type: 'custom:compact-custom-header'
+main_config: true
+menu: overflow
+options: clock
+voice: hide
+clock_format: 12
+  exceptions:
+    - conditions:
+        user: maykar
+      config:
+        voice: show
+        options: clock
+        clock_format: 24
+    - conditions:
+        user: maykar
+        user_agent: Mobile
+        media_query: (max-width: 600px)
+      config:
+        options: clock
+        clock_format: 12
+        hide_tabs: 4,5,9

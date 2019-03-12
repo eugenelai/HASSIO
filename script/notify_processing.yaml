@@ -31,3 +31,11 @@ text_notify_processing:
     #     message: |
     #       {{now().strftime('%d-%b-%Y | %H:%M' )}}:
     #       {{text_message}}
+
+
+test_notify:
+  sequence:
+    - service: notify.ios_eugene_iphone
+      data_template:
+        message: |
+          "hello"

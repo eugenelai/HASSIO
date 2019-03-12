@@ -14,6 +14,12 @@ http:
   ssl_key: /ssl/privkey.pem
   ssl_profile: intermediate
 
+  # api_password: !secret http_api_password
+  # base_url: 192.168.86.94
+
+
+discovery:
+system_health:
 updater:
 cloud:
 config:
@@ -26,52 +32,32 @@ map:
 sun:
 frontend:
   themes: !include themes.yaml
+  javascript_version: latest
 recorder:
   purge_keep_days: 5
+weather:
+  - platform: darksky
+    api_key: !secret darksky_apikey
 
-#tts:
-#  - platform: amazon_polly
-#    aws_access_key_id: !secret aws_access_key_id
-#    aws_secret_access_key: !secret aws_secret_access_key
-#    region_name: 'us-east-1'
-#    text_type: ssml
-#    voice: Joanna
-
-# panel_iframe:
-#   pihole:
-#     title: Pi-Hole
-#     icon: mdi:block-helper
-#     url: https://eugenelai.duckdns.org:4865
+august:
+  login_method: email
+  username: !secret august_username
+  password: !secret august_password
+  timeout: 60
 
 notify:
   - name: notificationhistory
     platform: file
     filename: www/notificationhistory.txt
 
-#emulated_hue:
-#  host_ip: 10.0.1.23
-august:
-  login_method: email
-  username: !secret august_username
-  password: !secret august_password
-  timeout: 60
-<<<<<<< HEAD
-
 ifttt:
   key: !secret ifttt_key
-=======
->>>>>>> c58734b8ed8b87123dab6c7b38997b85ddfcf057
 
-media_player:
-  #- platform: mpd
-  #  host: 10.0.1.23
-  - platform: alexa
-    email: !secret amazon_email
-    password: !secret amazon_password
-    url: "amazon.com"
-  - platform: xboxone
-    device: FD007AB48F31058E
-    name: Xbox
+alexa_media:
+  accounts:
+    - email: !secret amazon_email
+      password: !secret amazon_password
+      url: amazon.com
 
 camera:
   - platform: generic
@@ -81,13 +67,13 @@ camera:
 light:
   - platform: limitlessled
     bridges:
-      - host: 10.0.1.11
+      - host: 192.168.86.22
         version: 5
         port: 8899
         groups:
         - number: 1
           type: rgbw
-          name: TV Light
+          name: Living Room Light
           fade: true
         - number: 2
           type: rgbw
@@ -107,17 +93,12 @@ light:
         turn_off:
           service: switch.turn_off
           entity_id: switch.bedroom_dresser
-<<<<<<< HEAD
-  - platform: template
-    lights:
-      livingroom_moodlight:
-        friendly_name: 'Living Room Mood'
-        turn_on:
-          service: script.turn_on
-          entity_id: script.livingroomledon
-        turn_off:
-          service: script.turn_on
-          entity_id: script.livingroomledoff
+  - platform: flux_led
+    devices:
+      192.168.86.20:
+        name: "Living Room Mood"
+      192.168.86.21:
+        name: "Bedroom Mood"
 
 switch:
   - platform: template
@@ -137,33 +118,38 @@ switch:
     switches:
       xboxmediaplayer:
         friendly_name: "Xbox"
-        value_template: "{{ states('input_boolean.xbox') }}"
+        value_template: "{{ states('media_player.xbox') }}"
         turn_on:
-          service: script.turn_on
-          data:
-            entity_id: script.xboxon
+          service: media_player.turn_on
         turn_off:
-          service: script.turn_on
-          data:
-            entity_id: script.xboxoff
-=======
-
->>>>>>> c58734b8ed8b87123dab6c7b38997b85ddfcf057
-
-mqtt:
-  broker: core-mosquitto
-  username: !secret mqtt_username
-  password: !secret mqtt_password
-  client_id: home assistant
-
+          service: media_player.turn_on
+  - platform: broadlink
+    host: 192.168.86.23
+    mac: '78:0f:77:5a:dd:1d'
+    timeout: 15
+    switches:
+      living_room_aircon:
+        friendly_name: "Living Room Aircon"
+        command_on: JgDKAI+PEzQTExI2EDcQFhAWEDcQFhAWEDcTExMTEzQTNBQTEzMTExMTExMTNBI1EjURNhA3EDcQNxA3EBYQFhAWEBYQFhAWEBYQNxA3EDcTExMTFBITNBQyFRITExMTEzQTNBM0EqWPjxMzFRITNBQzFBIUEhQzFBITExM0ExMTExM0ETcQFhA3EBYQFhAWEDcQNxA3EzUSNBM0EzQUMxQSExMQFhAWExQSExMUEzMUMxQzFBITExMTEzQTNBMTEhQSFRA2EDgPNxAADQUAAAAAAAAAAAAAAAAAAA==
+        command_off: JgDKAI+PEzQTExQzFDQTExMTEzQSFREUEDcUEhMTEzQTMhUTEjUSFRA2EDcQNxA3EBYQNxM0EzQTExMTExMTExQzFBIUEhM0EzQTNBMTEhQSFBIUERYPFw8YDhYTNBM0EzQTNBQxFaSMkhA3EBYQNxA3EBYQFhM0ExMTExM0ExMUExI0EzQRFRA3EBYQNxA3EDcQNxAWEDYRNxA3ExMTExMTExMTNBMTFBITNBQzFDMUExITExMTExMTExMSFBIVEDYQNxA3EDcQOA8ADQUAAAAAAAAAAAAAAAAAAA==
+      living_room_tv:
+        friendly_name: "Living Room TV"
+        command_on: JgBaAAiMAAEolw0YEBUSOA0YDxYRFRETEhMOPA87ERQOPA48DzoNPQ88EhMTEg0YETkQFQ0YERQSEw0+EDkQOg4XDzsMPQ48EjgQAAUuAAEmThEADGUAASVOEgANBQAAAAAAAAAAAAAAAAAA
+        command_off: JgBYAAABKJcNGBEUEjgNGRETEhQSEhITDjwQOhEUDjwPOww9DzsQOg8XDxUPFhI4DRgPFw8WDhYPOxI4DT4NFxE5DD0QOhM3DQAFMQABJk4OAAxoAAEmTRIADQU=
 group: !include groups.yaml
-automation: !include_dir_merge_list automations
+automation: !include_dir_merge_list automations/
 script: !include_dir_merge_named script
 zone: !include zones.yaml
 sensor: !include sensors.yaml
 device_tracker: !include devicetracker.yaml
 intent_script: !include alexaintent.yaml
 scene: !include scene.yaml
+
+speedtestdotnet:
+  monitored_conditions:
+    - ping
+    - download
+    - upload
 
 input_boolean:
   guest_mode:
@@ -173,12 +159,34 @@ input_boolean:
   silence_mode:
     name: Silence mode
     icon: mdi:volume-off
-<<<<<<< HEAD
+
   bedroomac:
     name: Bedroom AC
     initial: off
   xbox:
     name: Xbox Status
     initial: off
-=======
->>>>>>> c58734b8ed8b87123dab6c7b38997b85ddfcf057
+
+#tts:
+#  - platform: amazon_polly
+#    aws_access_key_id: !secret aws_access_key_id
+#    aws_secret_access_key: !secret aws_secret_access_key
+#    region_name: 'us-east-1'
+#    text_type: ssml
+#    voice: Joanna
+
+# panel_iframe:
+#   pihole:
+#     title: Pi-Hole
+#     icon: mdi:block-helper
+#     url: https://eugenelai.duckdns.org:4865
+
+#emulated_hue:
+#  host_ip: 10.0.1.23
+
+
+# panel_iframe:
+#   configurator:
+#     title: Configurator
+#     icon: mdi:wrench
+#     url: http://eugenelai.duckdns.org:3218/

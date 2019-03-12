@@ -184,3 +184,28 @@ Home Assistant notifications (Log started: 2018-10-10T13:43:37.464092+00:00)
 18-Oct-2018 | 12:07: Eugene has disconnected from WiFi
 18-Oct-2018 | 12:09: Have a safe journey. All lights have been shut down and the doors locked.
 18-Oct-2018 | 12:20: Have a safe journey. All lights have been shut down and the doors locked.
+06-Mar-2019 | 21:04: All systems up and running again.
+06-Mar-2019 | 21:29: All systems up and running again.
+06-Mar-2019 | 21:32: All systems up and running again.
+06-Mar-2019 | 21:35: All systems up and running again.
+06-Mar-2019 | 22:17: All systems up and running again.
+07-Mar-2019 | 13:12: Hope you smashed work today.
+07-Mar-2019 | 13:33: Hope you smashed work today.
+07-Mar-2019 | 13:35: Hope you smashed work today.
+07-Mar-2019 | 18:00: Hope you smashed work today.
+07-Mar-2019 | 23:17: Update for Home Assistant is available.
+08-Mar-2019 | 19:02: Automation Test Notifcation Triggered
+08-Mar-2019 | 23:17: Update for Home Assistant is available.
+09-Mar-2019 | 12:29: Automation Test Notifcation Triggered
+09-Mar-2019 | 12:29: Automation Test Notifcation Triggered
+10-Mar-2019 | 11:52: There has been a new device detected on the network.  Be sure to appropriately catagorize .
+11-Mar-2019 | 17:06: All systems up and running again.
+11-Mar-2019 | 17:18: Hope you smashed work today.
+11-Mar-2019 | 18:00: Hope you smashed work today.
+11-Mar-2019 | 18:30: Hope you smashed work today.
+11-Mar-2019 | 19:07: There has been a new device detected on the network.  Be sure to appropriately catagorize helens-iphone.lan.
+11-Mar-2019 | 19:20: Automation Test Notifcation Triggered
+11-Mar-2019 | 19:20: Automation Test Notifcation Triggered
+11-Mar-2019 | 19:32: Automation Test Notifcation Triggered
+11-Mar-2019 | 20:28: All systems up and running again.
+11-Mar-2019 | 20:56: All systems up and running again.

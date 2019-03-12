@@ -1,20 +1,5 @@
 
 #ifttt Triggers
-
-livingroomledon:
-  alias: Turn on living room mood
-  sequence:
-    - service: ifttt.trigger
-      data:
-        event: livingroomledon
-
-livingroomledoff:
-  alias: Turn off living room mood
-  sequence:
-    - service: ifttt.trigger
-      data:
-        event: livingroomledoff
-
 bedroomacon:
   alias: Turn on Bedroom AC
   sequence:
@@ -24,6 +9,7 @@ bedroomacon:
     - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.bedroomac
+
 bedroomacoff:
   alias: Turn off Bedroom AC
   sequence:
@@ -52,25 +38,15 @@ xboxoff:
       data:
         entity_id: input_boolean.xbox
 
-# alexattstest:
-#   alias: Alexa TTS Test
-#   sequence:
-#     - service: media_player.alexa_tts
-#       entity_id:
-#         - media_player.echo_dot_room
-#         - media_player.echo_dot_living_room
-#       data_template:
-#         message: "Kenny Lai. Check your messages! Eugene is texting you. "
-#
 testscript:
   alias: Test script
   sequence:
     - service: script.speech_notify_engine
       data_template:
-        speech_message: "..."
+        speech_message: "Hello world"
     - service: script.text_notify_engine
       data_template:
-        text_message: "Saying hello to dad"
+        text_message: "Hello world"
 
 restartserver:
   alias: Notify Restarting Server

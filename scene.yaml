@@ -1,22 +1,67 @@
-- name: Movie
+- name: Movie time
   entities:
     light.living_room_lamp:
       state: on
-      brightness: 255
-    light.bedroom_light:
-      state: off
-    light.tv_light:
+    light.living_room_light:
       state: off
     light.dining_light:
       state: off
+    light.living_room_mood:
+      state: on
 
-- name: Good night
+- name: All lights off
   entities:
     light.living_room_lamp:
       state: off
-    light.bedroom_light:
-      state: off
-    light.tv_light:
+    light.living_room_light:
       state: off
     light.dining_light:
+      state: off
+    light.living_room_mood:
+      state: off
+    light.bedroom_light:
+      state: off
+    light.bedroom_mood:
+      state: off
+    switch.dresser:
+      state: off
+
+- name: Living Room on
+  entities:
+    light.living_room_lamp:
+      state: on
+    light.living_room_light:
+      state: on
+    light.dining_light:
+      state: on
+    light.living_room_mood:
+      state: on
+
+- name: Living Room off
+  entities:
+    light.living_room_lamp:
+      state: off
+    light.living_room_light:
+      state: off
+    light.dining_light:
+      state: off
+    light.living_room_mood:
+      state: off
+
+- name: Bedroom on
+  entities:
+    light.bedroom_light:
+      state: on
+    light.bedroom_mood:
+      state: on
+    switch.dresser:
+      state: on
+
+- name: Bedroom off
+  entities:
+    light.bedroom_light:
+      state: off
+    light.bedroom_mood:
+      state: off
+    switch.dresser:
       state: off
